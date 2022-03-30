@@ -1,0 +1,2 @@
+key,status,code,legalStuff,budget,startsAt,finishesAt,link,key:patron,key:inventor
+patronage-01,accepted,abc-123,Legalidad patronage 1,50.00 eur,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
