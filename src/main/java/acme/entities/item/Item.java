@@ -6,7 +6,6 @@ import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -27,7 +26,6 @@ public class Item extends AbstractEntity{
 	
 	@Column(unique=true)
 	@NotBlank
-	@Pattern(regexp="")
 	protected String code;
 	
 	@NotBlank
@@ -42,6 +40,9 @@ public class Item extends AbstractEntity{
 	protected Money retailPrice;
 	
 	protected String info;
+	
+	@NotNull
+	protected ItemType type;
 	
 	@ManyToOne
 	@Valid
