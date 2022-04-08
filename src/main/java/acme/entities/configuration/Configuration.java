@@ -13,24 +13,24 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Configuration extends AbstractEntity{
+public class Configuration extends AbstractEntity {
 	
 private static final long	serialVersionUID	= 1L;
 	
 	
 	@NotBlank
-	String weakSpamWords;
+	protected String weakSpamWords;
 	
 	@NotBlank
-	String strongSpamWords;
+	protected String strongSpamWords;
 	
 	@NotNull
 	@Range(min = 0, max = 1)
-	private Double strongSpamThreshold;
+	protected Double strongSpamThreshold;
 	
 	@NotNull
 	@Range(min = 0, max = 1)
-	private Double weakSpamThreshold;
+	protected Double weakSpamThreshold;
 	
 	
 	public boolean isSpamWeak(final String text) {
