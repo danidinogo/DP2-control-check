@@ -15,14 +15,10 @@ import acme.framework.roles.Authenticated;
 public class AuthenticatedConfigurationController extends AbstractController<Authenticated, Configuration>{
 	
 	@Autowired
-	protected AuthenticatedConfigurationListService listService;
-	
-	@Autowired
 	protected AuthenticatedConfigurationShowService showService;
 	
 	@PostConstruct
 	protected void initialise() {
-		super.addCommand("list", this.listService);
 		super.addCommand("show", this.showService);
 	}
 
