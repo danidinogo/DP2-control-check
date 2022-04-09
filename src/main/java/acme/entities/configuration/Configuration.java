@@ -3,6 +3,7 @@ package acme.entities.configuration;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Range;
 
@@ -31,6 +32,14 @@ private static final long	serialVersionUID	= 1L;
 	@NotNull
 	@Range(min = 0, max = 1)
 	protected Double weakSpamThreshold;
+	
+	@NotBlank
+	@Pattern(regexp="EUR")
+	protected String defaultCurr;
+	
+	@NotBlank
+	@Pattern(regexp = "EUR,USD,GBP")
+	protected String acceptedCurr;
 	
 	
 	public boolean isSpamWeak(final String text) {

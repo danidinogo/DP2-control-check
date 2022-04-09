@@ -1,4 +1,4 @@
-package acme.features.administrator.configurations;
+package acme.features.authenticated.configuration;
 
 import java.util.Collection;
 
@@ -8,24 +8,22 @@ import org.springframework.stereotype.Service;
 import acme.entities.configuration.Configuration;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
-import acme.framework.roles.Administrator;
+import acme.framework.roles.Authenticated;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AdministratorConfigurationListService implements AbstractListService<Administrator, Configuration> {
-
-	// Internal state ---------------------------------------------------------
-
+public class AuthenticatedConfigurationListService implements AbstractListService<Authenticated, Configuration>{
+	
 	@Autowired
-	protected AdministratorConfigurationRepository repository;
-
+	protected AuthenticatedConfigurationRepository repository;
+	
 	@Override
 	public Collection<Configuration> findMany(final Request<Configuration> request) {
 		assert request != null;
 		
-		return this.repository.findConfigurations();
+		return this.repository.findMany();
 	}
-
+	
 	@Override
 	public boolean authorise(final Request<Configuration> request) {
 		assert request != null;
@@ -39,7 +37,7 @@ public class AdministratorConfigurationListService implements AbstractListServic
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "weakSpamWords");
+		request.unbind(entity, model,"defaultCurr", "acceptedCurr");
 	}
 
 }
