@@ -17,9 +17,13 @@ public class AuthenticatedConfigurationController extends AbstractController<Aut
 	@Autowired
 	protected AuthenticatedConfigurationListService listService;
 	
+	@Autowired
+	protected AuthenticatedConfigurationShowService showService;
+	
 	@PostConstruct
 	protected void initialise() {
 		super.addCommand("list", this.listService);
+		super.addCommand("show", this.showService);
 	}
 
 }
