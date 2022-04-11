@@ -1,0 +1,2 @@
+key,name,code,technology,description,retailPrice,info,type,key:inventor
+item-01,GitHub,123-456,Software,Herramienta de gestión de código,EUR 100.00,https://google.com,TOOL,inventor-01
