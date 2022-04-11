@@ -39,7 +39,7 @@ public class AdministratorConfigurationListService implements AbstractListServic
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "weakSpamWords", "strongSpamThreshold", "strongSpamWords", "strongSpamThreshold", "acceptedCurr");
+		request.unbind(entity, model, "weakSpamWords", "weakSpamThreshold", "strongSpamWords", "strongSpamThreshold", "acceptedCurr", "defaultCurr");
 	}
 
 }
