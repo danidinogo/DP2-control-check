@@ -41,6 +41,7 @@ public class AdministratorConfigurationShowService implements AbstractShowServic
 		assert entity != null;
 		assert model != null;
 		
+		request.unbind(entity, model, "weakSpamWords", "weakSpamThreshold", "strongSpamWords", "strongSpamThreshold", "acceptedCurr", "defaultCurr");
 	}
 	
 }
