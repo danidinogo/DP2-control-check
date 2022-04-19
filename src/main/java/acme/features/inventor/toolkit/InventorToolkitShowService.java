@@ -29,7 +29,7 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 		final int id = request.getModel().getInteger("id");
 		
 		final Toolkit res = this.repository.findToolkitById(id);
-		
+
 		return res;
 	}
 
@@ -39,7 +39,11 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "title", "description");
+		final int id = request.getModel().getInteger("id");
+		
+		request.unbind(entity, model, "code", "title", "descripcion", "assemblyNotes", "link");
+		
+		
 		
 	}
 

@@ -28,7 +28,7 @@ public class InventorToolkitListOwnService implements AbstractListService<Invent
 	@Override
 	public boolean authorise(final Request<Toolkit> request) {
 		assert request != null;
-
+		
 		return true;
 	}
 	
@@ -38,6 +38,6 @@ public class InventorToolkitListOwnService implements AbstractListService<Invent
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "title", "descripcion", "assemblyNotes");
+		request.unbind(entity, model, "title", "descripcion", "link");
 	}
 }
