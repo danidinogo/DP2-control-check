@@ -11,7 +11,7 @@ import acme.framework.controllers.AbstractController;
 import acme.framework.roles.Administrator;
 
 @Controller
-@RequestMapping("/administrator/configuration/")
+@RequestMapping("/administrator/dashboard/")
 public class AdministratorDashboardController extends AbstractController<Administrator, AdministratorDashboard> {
 
 	// Internal state ---------------------------------------------------------
