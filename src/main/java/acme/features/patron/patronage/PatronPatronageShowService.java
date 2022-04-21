@@ -12,12 +12,14 @@ import acme.roles.Patron;
 @Service
 public class PatronPatronageShowService implements AbstractShowService<Patron, Patronage> {
 
-	// Internal state ---------------------------------------------------------
+	
+	
 
 	@Autowired
 	protected PatronPatronageRepository repository;
 
-	// AbstractShowService<Administrator, Announcement> interface --------------
+
+	
 	
 	@Override
 	public boolean authorise(final Request<Patronage> request) {
@@ -45,6 +47,7 @@ public class PatronPatronageShowService implements AbstractShowService<Patron, P
 		assert entity != null;
 		assert model != null;
 
+		
 		request.unbind(entity, model, "status", "code", "legalStuff", "budget",  "startsAt", "finishesAt",  "link");
 		
 	}

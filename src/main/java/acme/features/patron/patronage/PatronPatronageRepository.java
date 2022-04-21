@@ -11,10 +11,13 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface PatronPatronageRepository extends AbstractRepository {
 
+	
 	@Query("select p from Patronage p where p.id = :id")
 	Patronage findPatronageById(int id);
 
+	
 	@Query("select p from Patronage p where p.patron.id = :patronId")
 	Collection<Patronage> findAllPatronagesByPatronId(int patronId);
+	
 	
 }

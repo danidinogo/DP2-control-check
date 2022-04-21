@@ -15,12 +15,14 @@ import acme.roles.Patron;
 @Service
 public class PatronPatronageListService implements AbstractListService<Patron, Patronage> {
 
-	// Internal state ---------------------------------------------------------
 
+
+	
 	@Autowired
 	protected PatronPatronageRepository repository;
 
-	// AbstractListService<Employer, Duty> interface ---------------------------
+	
+	
 	
 	@Override
 	public boolean authorise(final Request<Patronage> request) {
@@ -29,6 +31,7 @@ public class PatronPatronageListService implements AbstractListService<Patron, P
 		return true;
 	}
 
+	
 	@Override
 	public Collection<Patronage> findMany(final Request<Patronage> request) {
 		assert request != null;
@@ -39,6 +42,7 @@ public class PatronPatronageListService implements AbstractListService<Patron, P
 		principal = request.getPrincipal();
 		result = this.repository.findAllPatronagesByPatronId(principal.getActiveRoleId());
 
+		
 		return result;
 	}
 
@@ -47,6 +51,7 @@ public class PatronPatronageListService implements AbstractListService<Patron, P
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		
 
 		request.unbind(entity, model, "status", "code", "legalStuff", "budget",  "startsAt", "finishesAt",  "link");
 		

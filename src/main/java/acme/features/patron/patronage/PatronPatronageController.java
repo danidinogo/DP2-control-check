@@ -11,10 +11,12 @@ import acme.framework.controllers.AbstractController;
 import acme.roles.Patron;
 
 @Controller
-//@RequestMapping("/patron/patronage/")
 public class PatronPatronageController extends AbstractController<Patron, Patronage> {
 
-	// Internal state ---------------------------------------------------------
+	
+	
+	
+	
 
 	@Autowired
 	protected PatronPatronageListService	listService;
@@ -23,8 +25,10 @@ public class PatronPatronageController extends AbstractController<Patron, Patron
 	@Autowired
 	protected PatronPatronageShowService	showService;
 
-	// Constructors -----------------------------------------------------------
+	
 
+	
+	
 
 	@PostConstruct
 	protected void initialise() {
