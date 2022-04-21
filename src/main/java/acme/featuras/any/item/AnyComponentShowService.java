@@ -28,7 +28,7 @@ public class AnyComponentShowService implements AbstractShowService<Any, Item> {
 		
 		final int id = request.getModel().getInteger("id");
 		
-		final Item res = this.repository.findItemById(id);
+		 final Item res = this.repository.findItemById(id);
 
 		return res;
 		

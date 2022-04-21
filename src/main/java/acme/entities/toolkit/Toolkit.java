@@ -61,5 +61,7 @@ public class Toolkit extends AbstractEntity {
 	@OneToMany(mappedBy="toolkit", fetch = FetchType.EAGER)
 	protected List<Quantity> quantity;
 	
+	@NotNull
+	protected Boolean status;
 	
 }
