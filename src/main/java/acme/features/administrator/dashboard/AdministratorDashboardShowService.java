@@ -6,14 +6,16 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.forms.AdministratorDashboard;
+import acme.entities.item.ItemType;
+import acme.enums.Status;
+import acme.forms.Dashboard;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.roles.Administrator;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class AdministratorDashboardShowService implements AbstractShowService<Administrator, AdministratorDashboard> {
+public class AdministratorDashboardShowService implements AbstractShowService<Administrator, Dashboard> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -21,7 +23,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 	protected AdministratorDashboardRepository repository;
 
 	@Override
-	public boolean authorise(final Request<AdministratorDashboard> request) {
+	public boolean authorise(final Request<Dashboard> request) {
 		// TODO Auto-generated method stub
 		assert request != null;
 		
@@ -29,30 +31,37 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 	}
 
 	@Override
-	public AdministratorDashboard findOne(final Request<AdministratorDashboard> request) {
+	public Dashboard findOne(final Request<Dashboard> request) {
 		// TODO Auto-generated method stub
 		assert request != null;
 		
-		final AdministratorDashboard result = new AdministratorDashboard();
+		final Dashboard result = new Dashboard();
 		
-		final Map<String, Integer> totalsData = new HashMap<String, Integer>();;
+		final Map<String, Integer> totalsData = new HashMap<String, Integer>();
 		for(final String key : result.getTotalsDataKeys()) {
 			switch(key) {
-				case "Components":
-				case "Tools":
-					totalsData.put(key, this.repository.getItemTotalsByType(key));
+				case "Component":
+				case "Tool":
+					System.out.println(this.repository.getItemTotalsByType(ItemType.valueOf(key.toUpperCase())));
+					totalsData.put(key, this.repository.getItemTotalsByType(ItemType.valueOf(key.toUpperCase())));
+					break;
+				case "Proposed":
+				case "Accepted":
+				case "Denied":
+					totalsData.put(key, this.repository.getPatronageTotalsByStatus(Status.valueOf(key.toLowerCase())));
 					break;
 				default:
-					totalsData.put(key, null);
 					break;
 			}
 		}
+		
+		result.setTotalsData(totalsData);
 		
 		return result;
 	}
 
 	@Override
-	public void unbind(final Request<AdministratorDashboard> request, final AdministratorDashboard entity, final Model model) {
+	public void unbind(final Request<Dashboard> request, final Dashboard entity, final Model model) {
 		// TODO Auto-generated method stub
 		assert request != null;
 		assert entity != null;

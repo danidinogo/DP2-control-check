@@ -13,7 +13,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AdministratorDashboard implements Serializable {
+public class Dashboard implements Serializable {
 	
 	// Serialisation identifier -----------------------------------------------
 
@@ -54,7 +54,7 @@ public class AdministratorDashboard implements Serializable {
 	
 	
 	public List<String> getTotalsDataKeys() {
-		return new ArrayList<String>(Arrays.asList("Components", "Tools", "PatronagesProposed", "PatronagesAccepted", "PatronagesDenied"));
+		return new ArrayList<String>(Arrays.asList("Component", "Tool", "Proposed", "Accepted", "Denied"));
 	}
 
 }
