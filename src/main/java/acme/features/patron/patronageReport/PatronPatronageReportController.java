@@ -12,7 +12,7 @@ import acme.roles.Patron;
 @Controller
 public class PatronPatronageReportController extends AbstractController<Patron, PatronageReport>{
 		
-	// Internal state
+	
 	
 	
 	@Autowired
@@ -21,7 +21,7 @@ public class PatronPatronageReportController extends AbstractController<Patron, 
 	@Autowired
 	protected PatronPatronageReportShowService showService;
 	
-	// Constructors
+	
 	
 	
 	@PostConstruct

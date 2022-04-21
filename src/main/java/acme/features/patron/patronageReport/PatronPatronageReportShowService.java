@@ -12,13 +12,13 @@ import acme.roles.Patron;
 @Service
 public class PatronPatronageReportShowService implements AbstractShowService<Patron, PatronageReport>{
 	
-	// Internal state
+	
 	
 	
 	@Autowired
 	protected PatronPatronageReportRepository repository;
 	
-	// Interface
+	
  
 	
 	@Override
