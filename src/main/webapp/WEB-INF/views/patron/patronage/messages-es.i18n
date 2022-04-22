@@ -10,6 +10,9 @@ authenticated.patron.patronage.form.label.inventor.company = Compañia del Inven
 authenticated.patron.patronage.form.label.inventor.statement = Declaracion del Inventor
 authenticated.patron.patronage.form.label.inventor.link = Link del Invetor
 
+patron.patronage.form.buttom.patronage-reports = Reportes del patronage
+
+
 
 
 authenticated.patron.patronage.list.label.status = Estado

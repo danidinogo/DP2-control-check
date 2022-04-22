@@ -16,6 +16,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.entities.quantity.Quantity;
+import acme.framework.datatypes.Money;
 import acme.framework.entities.AbstractEntity;
 import acme.roles.Inventor;
 import lombok.Getter;
@@ -60,5 +61,19 @@ public class Toolkit extends AbstractEntity {
 	@Valid
 	@OneToMany(mappedBy="toolkit", fetch = FetchType.EAGER)
 	protected List<Quantity> quantity;
+	
+	
+	public Money getRetailPrice() {
+		final List<Quantity> cantidad = this.quantity;
+		Double aux = 0.0;
+		final Money res = new Money();
+		final String curr = cantidad.get(0).getItem().getRetailPrice().getCurrency();
+		for(final Quantity c: cantidad ) {
+			aux = aux + (c.getNumber()*c.getItem().getRetailPrice().getAmount());
+		}
+		res.setAmount(aux);
+		res.setCurrency(curr);
+		return res;
+	}
 	
 }

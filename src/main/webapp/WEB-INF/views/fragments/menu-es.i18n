@@ -50,10 +50,14 @@ master.menu.provider.favourite-link = Enlace favorito
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
 
+# master.menu.inventor ##########################################################
+master.menu.inventor = Inventor
+master.menu.inventor.toolkits = Listar toolkits propias
+
 # master.menu.patron ##########################################################
 
 master.menu.patron = Patron
-master.menu.patron.patronage = Lista de Patronage
+master.menu.patron.patronage = Lista de Patronages 
 
 # master.menu.user-account ####################################################
 

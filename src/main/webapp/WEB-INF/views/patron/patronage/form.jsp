@@ -16,4 +16,7 @@
 	<acme:input-textarea code="authenticated.patron.patronage.form.label.inventor.company" path="inventor.company"/>
 	<acme:input-textarea code="authenticated.patron.patronage.form.label.inventor.statement" path="inventor.statement"/>
 	<acme:input-url code="authenticated.patron.patronage.form.label.inventor.link" path="inventor.link"/>
+	<acme:button code="patron.patronage.form.buttom.patronage-reports" action="/patron/patronage-report/list-by-patronage?id=${id}"/>
+	
+
 </acme:form>
