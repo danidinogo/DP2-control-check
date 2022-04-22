@@ -18,7 +18,6 @@ public interface AuthenticatedAnnouncementRepository extends AbstractRepository 
 	@Query("select t from Announcement t where t.id = :id")
 	Announcement findAnnouncementById(int id);
 	
-	@Query("select a from Announcement a where a.creation >= ?1")
-	List<Announcement> findRecentAnnouncement(Date fecha);
+
 
 }
