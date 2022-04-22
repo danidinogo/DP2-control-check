@@ -6,6 +6,9 @@ authenticated.patron.patronage.form.label.budget = Budget
 authenticated.patron.patronage.form.label.startsAt = Start At
 authenticated.patron.patronage.form.label.finishesAt = Finishes At
 authenticated.patron.patronage.form.label.link = Link
+authenticated.patron.patronage.form.label.inventor.company = Inventor Company
+authenticated.patron.patronage.form.label.inventor.statement = Inventor Statement
+authenticated.patron.patronage.form.label.inventor.link = Inventor Link
 
 
 authenticated.patron.patronage.list.label.status = Status

@@ -12,4 +12,7 @@
 	<acme:input-textbox code="authenticated.patron.patronage.form.label.startsAt" path="startsAt"/>
 	<acme:input-textarea code="authenticated.patron.patronage.form.label.finishesAt" path="finishesAt"/>
 	<acme:input-url code="authenticated.patron.patronage.form.label.link" path="link"/>
+	<acme:input-textarea code="authenticated.patron.patronage.form.label.inventor.company" path="inventor.company"/>
+	<acme:input-textarea code="authenticated.patron.patronage.form.label.inventor.statement" path="inventor.statement"/>
+	<acme:input-url code="authenticated.patron.patronage.form.label.inventor.link" path="inventor.link"/>
 </acme:form>
