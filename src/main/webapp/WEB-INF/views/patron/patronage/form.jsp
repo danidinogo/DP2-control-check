@@ -12,4 +12,6 @@
 	<acme:input-textbox code="authenticated.patron.patronage.form.label.startsAt" path="startsAt"/>
 	<acme:input-textarea code="authenticated.patron.patronage.form.label.finishesAt" path="finishesAt"/>
 	<acme:input-url code="authenticated.patron.patronage.form.label.link" path="link"/>
+	<acme:button code="patron.patronage.form.buttom.patronage-reports" action="/patron/patronage-report/list-by-patronage?id=${id}"/>
+	
 </acme:form>

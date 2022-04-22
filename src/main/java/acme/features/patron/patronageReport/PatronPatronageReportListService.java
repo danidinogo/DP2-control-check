@@ -1,7 +1,6 @@
 package acme.features.patron.patronageReport;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 import acme.entities.patronagereport.PatronageReport;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
-import acme.framework.entities.Principal;
 import acme.framework.services.AbstractListService;
 import acme.roles.Patron;
 
@@ -36,10 +34,8 @@ public class PatronPatronageReportListService implements AbstractListService<Pat
 		assert request != null;
 		
 		Collection<PatronageReport> result;
-		Principal principal;
-		
-		principal = request.getPrincipal();
-		result = this.repository.findAllPatronageReportsByPatronId(principal.getActiveRoleId());
+		final int id = request.getModel().getInteger("id");
+		result = this.repository.findPatronageReportsByPatronageId(id);
 		
 		
 		return result;

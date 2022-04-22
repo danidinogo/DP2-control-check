@@ -27,11 +27,10 @@ public class PatronPatronageReportShowService implements AbstractShowService<Pat
 	public boolean authorise(final Request<PatronageReport> request) {
 		assert request != null;
 		
-		int id = request.getPrincipal().getActiveRoleId();
-		Collection<PatronageReport> patronageReports = this.repository.findAllPatronageReportsByPatronId(id);
-		int patronage_id = request.getModel().getInteger("id");
-		PatronageReport patronageReport = this.repository.findPatronageReportById(patronage_id);
-		return patronageReports.contains(patronageReport);
+		final int id = request.getModel().getInteger("id");
+		final PatronageReport requested = this.repository.findPatronageReportById(id);
+		final Collection<PatronageReport> patronPatronageReport = this.repository.findPatronageReportByPatronId(request.getPrincipal().getActiveRoleId());
+		return patronPatronageReport.contains(requested);
 	}
 	
 	
