@@ -50,6 +50,11 @@
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
 		
+		
+		<acme:menu-option code="master.menu.inventor" access="hasRole('Inventor')">
+			<acme:menu-suboption code="master.menu.inventor.toolkits" action="/inventor/toolkit/list-mine"/>
+		</acme:menu-option>
+		
 		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">
 			<acme:menu-suboption code="master.menu.patron.patronage" action="/patron/patronage/list-mine"/>
 		</acme:menu-option>
