@@ -45,7 +45,7 @@ public class PatronPatronageShowService implements AbstractShowService<Patron, P
 
 
 		return result;
-	}
+	} 
 
 	@Override
 	public void unbind(final Request<Patronage> request, final Patronage entity, final Model model) {

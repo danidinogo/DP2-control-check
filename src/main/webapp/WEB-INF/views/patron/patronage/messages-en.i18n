@@ -11,6 +11,7 @@ authenticated.patron.patronage.form.label.inventor.statement = Inventor Statemen
 authenticated.patron.patronage.form.label.inventor.link = Inventor Link
 
 
+
 authenticated.patron.patronage.list.label.status = Status
 authenticated.patron.patronage.list.label.code = Code
 authenticated.patron.patronage.list.label.legalStuff = Legal Stuff
