@@ -1,5 +1,6 @@
 package acme.features.administrator.dashboard;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,9 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		final Dashboard result = new Dashboard();
 
 		result.setTotalsData(this.getTotals(result.getTotalsDataKeys()));
-		result.setPatronagesBudgets(this.getPatronagesBudgets());
+		result.setPatronagesBudgets(this.getPatronagesBudgets(result.getBudgetKeys()));
+		
+		System.out.println(result.getPatronagesBudgets().toString());
 		
 		return result;
 	}
@@ -51,7 +54,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "totalsData");
+		request.unbind(entity, model, "totalsData", "patronagesBudgets");
 	}
 	
 	private Map<String, Integer> getTotals(final List<String> totalsKeys) {
@@ -60,7 +63,6 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 			switch(key) {
 				case "Component":
 				case "Tool":
-					System.out.println(this.repository.getItemTotalsByType(ItemType.valueOf(key.toUpperCase())));
 					totals.put(key, this.repository.getItemTotalsByType(ItemType.valueOf(key.toUpperCase())));
 					break;
 				case "Proposed":
@@ -75,18 +77,23 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		return totals;
 	}
 	
-	private Map<Status, Map<String, Double>> getPatronagesBudgets() {
+	private Map<Status, Map<String, Double>> getPatronagesBudgets(final List<String> budgetKeys) {
 		final Map<Status, Map<String, Double>> patronageBudgets = new HashMap<Status, Map<String, Double>>();
 		for(final Status status : Status.values()) {
-			final List<Double> budgetData = this.repository.getPatronageBudgetByStatus(status);
+			// TODO it's been tried to have a List<Double> but it only returns 1 index instead of 4 indexes-list. Maybe there is a better way
+			final String budgetData = this.repository.getPatronageBudgetByStatus(status);
 			
-			System.out.println(budgetData.toString());
+			final String[] budget = budgetData.split(",");
+			
+			final List<Double> budgetDbl = new ArrayList<Double>();
+			for(final String b : budget) {
+				budgetDbl.add(Double.valueOf(b));
+			}
 			
 			final Map<String, Double> bd = new HashMap<String, Double>();
-			bd.put("Min", budgetData.get(0));
-			bd.put("Max", budgetData.get(1));
-			bd.put("Average", budgetData.get(2));
-			bd.put("Deviation", budgetData.get(3));
+			for(int i=0; i<budgetDbl.size(); i++) {
+				bd.put(budgetKeys.get(i), budgetDbl.get(i));
+			}
 			
 			patronageBudgets.put(status, bd);
 		}

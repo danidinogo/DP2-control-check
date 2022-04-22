@@ -57,5 +57,9 @@ public class Dashboard implements Serializable {
 	public List<String> getTotalsDataKeys() {
 		return new ArrayList<String>(Arrays.asList("Component", "Tool", "Proposed", "Accepted", "Denied"));
 	}
+	
+	public List<String> getBudgetKeys() {
+		return new ArrayList<String>(Arrays.asList("Min", "Max", "Avg", "Dev"));
+	}
 
 }

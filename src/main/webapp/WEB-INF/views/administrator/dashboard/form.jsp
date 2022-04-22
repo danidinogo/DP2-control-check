@@ -4,15 +4,17 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
+<%@ page import="acme.enums.Status" %>
+
 <style>
-	.totals input {
+	.budgets input, .totals input {
 		display: block;
 		margin: auto;
 	}
-	.totals {
+	.totals, .budgets {
 		text-align: center;
 	}
-	.totals > .row {
+	.budgets > .row, .totals > .row {
 		margin-bottom: 25px;
 	}
 </style>
@@ -77,13 +79,52 @@
 
 <div class="budgets">
 	<h2>Mínimo, máximo, media y desviación de presupuestos de patronages</h2>
-	<div class="row">
-		<div class="col">
-			<div class="card">
-				<div class="card-body">
-					
+	
+	<c:forEach items="${Status.values()}" var="status">
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-body">
+						<label>
+							<acme:message code="administrator.dashboard.form.label.patronagesBudgetsMax${status}" />
+							<input type="text" value="${patronagesBudgets[status].Max}" readonly />
+						</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col">
+				<div class="card">
+					<div class="card-body">
+						<label>
+							<acme:message code="administrator.dashboard.form.label.patronagesBudgetsMin${status}"/>
+							<input type="text" value="${patronagesBudgets[status].Min}" readonly />
+						</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col">
+				<div class="card">
+					<div class="card-body">					
+						<label>
+							<acme:message code="administrator.dashboard.form.label.patronagesBudgetsAvg${status}"/>
+							<input type="text" value="${patronagesBudgets[status].Avg}" readonly />
+						</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col">
+				<div class="card">
+					<div class="card-body">
+						<label>
+							<acme:message code="administrator.dashboard.form.label.patronagesBudgetsDev${status}"/>
+							<input type="text" value="${patronagesBudgets[status].Dev}" readonly />
+						</label>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</c:forEach>
 </div>

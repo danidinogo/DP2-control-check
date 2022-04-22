@@ -8,4 +8,19 @@ administrator.dashboard.form.label.totalNumberPatronagesProposed = Total Propose
 administrator.dashboard.form.label.totalNumberPatronagesAccepted = Total Accepted Patronages
 administrator.dashboard.form.label.totalNumberPatronagesDenied = Total Denied Patronages
 
+administrator.dashboard.form.label.patronagesBudgetsMaxproposed = Maximum proposed
+administrator.dashboard.form.label.patronagesBudgetsMinproposed = Minimum proposed
+administrator.dashboard.form.label.patronagesBudgetsAvgproposed = Average proposed
+administrator.dashboard.form.label.patronagesBudgetsDevproposed = Deviation proposed
+
+administrator.dashboard.form.label.patronagesBudgetsMaxaccepted = Maximum accepted
+administrator.dashboard.form.label.patronagesBudgetsMinaccepted = Minimum accepted
+administrator.dashboard.form.label.patronagesBudgetsAvgaccepted = Average accepted
+administrator.dashboard.form.label.patronagesBudgetsDevaccepted = Deviation accepted
+
+administrator.dashboard.form.label.patronagesBudgetsMaxdenied = Maximum denied
+administrator.dashboard.form.label.patronagesBudgetsMindenied = Minimum denied
+administrator.dashboard.form.label.patronagesBudgetsAvgdenied = Average denied
+administrator.dashboard.form.label.patronagesBudgetsDevdenied = Deviation denied
+
 administrator.configuration.form.button.update = Actualizar configuración
