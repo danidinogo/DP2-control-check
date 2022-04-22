@@ -1,5 +1,7 @@
 package acme.features.administrator.dashboard;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -16,8 +18,10 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("SELECT COUNT(patronage) FROM Patronage patronage WHERE patronage.status = :status")
 	Integer getPatronageTotalsByStatus(Status status);
 	
-	@Query("select min(patronage.budget.amount), max(patronage.budget.amount), avg(patronage.budget.amount), stddev(patronage.budget.amount) from Patronage patronage where patronage.status = :status")
+	@Query("SELECT MIN(patronage.budget.amount), MAX(patronage.budget.amount), AVG(patronage.budget.amount), STDDEV(patronage.budget.amount) from Patronage patronage WHERE patronage.status = :status")
 	String getPatronageBudgetByStatus(Status status);
 	
+	@Query("SELECT item.retailPrice.currency, item.technology, MIN(item.retailPrice.amount), MAX(item.retailPrice.amount), AVG(item.retailPrice.amount), STDDEV(item.retailPrice.amount) from Item item WHERE item.type = :type GROUP BY item.retailPrice.currency")
+	List<String> getItemsByType(ItemType type);
 	
 }

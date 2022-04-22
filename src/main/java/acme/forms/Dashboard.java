@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.mysql.cj.conf.ConnectionUrlParser.Pair;
 
+import acme.entities.item.ItemType;
 import acme.enums.Status;
 import lombok.Getter;
 import lombok.Setter;
@@ -45,7 +46,7 @@ public class Dashboard implements Serializable {
 	
 	Map<String, Map<Pair<String, String>, Double>> componentsData;
 	
-	Map<String, Map<String, Double>> toolsData;
+	Map<ItemType, Map<Pair<String, String>, Double>> itemsRetailPrice;
 	
 	Map<Status, Map<String, Double>> patronagesBudgets;
 
@@ -58,7 +59,7 @@ public class Dashboard implements Serializable {
 		return new ArrayList<String>(Arrays.asList("Component", "Tool", "Proposed", "Accepted", "Denied"));
 	}
 	
-	public List<String> getBudgetKeys() {
+	public List<String> getDataKeys() {
 		return new ArrayList<String>(Arrays.asList("Min", "Max", "Avg", "Dev"));
 	}
 

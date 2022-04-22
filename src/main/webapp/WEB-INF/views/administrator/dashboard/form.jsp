@@ -5,16 +5,17 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 <%@ page import="acme.enums.Status" %>
+<%@ page import="acme.entities.item.ItemType" %>
 
 <style>
-	.budgets input, .totals input {
+	.budgets input, .totals input, .items input {
 		display: block;
 		margin: auto;
 	}
-	.totals, .budgets {
+	.totals, .budgets, .items {
 		text-align: center;
 	}
-	.budgets > .row, .totals > .row {
+	.budgets > .row, .totals > .row, .items > .row {
 		margin-bottom: 25px;
 	}
 </style>
@@ -88,6 +89,59 @@
 						<label>
 							<acme:message code="administrator.dashboard.form.label.patronagesBudgetsMax${status}" />
 							<input type="text" value="${patronagesBudgets[status].Max}" readonly />
+						</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col">
+				<div class="card">
+					<div class="card-body">
+						<label>
+							<acme:message code="administrator.dashboard.form.label.patronagesBudgetsMin${status}"/>
+							<input type="text" value="${patronagesBudgets[status].Min}" readonly />
+						</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col">
+				<div class="card">
+					<div class="card-body">					
+						<label>
+							<acme:message code="administrator.dashboard.form.label.patronagesBudgetsAvg${status}"/>
+							<input type="text" value="${patronagesBudgets[status].Avg}" readonly />
+						</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col">
+				<div class="card">
+					<div class="card-body">
+						<label>
+							<acme:message code="administrator.dashboard.form.label.patronagesBudgetsDev${status}"/>
+							<input type="text" value="${patronagesBudgets[status].Dev}" readonly />
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</c:forEach>
+</div>
+
+<div class="items">
+	<h2>Mínimo, máximo, media y desviación de precio de Componentes y Herramientas</h2>
+	
+	<c:forEach items="${ItemType.values()}" var="type">
+		<h3>${type}</h3>
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-body">
+						<label>
+							<acme:message code="administrator.dashboard.form.label.max${type}" />
+							<input type="text" value="${componentsData[type].Max}" readonly />
 						</label>
 					</div>
 				</div>

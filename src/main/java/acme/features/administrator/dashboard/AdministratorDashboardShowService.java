@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.ItemType;
@@ -26,7 +27,6 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 
 	@Override
 	public boolean authorise(final Request<Dashboard> request) {
-		// TODO Auto-generated method stub
 		assert request != null;
 		
 		return true;
@@ -34,27 +34,24 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 
 	@Override
 	public Dashboard findOne(final Request<Dashboard> request) {
-		// TODO Auto-generated method stub
 		assert request != null;
 		
 		final Dashboard result = new Dashboard();
 
 		result.setTotalsData(this.getTotals(result.getTotalsDataKeys()));
-		result.setPatronagesBudgets(this.getPatronagesBudgets(result.getBudgetKeys()));
-		
-		System.out.println(result.getPatronagesBudgets().toString());
+		result.setPatronagesBudgets(this.getPatronagesBudgets(result.getDataKeys()));
+		result.setComponentsData(this.getComponentsData(result.getDataKeys()));
 		
 		return result;
 	}
 
 	@Override
 	public void unbind(final Request<Dashboard> request, final Dashboard entity, final Model model) {
-		// TODO Auto-generated method stub
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "totalsData", "patronagesBudgets");
+		request.unbind(entity, model, "totalsData", "patronagesBudgets", "componentsData");
 	}
 	
 	private Map<String, Integer> getTotals(final List<String> totalsKeys) {
@@ -82,7 +79,6 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		for(final Status status : Status.values()) {
 			// TODO it's been tried to have a List<Double> but it only returns 1 index instead of 4 indexes-list. Maybe there is a better way
 			final String budgetData = this.repository.getPatronageBudgetByStatus(status);
-			
 			final String[] budget = budgetData.split(",");
 			
 			final List<Double> budgetDbl = new ArrayList<Double>();
@@ -98,5 +94,33 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 			patronageBudgets.put(status, bd);
 		}
 		return patronageBudgets;
+	}
+	
+	private Map<ItemType, Map<Pair<String, String>, Double>> getComponentsData(final List<String> dataKeys) {
+		final Map<ItemType, Map<Pair<String, String>, Map<String, Double>>> componentsData = new HashMap<ItemType, Map<Pair<String, String>, Map<String, Double>>>();
+		
+		for(final ItemType type : ItemType.values()) {
+			final Map<Pair<String, String>, Map<String, Double>> it = new HashMap<Pair<String, String>, Map<String, Double>>();
+			
+			final List<String> itemsData = this.repository.getItemsByType(type);
+			for(final String i : itemsData) {
+				final String[] item = i.split(",");
+				
+				final Map<String, Double> im = new HashMap<String, Double>();
+				im.put("Min", Double.valueOf(item[2]));
+				im.put("Max", Double.valueOf(item[3]));
+				im.put("Avg", Double.valueOf(item[4]));
+				im.put("Dev", Double.valueOf(item[5]));
+				
+				it.put(Pair.of(item[0], item[1]), im);
+				
+			}
+			componentsData.put(type, it);
+		}
+
+		System.out.println(itemsData);
+		
+		
+		return componentsData;
 	}
 }
