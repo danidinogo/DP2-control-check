@@ -1,5 +1,7 @@
 package acme.features.patron.patronageReport;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +27,11 @@ public class PatronPatronageReportShowService implements AbstractShowService<Pat
 	public boolean authorise(final Request<PatronageReport> request) {
 		assert request != null;
 		
-		return true;
+		int id = request.getPrincipal().getActiveRoleId();
+		Collection<PatronageReport> patronageReports = this.repository.findAllPatronageReportsByPatronId(id);
+		int patronage_id = request.getModel().getInteger("id");
+		PatronageReport patronageReport = this.repository.findPatronageReportById(patronage_id);
+		return patronageReports.contains(patronageReport);
 	}
 	
 	

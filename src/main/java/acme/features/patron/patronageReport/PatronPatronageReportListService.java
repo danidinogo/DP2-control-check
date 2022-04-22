@@ -1,6 +1,7 @@
 package acme.features.patron.patronageReport;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,6 @@ public class PatronPatronageReportListService implements AbstractListService<Pat
 	@Override
 	public boolean authorise(final Request<PatronageReport> request) {
 		assert request != null;
-		
 		return true;
 	}
 	
