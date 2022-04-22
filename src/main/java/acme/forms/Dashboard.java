@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.mysql.cj.conf.ConnectionUrlParser.Pair;
 
+import acme.enums.Status;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -46,7 +47,7 @@ public class Dashboard implements Serializable {
 	
 	Map<String, Map<String, Double>> toolsData;
 	
-	Map<String, Map<String, Double>> patronagesBudgets;
+	Map<Status, Map<String, Double>> patronagesBudgets;
 
 	// Derived attributes -----------------------------------------------------
 

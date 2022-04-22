@@ -1,18 +1,11 @@
 # i18n-es.i18n
 #
 
-administrator.configuration.list.label.defaultCurr = Predeterminado
-administrator.configuration.list.label.acceptedCurr = Aceptadas
-administrator.configuration.list.label.strongSpamThreshold = Ponderación
-administrator.configuration.list.label.strongSpamWords = SPAM Fuerte
-administrator.configuration.list.label.weakSpamThreshold = Ponderación
-administrator.configuration.list.label.weakSpamWords = SPAM Débil
+administrator.dashboard.form.label.totalComponents = Total de componentes
+administrator.dashboard.form.label.totalTools = Total de herramientas
 
-administrator.configuration.form.label.defaultCurr = Divisa predeterminada
-administrator.configuration.form.label.acceptedCurr = Divisas aceptadas
-administrator.configuration.form.label.strongSpamThreshold = Ponderación SPAM Fuerte
-administrator.configuration.form.label.strongSpamWords = Lista de palabras SPAM fuerte
-administrator.configuration.form.label.weakSpamThreshold = Ponderación SPAM Débil
-administrator.configuration.form.label.weakSpamWords = Lista de palabras SPAM débil
+administrator.dashboard.form.label.totalNumberPatronagesProposed = Total Patronages propuestos
+administrator.dashboard.form.label.totalNumberPatronagesAccepted = Total Patronages aceptados
+administrator.dashboard.form.label.totalNumberPatronagesDenied = Total Patronages denegados
 
 administrator.configuration.form.button.update = Actualizar configuración

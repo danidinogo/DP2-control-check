@@ -1,6 +1,7 @@
 package acme.features.administrator.dashboard;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,26 +37,9 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		assert request != null;
 		
 		final Dashboard result = new Dashboard();
-		
-		final Map<String, Integer> totalsData = new HashMap<String, Integer>();
-		for(final String key : result.getTotalsDataKeys()) {
-			switch(key) {
-				case "Component":
-				case "Tool":
-					System.out.println(this.repository.getItemTotalsByType(ItemType.valueOf(key.toUpperCase())));
-					totalsData.put(key, this.repository.getItemTotalsByType(ItemType.valueOf(key.toUpperCase())));
-					break;
-				case "Proposed":
-				case "Accepted":
-				case "Denied":
-					totalsData.put(key, this.repository.getPatronageTotalsByStatus(Status.valueOf(key.toLowerCase())));
-					break;
-				default:
-					break;
-			}
-		}
-		
-		result.setTotalsData(totalsData);
+
+		result.setTotalsData(this.getTotals(result.getTotalsDataKeys()));
+		result.setPatronagesBudgets(this.getPatronagesBudgets());
 		
 		return result;
 	}
@@ -68,5 +52,44 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		assert model != null;
 		
 		request.unbind(entity, model, "totalsData");
+	}
+	
+	private Map<String, Integer> getTotals(final List<String> totalsKeys) {
+		final Map<String, Integer> totals = new HashMap<String, Integer>();
+		for(final String key : totalsKeys) {
+			switch(key) {
+				case "Component":
+				case "Tool":
+					System.out.println(this.repository.getItemTotalsByType(ItemType.valueOf(key.toUpperCase())));
+					totals.put(key, this.repository.getItemTotalsByType(ItemType.valueOf(key.toUpperCase())));
+					break;
+				case "Proposed":
+				case "Accepted":
+				case "Denied":
+					totals.put(key, this.repository.getPatronageTotalsByStatus(Status.valueOf(key.toLowerCase())));
+					break;
+				default:
+					break;
+			}
+		}
+		return totals;
+	}
+	
+	private Map<Status, Map<String, Double>> getPatronagesBudgets() {
+		final Map<Status, Map<String, Double>> patronageBudgets = new HashMap<Status, Map<String, Double>>();
+		for(final Status status : Status.values()) {
+			final List<Double> budgetData = this.repository.getPatronageBudgetByStatus(status);
+			
+			System.out.println(budgetData.toString());
+			
+			final Map<String, Double> bd = new HashMap<String, Double>();
+			bd.put("Min", budgetData.get(0));
+			bd.put("Max", budgetData.get(1));
+			bd.put("Average", budgetData.get(2));
+			bd.put("Deviation", budgetData.get(3));
+			
+			patronageBudgets.put(status, bd);
+		}
+		return patronageBudgets;
 	}
 }
