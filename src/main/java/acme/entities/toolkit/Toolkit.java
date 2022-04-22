@@ -62,6 +62,6 @@ public class Toolkit extends AbstractEntity {
 	protected List<Quantity> quantity;
 	
 	@NotNull
-	protected Boolean status;
+	protected Status status;
 	
 }
