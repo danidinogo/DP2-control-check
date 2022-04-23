@@ -41,53 +41,59 @@
 	</c:forEach>
 	</div>
 	
-	<c:forEach items="${Status.values()}" var="status">
-		<div class="row">
-					<div class="col">
-						<div class="card">
-							<div class="card-body">
-								<label>
-									<acme:message code="administrator.dashboard.form.label.patronagesBudgetsMax${status}" />
-									<input type="text" value="${patronagesBudgets[status].Max}" readonly />
-								</label>
+		
+			<c:forEach items="${Status.values()}" var="status">
+				<h3>${status}</h3>
+				
+				<c:forEach items="${patronagesBudgets[status]}" var="data">
+					<h4><acme:message code="patron.dashboard.form.label.currency" />: ${data.key}</h4>
+					<div class="row">
+						<div class="col">
+							<div class="card">
+								<div class="card-body">
+									<label>
+										<acme:message code="patron.dashboard.form.label.maxPrice" />
+										<input type="text" value="${data.value.Max}" readonly />
+									</label>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col">
+							<div class="card">
+								<div class="card-body">
+									<label>
+										<acme:message code="patron.dashboard.form.label.minPrice"/>
+										<input type="text" value="${data.value.Min}" readonly />
+									</label>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col">
+							<div class="card">
+								<div class="card-body">					
+									<label>
+										<acme:message code="patron.dashboard.form.label.avgPrice"/>
+										<input type="text" value="${data.value.Avg}" readonly />
+									</label>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col">
+							<div class="card">
+								<div class="card-body">
+									<label>
+										<acme:message code="patron.dashboard.form.label.devPrice"/>
+										<input type="text" value="${data.value.Dev}" readonly />
+									</label>
+								</div>
 							</div>
 						</div>
 					</div>
-					
-					<div class="col">
-						<div class="card">
-							<div class="card-body">
-								<label>
-									<acme:message code="administrator.dashboard.form.label.patronagesBudgetsMin${status}"/>
-									<input type="text" value="${patronagesBudgets[status].Min}" readonly />
-								</label>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col">
-						<div class="card">
-							<div class="card-body">					
-								<label>
-									<acme:message code="administrator.dashboard.form.label.patronagesBudgetsAvg${status}"/>
-									<input type="text" value="${patronagesBudgets[status].Avg}" readonly />
-								</label>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col">
-						<div class="card">
-							<div class="card-body">
-								<label>
-									<acme:message code="administrator.dashboard.form.label.patronagesBudgetsDev${status}"/>
-									<input type="text" value="${patronagesBudgets[status].Dev}" readonly />
-								</label>
-							</div>
-						</div>
-					</div>
-				</div>
-	</c:forEach>
+				</c:forEach>
+			</c:forEach>
 	
 </div>
 

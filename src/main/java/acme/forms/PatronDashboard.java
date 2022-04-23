@@ -83,8 +83,8 @@ public class PatronDashboard implements Serializable {
 	
 	
 	Map<Status,  Integer> totalNumberPatronage;
-	Map<Status,  Map<String, Double>> PatronagesBudgets;
 	
+	Map<Status, Map<String, Map<String, Double>>> PatronagesBudgets;
 	
 
 	// Derived attributes -----------------------------------------------------

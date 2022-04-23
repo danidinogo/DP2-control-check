@@ -7,18 +7,9 @@ patron.dashboard.form.label.totalpatronagedenied = Total Denied Patronages
 
 
 
-administrator.dashboard.form.label.patronagesBudgetsMaxproposed = Maximum proposed
-administrator.dashboard.form.label.patronagesBudgetsMinproposed = Minimum proposed
-administrator.dashboard.form.label.patronagesBudgetsAvgproposed = Average proposed
-administrator.dashboard.form.label.patronagesBudgetsDevproposed = Deviation proposed
+patron.dashboard.form.label.maxPrice = Max price
+patron.dashboard.form.label.minPrice = Min price
+patron.dashboard.form.label.avgPrice = Average Price
+patron.dashboard.form.label.devPrice = Deviation
 
-administrator.dashboard.form.label.patronagesBudgetsMaxaccepted = Maximum accepted
-administrator.dashboard.form.label.patronagesBudgetsMinaccepted = Minimum accepted
-administrator.dashboard.form.label.patronagesBudgetsAvgaccepted = Average accepted
-administrator.dashboard.form.label.patronagesBudgetsDevaccepted = Deviation accepted
-
-administrator.dashboard.form.label.patronagesBudgetsMaxdenied = Maximum denied
-administrator.dashboard.form.label.patronagesBudgetsMindenied = Minimum denied
-administrator.dashboard.form.label.patronagesBudgetsAvgdenied = Average denied
-administrator.dashboard.form.label.patronagesBudgetsDevdenied = Deviation denied
-
+patron.dashboard.form.label.currency = Currency

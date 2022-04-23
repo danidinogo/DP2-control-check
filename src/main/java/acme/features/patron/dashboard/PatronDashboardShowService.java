@@ -38,7 +38,7 @@ public class PatronDashboardShowService implements AbstractShowService<Patron, P
 		
 		final PatronDashboard result = new PatronDashboard();
 		int id = request.getPrincipal().getActiveRoleId();
-		result.setPatronagesBudgets(this.getPatronagesBudgets(result.getDataKeys()));
+		result.setPatronagesBudgets(this.getPatronagesBudgets(result.getDataKeys(),id));
 		
 		result.setTotalNumberPatronage(this.getTotals(id));
 		
@@ -67,30 +67,34 @@ public class PatronDashboardShowService implements AbstractShowService<Patron, P
 	}
 	
 	
-	private Map<Status, Map<String, Double>> getPatronagesBudgets(final List<String> budgetKeys) {
-		final Map<Status, Map<String, Double>> patronageBudgets = new HashMap<Status, Map<String, Double>>();
-		for(final Status status : Status.values()) {
-			// TODO it's been tried to have a List<Double> but it only returns 1 index instead of 4 indexes-list. Maybe there is a better way
-			final String budgetData = this.repository.getPatronageBudgetByStatus(status);
-			final String[] budget = budgetData.split(",");
-			
-			final List<Double> budgetDbl = new ArrayList<Double>();
-			for(final String b : budget) {
-				budgetDbl.add(Double.valueOf(b));
-			}
-			
-			final Map<String, Double> bd = new HashMap<String, Double>();
-			for(int i=0; i<budgetDbl.size(); i++) {
-				bd.put(budgetKeys.get(i), budgetDbl.get(i));
-			}
-			
-			patronageBudgets.put(status, bd);
-		}
-		return patronageBudgets;
-	}
+	
 	
 
-	
+
+	private Map<Status, Map<String, Map<String, Double>>> getPatronagesBudgets(final List<String> dataKeys , int id) {
+		final Map<Status, Map<String, Map<String, Double>>> patronageBudgets = new HashMap<Status, Map<String, Map<String, Double>>>();
+		
+		for(final Status status : Status.values()) {
+			final Map<String, Map<String, Double>> it = new HashMap<String, Map<String, Double>>();
+			
+			final List<String> budgepatron = this.repository.getPatronageBudgetByStatus(status,id);
+			for(final String i : budgepatron) {
+				final String[] item = i.split(",");
+				
+				final Map<String, Double> im = new HashMap<String, Double>();
+				im.put(dataKeys.get(0), Double.valueOf(item[1]));
+				im.put(dataKeys.get(1), Double.valueOf(item[2]));
+				im.put(dataKeys.get(2), Double.valueOf(item[3]));
+				im.put(dataKeys.get(3), Double.valueOf(item[4]));
+				
+				it.put(item[0], im);
+				
+			}
+			patronageBudgets.put(status, it);
+		}
+		
+		return patronageBudgets;
+	}
 
 	
 	
