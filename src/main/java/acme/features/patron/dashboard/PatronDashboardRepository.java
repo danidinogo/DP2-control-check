@@ -17,6 +17,6 @@ public interface PatronDashboardRepository extends AbstractRepository {
 	@Query("SELECT COUNT(patronage) FROM Patronage patronage WHERE patronage.status = :status AND patronage.patron.id = :id")
 	Integer getPatronageTotalsByStatus(Status status, int id);
 	
-	@Query("SELECT MIN(patronage.budget.amount), MAX(patronage.budget.amount), AVG(patronage), STDDEV(patronage.budget.amount) FROM Patronage patronage WHERE patronage.status = :status")
-	List<Double> getPatronageBudgetByStatus(Status status);
+	@Query("SELECT MIN(patronage.budget.amount), MAX(patronage.budget.amount), AVG(patronage.budget.amount), STDDEV(patronage.budget.amount) from Patronage patronage WHERE patronage.status = :status AND patronage.patron.id = :id  GROUP BY patronage.budget.currency")
+	String getPatronageBudgetByStatus(Status status, int id);
 }

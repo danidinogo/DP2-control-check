@@ -1,0 +1,22 @@
+# i18n-es.i18n
+#
+
+patron.dashboard.form.label.totalpatronageproposed = Total Patronages propuestos
+patron.dashboard.form.label.totalpatronageaccepted = Total Patronages aceptados
+patron.dashboard.form.label.totalpatronagedenied = Total Patronages denegados
+
+
+administrator.dashboard.form.label.patronagesBudgetsMaxproposed = Máximo propuesto
+administrator.dashboard.form.label.patronagesBudgetsMinproposed = Mínimo propuesto
+administrator.dashboard.form.label.patronagesBudgetsAvgproposed = Media propuesto
+administrator.dashboard.form.label.patronagesBudgetsDevproposed = Desviación propuesto
+
+administrator.dashboard.form.label.patronagesBudgetsMaxaccepted = Máximo aceptado
+administrator.dashboard.form.label.patronagesBudgetsMinaccepted = Mínimo aceptado
+administrator.dashboard.form.label.patronagesBudgetsAvgaccepted = Media aceptado
+administrator.dashboard.form.label.patronagesBudgetsDevaccepted = Desviación aceptado
+
+administrator.dashboard.form.label.patronagesBudgetsMaxdenied = Máximo rechazado
+administrator.dashboard.form.label.patronagesBudgetsMindenied = Mínimo rechazado
+administrator.dashboard.form.label.patronagesBudgetsAvgdenied = Media rechazado
+administrator.dashboard.form.label.patronagesBudgetsDevdenied = Desviación rechazado

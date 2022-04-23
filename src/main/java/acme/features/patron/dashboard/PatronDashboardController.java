@@ -8,9 +8,10 @@ import org.springframework.stereotype.Controller;
 import acme.forms.PatronDashboard;
 import acme.framework.controllers.AbstractController;
 import acme.framework.roles.Administrator;
+import acme.roles.Patron;
 
 @Controller
-public class PatronDashboardController extends AbstractController<Administrator, PatronDashboard> {
+public class PatronDashboardController extends AbstractController<Patron, PatronDashboard> {
 
 	// Internal state ---------------------------------------------------------
 
