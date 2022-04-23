@@ -1,5 +1,6 @@
 any.item.list.label.name = Name 
 any.item.list.label.code= Code
+any.item.list.label.technology= Technology
 any.item.list.label.description = Descripcion 
 any.item.list.label.info = Info
 
