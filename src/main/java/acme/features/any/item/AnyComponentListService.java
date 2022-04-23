@@ -15,7 +15,7 @@ import acme.framework.services.AbstractListService;
 public class AnyComponentListService  implements AbstractListService<Any, Item>{
 
 	@Autowired
-	protected AnyComponentRepository repository;
+	protected AnyItemRepository repository;
 	
 	@Override
 	public boolean authorise(final Request<Item> request) {
