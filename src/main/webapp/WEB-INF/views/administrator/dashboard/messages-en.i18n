@@ -1,6 +1,13 @@
 # i18n-es.i18n
 #
 
+administrator.dashboard.form.label.index = Index
+
+administrator.dashboard.form.label.totals = Total items and patronages
+administrator.dashboard.form.label.budgets = Budgets data
+administrator.dashboard.form.label.components = Components data by tech & currency
+administrator.dashboard.form.label.items = Items data by currency
+
 administrator.dashboard.form.label.totalComponents = Total Components
 administrator.dashboard.form.label.totalTools = Total Tools
 
@@ -23,4 +30,12 @@ administrator.dashboard.form.label.patronagesBudgetsMindenied = Minimum denied
 administrator.dashboard.form.label.patronagesBudgetsAvgdenied = Average denied
 administrator.dashboard.form.label.patronagesBudgetsDevdenied = Deviation denied
 
-administrator.configuration.form.button.update = Actualizar configuración
+administrator.dashboard.form.label.maxPrice = Max price
+administrator.dashboard.form.label.minPrice = Min price
+administrator.dashboard.form.label.avgPrice = Average Price
+administrator.dashboard.form.label.devPrice = Deviation
+
+administrator.dashboard.form.label.currency = Currency
+administrator.dashboard.form.label.technology = Technology
+
+administrator.dashboard.form.label.in = in

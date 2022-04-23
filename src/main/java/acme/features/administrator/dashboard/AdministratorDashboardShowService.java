@@ -41,6 +41,9 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setTotalsData(this.getTotals(result.getTotalsDataKeys()));
 		result.setPatronagesBudgets(this.getPatronagesBudgets(result.getDataKeys()));
 		
+		result.setItemsRetailPrice(this.getItemsData(result.getDataKeys()));
+		result.setComponentsRetailPrice(this.getComponentsData(result.getDataKeys()));
+		
 		System.out.println(this.getItemsData(result.getDataKeys()).toString());
 		
 		//result.setComponentsData(this.getComponentsData(result.getDataKeys()));
@@ -54,7 +57,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "totalsData", "patronagesBudgets", "componentsData");
+		request.unbind(entity, model, "totalsData", "patronagesBudgets", "componentsData", "itemsRetailPrice", "componentsRetailPrice");
 	}
 	
 	private Map<String, Integer> getTotals(final List<String> totalsKeys) {
@@ -99,26 +102,46 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		return patronageBudgets;
 	}
 	
-	private Map<ItemType, Map<Pair<String, String>, Map<String, Double>>> getItemsData(final List<String> dataKeys) {
-		final Map<ItemType, Map<Pair<String, String>, Map<String, Double>>> componentsData = new HashMap<ItemType, Map<Pair<String, String>, Map<String, Double>>>();
+	private Map<ItemType, Map<String, Map<String, Double>>> getItemsData(final List<String> dataKeys) {
+		final Map<ItemType, Map<String, Map<String, Double>>> componentsData = new HashMap<ItemType, Map<String, Map<String, Double>>>();
 		
 		for(final ItemType type : ItemType.values()) {
-			final Map<Pair<String, String>, Map<String, Double>> it = new HashMap<Pair<String, String>, Map<String, Double>>();
+			final Map<String, Map<String, Double>> it = new HashMap<String, Map<String, Double>>();
 			
 			final List<String> itemsData = this.repository.getItemsByType(type);
 			for(final String i : itemsData) {
 				final String[] item = i.split(",");
 				
 				final Map<String, Double> im = new HashMap<String, Double>();
-				im.put("Min", Double.valueOf(item[2]));
-				im.put("Max", Double.valueOf(item[3]));
-				im.put("Avg", Double.valueOf(item[4]));
-				im.put("Dev", Double.valueOf(item[5]));
+				im.put(dataKeys.get(0), Double.valueOf(item[1]));
+				im.put(dataKeys.get(1), Double.valueOf(item[2]));
+				im.put(dataKeys.get(2), Double.valueOf(item[3]));
+				im.put(dataKeys.get(3), Double.valueOf(item[4]));
 				
-				it.put(Pair.of(item[0], item[1]), im);
+				it.put(item[0], im);
 				
 			}
 			componentsData.put(type, it);
+		}
+		
+		return componentsData;
+	}
+	
+	private Map<Pair<String, String>, Map<String, Double>> getComponentsData(final List<String> dataKeys) {
+		final Map<Pair<String, String>, Map<String, Double>> componentsData = new HashMap<Pair<String, String>, Map<String, Double>>();
+		
+		final List<String> itemsData = this.repository.getComponentsInCurrencies();
+		for(final String i : itemsData) {
+			final String[] item = i.split(",");
+			
+			final Map<String, Double> im = new HashMap<String, Double>();
+			im.put(dataKeys.get(0), Double.valueOf(item[2]));
+			im.put(dataKeys.get(1), Double.valueOf(item[3]));
+			im.put(dataKeys.get(2), Double.valueOf(item[4]));
+			im.put(dataKeys.get(3), Double.valueOf(item[5]));
+			
+			componentsData.put(Pair.of(item[0], item[1]), im);
+			
 		}
 		
 		return componentsData;

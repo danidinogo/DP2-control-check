@@ -21,7 +21,10 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("SELECT MIN(patronage.budget.amount), MAX(patronage.budget.amount), AVG(patronage.budget.amount), STDDEV(patronage.budget.amount) from Patronage patronage WHERE patronage.status = :status")
 	String getPatronageBudgetByStatus(Status status);
 	
-	@Query("SELECT item.retailPrice.currency, item.technology, MIN(item.retailPrice.amount), MAX(item.retailPrice.amount), AVG(item.retailPrice.amount), STDDEV(item.retailPrice.amount) from Item item WHERE item.type = :type GROUP BY item.retailPrice.currency")
+	@Query("SELECT item.retailPrice.currency, MIN(item.retailPrice.amount), MAX(item.retailPrice.amount), AVG(item.retailPrice.amount), STDDEV(item.retailPrice.amount) from Item item WHERE item.type = :type GROUP BY item.retailPrice.currency")
 	List<String> getItemsByType(ItemType type);
+	
+	@Query("SELECT item.retailPrice.currency, item.technology, MIN(item.retailPrice.amount), MAX(item.retailPrice.amount), AVG(item.retailPrice.amount), STDDEV(item.retailPrice.amount) from Item item WHERE item.type = acme.entities.item.ItemType.COMPONENT GROUP BY item.retailPrice.currency, item.technology")
+	List<String> getComponentsInCurrencies();
 	
 }

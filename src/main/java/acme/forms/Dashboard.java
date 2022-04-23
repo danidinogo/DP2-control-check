@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import com.mysql.cj.conf.ConnectionUrlParser.Pair;
+import org.springframework.data.util.Pair;
 
 import acme.entities.item.ItemType;
 import acme.enums.Status;
@@ -44,9 +44,9 @@ public class Dashboard implements Serializable {
 	
 	Map<String, Integer> totalsData;
 	
-	Map<String, Map<Pair<String, String>, Double>> componentsData;
+	Map<Pair<String, String>, Map<String, Double>> componentsRetailPrice;
 	
-	Map<ItemType, Map<Pair<String, String>, Double>> itemsRetailPrice;
+	Map<ItemType, Map<String, Map<String, Double>>> itemsRetailPrice;
 	
 	Map<Status, Map<String, Double>> patronagesBudgets;
 
