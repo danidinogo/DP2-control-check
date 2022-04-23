@@ -77,13 +77,14 @@ public class PatronDashboard implements Serializable {
 		return new ArrayList<String>(Arrays.asList("EUR", "USD", "GBP"));
 	}
 	
+	public List<String> getDataKeys() {
+		return new ArrayList<String>(Arrays.asList("Min", "Max", "Avg", "Dev"));
+	}
 	
 	
 	Map<Status,  Integer> totalNumberPatronage;
-	Map<Status,  Map<String, Double>> averageBudgetPatronage;
-	Map<Status,  Map<String, Double>> deviationBudgetPatronage;
-	Map<Status,  Map<String, Double>> minimunBudgetPatronage;
-	Map<Status,  Map<String, Double>> maximunBudgetPatronage;
+	
+	Map<Status, Map<String, Map<String, Double>>> PatronagesBudgets;
 	
 
 	// Derived attributes -----------------------------------------------------
