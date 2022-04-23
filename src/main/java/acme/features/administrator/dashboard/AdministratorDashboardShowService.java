@@ -40,7 +40,10 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 
 		result.setTotalsData(this.getTotals(result.getTotalsDataKeys()));
 		result.setPatronagesBudgets(this.getPatronagesBudgets(result.getDataKeys()));
-		result.setComponentsData(this.getComponentsData(result.getDataKeys()));
+		
+		System.out.println(this.getItemsData(result.getDataKeys()).toString());
+		
+		//result.setComponentsData(this.getComponentsData(result.getDataKeys()));
 		
 		return result;
 	}
@@ -96,7 +99,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		return patronageBudgets;
 	}
 	
-	private Map<ItemType, Map<Pair<String, String>, Double>> getComponentsData(final List<String> dataKeys) {
+	private Map<ItemType, Map<Pair<String, String>, Map<String, Double>>> getItemsData(final List<String> dataKeys) {
 		final Map<ItemType, Map<Pair<String, String>, Map<String, Double>>> componentsData = new HashMap<ItemType, Map<Pair<String, String>, Map<String, Double>>>();
 		
 		for(final ItemType type : ItemType.values()) {
@@ -117,9 +120,6 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 			}
 			componentsData.put(type, it);
 		}
-
-		System.out.println(itemsData);
-		
 		
 		return componentsData;
 	}
