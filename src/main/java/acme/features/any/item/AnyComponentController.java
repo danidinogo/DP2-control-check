@@ -1,4 +1,4 @@
-package acme.featuras.any.item;
+package acme.features.any.item;
 
 import javax.annotation.PostConstruct;
 
@@ -18,10 +18,14 @@ public class AnyComponentController extends AbstractController<Any, Item>{
 		@Autowired
 		protected AnyComponentShowService showService;
 		
+		@Autowired
+		protected AnyItemListByToolkit listByToolkitService;
+		
 		@PostConstruct
 		protected void initialise() {
 			super.addCommand("list", this.listService);
 			super.addCommand("show", this.showService);
+			super.addCommand("list-by-toolkit", "list", this.listByToolkitService);
 		}
 		
 		

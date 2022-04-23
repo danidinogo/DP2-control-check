@@ -1,48 +1,47 @@
-package acme.featuras.any.item;
+package acme.features.any.toolkits;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.item.Item;
+import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.roles.Any;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class AnyComponentShowService implements AbstractShowService<Any, Item> {
+public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> {
 	
 	@Autowired
-	protected AnyComponentRepository repository;
+	protected AnyToolkitRepository repository;
 	
 	@Override
-	public boolean authorise(final Request<Item> request) {
+	public boolean authorise(final Request<Toolkit> request) {
 		assert request != null;
 
 		return true;
 	}
 
+	
 	@Override
-	public Item findOne(final Request<Item> request) {
+	public Toolkit findOne(final Request<Toolkit> request) {
 	assert request != null;
 		
 		final int id = request.getModel().getInteger("id");
 		
-		final Item res = this.repository.findItemById(id);
+		 final Toolkit res = this.repository.findToolkitById(id);
 
 		return res;
 		
 	}
 
 	@Override
-	public void unbind(final Request<Item> request, final Item entity, final Model model) {
+	public void unbind(final Request<Toolkit> request, final Toolkit entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "name", "code", "technology", "description" , "info");
+		request.unbind(entity, model,"code", "title", "description","assemblyNotes", "link","retailPrice");
 		
 	}
-	
-	
 }
