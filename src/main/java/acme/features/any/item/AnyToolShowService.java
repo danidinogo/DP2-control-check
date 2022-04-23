@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.tool;
+package acme.features.any.item;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class AnyToolShowService implements AbstractShowService<Any, Item> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AnyToolRepository repository;
+	protected AnyItemRepository repository;
 
 	@Override
 	public Item findOne(final Request<Item> request) {

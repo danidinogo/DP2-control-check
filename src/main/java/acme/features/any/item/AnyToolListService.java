@@ -1,4 +1,4 @@
-package acme.features.any.tool;
+package acme.features.any.item;
 
 import java.util.Collection;
 
@@ -17,7 +17,7 @@ public class AnyToolListService implements AbstractListService<Any, Item> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AnyToolRepository repository;
+	protected AnyItemRepository repository;
 
 	@Override
 	public boolean authorise(final Request<Item> request) {
