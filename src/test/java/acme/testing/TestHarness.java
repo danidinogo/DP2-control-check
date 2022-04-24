@@ -13,6 +13,7 @@
 package acme.testing;
 
 import org.hibernate.internal.util.StringHelper;
+import org.openqa.selenium.By;
 
 import acme.framework.testing.AbstractTest;
 
@@ -60,6 +61,20 @@ public abstract class TestHarness extends AbstractTest {
 		super.clickOnSubmit("Sign up");
 		super.checkCurrentPath("/master/welcome");
 		super.checkNotLinkExists("Account");
+	}
+	
+	protected void checkXpathExists(final String xpath) {
+		By locator;
+
+		locator = By.xpath(xpath);
+		assert super.getDriver().exists(locator) : "A form was expected, but doesn't exist";
+	}
+	
+	protected void checkXpathNotExists(final String xpath) {
+		By locator;
+
+		locator = By.xpath(xpath);
+		assert !super.getDriver().exists(locator) : "A form was expected, but doesn't exist";
 	}
 
 }

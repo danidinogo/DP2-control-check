@@ -31,15 +31,24 @@ public class AdministratorDashboardTest extends TestHarness {
 	public void anonymousAccess() {
 		System.out.println("asdasdasd");
 		System.out.println(this.adminPath);
-		super.navigate(this.adminPath);
+		
+		this.checkXpathNotExists("//*[@id=\"mainMenu\"]/ul[1]/li[2]/a[text() = 'Administrator']");
+		
+		this.navigate(this.adminPath);
 		this.checkPanicExists();
 	}
 	
 	@Test
 	@Order(1)
 	public void checkDashboard() {
-		super.signIn("administrator", "administrator");
-		super.navigate(this.adminPath);
+		this.signIn("administrator", "administrator");
+		this.navigate(this.adminPath);
+		this.checkNotPanicExists();
+		this.checkXpathExists("//*[@id=\"totals\"]/div[1]/div[1]/div/div/label/input");
+		
+		this.checkXpathExists("//*[@id=\"mainMenu\"]/ul[1]/li[2]/a[text() = 'Administrator']");
+		
+		this.checkXpathNotExists("//*[@id=\"totalss\"]/div[1]/div[1]/div/div/label/input");
 	}
 	
 	// Ancillary methods ------------------------------------------------------ 
