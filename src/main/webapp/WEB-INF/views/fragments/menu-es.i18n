@@ -18,6 +18,7 @@ master.menu.sign-out = Salir
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anónimo
+master.menu.anonymous.user-account = Listar cuentas habilitadas
 master.menu.anonymous.favourite-link = Enlace favorito
 master.menu.anonymous.favourite-link-luibelzan = 32899320M: Bellido, Luis Miguel
 master.menu.anonymous.favourite-link-josgarqui = 75969606P: García, Jose Mª
@@ -28,6 +29,7 @@ master.menu.anonymous.favourite-link-dandianog = 30267676K: Díaz, Daniel
 
 # master.menu.authenticated #######################################################
 master.menu.authenticated = Autenticado
+master.menu.anonymous.user-account = Listar cuentas habilitadas
 master.menu.authenticated.configuration = Configuración del sistema
 
 # master.menu.administrator ###################################################

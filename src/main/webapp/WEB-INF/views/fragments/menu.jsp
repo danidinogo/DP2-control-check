@@ -19,6 +19,7 @@
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.anonymous.user-account" action="/any/user-account/list-enabled"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="http://www.example.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-luibelzan" action="https://www.binance.com/es"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-josgarqui" action="https://sevillafc.es"/>
@@ -34,6 +35,7 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.user-account" action="/any/user-account/list-enabled"/>
 			<acme:menu-suboption code="master.menu.authenticated.configuration" action="/authenticated/configuration/show"/>
 		</acme:menu-option>
 
