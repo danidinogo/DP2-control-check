@@ -1,0 +1,13 @@
+any.item.list.label.name = Name 
+any.item.list.label.code= Code
+any.item.list.label.technology= Technology
+any.item.list.label.description = Descripcion 
+any.item.list.label.info = Info
+
+any.item.form.label.name = Name
+any.item.form.label.code= Code
+any.item.form.label.technology= Technology
+any.item.form.label.description= Description
+any.item.form.label.info= Info
+
+any.item.form.buttom.items= Items

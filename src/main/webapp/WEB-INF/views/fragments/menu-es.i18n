@@ -18,6 +18,7 @@ master.menu.sign-out = Salir
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anónimo
+master.menu.anonymous.user-account = Listar cuentas habilitadas
 master.menu.anonymous.favourite-link = Enlace favorito
 master.menu.anonymous.favourite-link-luibelzan = 32899320M: Bellido, Luis Miguel
 master.menu.anonymous.favourite-link-josgarqui = 75969606P: García, Jose Mª
@@ -26,8 +27,12 @@ master.menu.anonymous.favourite-link-diegonqui = 29539782P: González, Diego
 master.menu.anonymous.favourite-link-juamenvar = 77200485L: Mena, Juan Antonio
 master.menu.anonymous.favourite-link-dandianog = 30267676K: Díaz, Daniel
 
+master.menu.anonymous.any-chirp = Lista de chirridos
+
+
 # master.menu.authenticated #######################################################
 master.menu.authenticated = Autenticado
+master.menu.anonymous.user-account = Listar cuentas habilitadas
 master.menu.authenticated.configuration = Configuración del sistema
 
 # master.menu.administrator ###################################################
@@ -50,6 +55,19 @@ master.menu.provider.favourite-link = Enlace favorito
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
 
+
+# master.menu.inventor ##########################################################
+master.menu.inventor = Inventor
+master.menu.inventor.toolkits = Listar toolkits propias
+master.menu.inventor.patronage = Listar patronages propios
+
+# master.menu.patron ##########################################################
+
+master.menu.patron = Patron
+master.menu.patron.patronage = Lista de Patronages
+master.menu.patron.dashboard =  Estadisticas 
+
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
@@ -60,3 +78,9 @@ master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.become-patron = Hazte patron
 master.menu.user-account.patron = Datos de patron
+
+
+master.menu.anonymous.list-component = Listar Components
+master.menu.anonymous.list-tool = Listar Tools
+master.menu.anonymous.list-by-toolkit = Listar por Toolkit
+master.menu.items = Mostrar Items
