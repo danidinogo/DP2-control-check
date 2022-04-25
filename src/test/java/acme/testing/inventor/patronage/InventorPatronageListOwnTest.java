@@ -16,7 +16,7 @@ public class InventorPatronageListOwnTest extends TestHarness{
 		
 		super.signIn("administrator", "administrator");
 		
-		super.clickOnMenu("Inventor", "List Own Patronages");
+		super.clickOnMenu("Inventor", "Patronages");
 		
 		super.checkListingExists();
 		

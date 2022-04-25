@@ -29,8 +29,6 @@ nbdist/
 mvnw
 
 mvnw\.cmd
-*.log
-logs
 
 /bin/
 *.log
