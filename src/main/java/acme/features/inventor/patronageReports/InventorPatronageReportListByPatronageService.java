@@ -1,6 +1,6 @@
 package acme.features.inventor.patronageReports;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import acme.framework.services.AbstractListService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorPatronageReportListService implements AbstractListService<Inventor, PatronageReport>{
+public class InventorPatronageReportListByPatronageService implements AbstractListService<Inventor, PatronageReport>{
 	
 		@Autowired
 		protected InventorPatronageReportRepository repository;
@@ -25,16 +25,11 @@ public class InventorPatronageReportListService implements AbstractListService<I
 		}
 		
 		@Override
-		public Collection<PatronageReport> findMany(final Request<PatronageReport> request) {
+		public List<PatronageReport> findMany(final Request<PatronageReport> request) {
 			assert request != null;
 
-			Collection<PatronageReport> result;
-			int inventorId;
-
-			inventorId = request.getPrincipal().getActiveRoleId();
-			result = this.repository.findPatronageReportsByInventorId(inventorId);
-
-			return result;
+			final int id = request.getModel().getInteger("id");
+			return this.repository.findByPatronageId(id);
 		}
 		
 		@Override

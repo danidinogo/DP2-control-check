@@ -13,14 +13,15 @@ import acme.roles.Inventor;
 public class InventorPatronageReportController extends AbstractController<Inventor, PatronageReport> {
 	
 		@Autowired
-		protected InventorPatronageReportListService listService;
+		protected InventorPatronageReportListByPatronageService listByPatronageService;
 		
 		@Autowired
 		protected InventorPatronageReportShowService showService;
 		
+		
 		@PostConstruct
 		protected void initialise() {
-			super.addCommand("list", this.listService);
+			super.addCommand("list-by-patronage","list", this.listByPatronageService);
 			super.addCommand("show", this.showService);
 		}
 
