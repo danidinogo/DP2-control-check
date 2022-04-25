@@ -13,12 +13,16 @@ import acme.roles.Inventor;
 public class InventorItemShowService implements AbstractShowService<Inventor, Item>{
 
 	@Autowired
-	protected InventorItemRepository componentRepository; 
+	protected InventorItemRepository itemRepository; 
+
 	@Override
 	public boolean authorise(final Request<Item> request) {
 		assert request != null;
 
-		return true;
+		final int itemId = request.getModel().getInteger("id");
+		final int inventorId = request.getPrincipal().getActiveRoleId();
+		final Item item = this.itemRepository.findOneItemById(itemId);	
+		return item.getInventor().getId() == inventorId;
 	}
 
 	@Override
@@ -27,7 +31,7 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 		
 		final int id = request.getModel().getInteger("id");
 		
-		return this.componentRepository.findItemById(id);
+		return this.itemRepository.findItemById(id);
 		
 	
 	}
