@@ -70,6 +70,11 @@ master.menu.inventor.patronage = List Own Patronages
 master.menu.patron = Patron
 master.menu.patron.patronage = List Patronage
 
+# master.menu.inventor ########################################################
+
+master.menu.inventor = Inventor
+master.menu.inventor.patronage = Patronages
+master.menu.inventor.patronage-report = Patronage Report
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account

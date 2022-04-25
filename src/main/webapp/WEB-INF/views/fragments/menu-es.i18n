@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-﻿# master.menu #################################################################
+# master.menu #################################################################
 
 master.menu.home = Inicio
 master.menu.sign-up = Registrarse
@@ -66,7 +66,6 @@ master.menu.inventor.patronage = Listar patronages propios
 master.menu.patron = Patron
 master.menu.patron.patronage = Lista de Patronages
 master.menu.patron.dashboard =  Estadisticas 
-
 
 # master.menu.user-account ####################################################
 
