@@ -1,2 +1,2 @@
-key,code,title,descripcion,assemblyNotes,link,key:inventor
-toolkit-01,abc-127,Herramienta1,Esta es una herramienta de prueba,Las instrucciones aun no están disponibles,https://toolkit.com,inventor-01
+key,code,title,descripcion,assemblyNotes,link,key:inventor,status
+toolkit-01,abc-127,Herramienta1,Esta es una herramienta de prueba,Las instrucciones aun no están disponibles,https://toolkit.com,inventor-01,PUBLISHED
