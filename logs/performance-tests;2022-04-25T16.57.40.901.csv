@@ -1,2 +1,0 @@
-timestamp,test-class,test-method,time,description,result
-"2022-04-25 16:44:45.466","acme.testing.inventor.patronageReport.TestInventorPatronageReport","testInventorsOnPatronageReportsList",11656,""[1] recordIndex=0, status=accepted, code=abc-123, legalStuff=Legalidad patronage 1, budget=EUR 50.00"","OK"

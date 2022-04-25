@@ -22,7 +22,7 @@ import acme.framework.roles.Any;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class AnyToolShowService implements AbstractShowService<Any, Item> {
+public class AnyItemShowService implements AbstractShowService<Any, Item> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -32,7 +32,7 @@ public class AnyToolShowService implements AbstractShowService<Any, Item> {
 	@Override
 	public Item findOne(final Request<Item> request) {
 		final Integer id = request.getModel().getInteger("id");
-		return this.repository.findToolById(id);
+		return this.repository.findItemById(id);
 	}
 
 	@Override
@@ -41,13 +41,14 @@ public class AnyToolShowService implements AbstractShowService<Any, Item> {
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "name", "code", "description" , "info");
+		request.unbind(entity, model, "name", "code", "description" , "info", "technology", "retailPrice", "type");
 	}
 
 	@Override
 	public boolean authorise(final Request<Item> request) {
-		// TODO Auto-generated method stub
-		return false;
+		assert request != null;
+		
+		return true;
 	}
 
 }

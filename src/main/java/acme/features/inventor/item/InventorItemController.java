@@ -24,8 +24,6 @@ public class InventorItemController extends AbstractController<Inventor, Item>{
 	@Autowired
 	protected InventorItemListOwnToolService listByToolService;
 	
-	
-	
 	@PostConstruct
 	protected void initialize() {
 		super.addCommand("list-by-toolkit","list", this.listByToolkitService);

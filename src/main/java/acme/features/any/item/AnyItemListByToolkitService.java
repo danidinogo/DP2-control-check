@@ -12,10 +12,8 @@ import acme.framework.roles.Any;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AnyToolListService implements AbstractListService<Any, Item> {
-
-	// Internal state ---------------------------------------------------------
-
+public class AnyItemListByToolkitService implements AbstractListService<Any, Item>{
+	
 	@Autowired
 	protected AnyItemRepository repository;
 
@@ -30,16 +28,17 @@ public class AnyToolListService implements AbstractListService<Any, Item> {
 	public Collection<Item> findMany(final Request<Item> request) {
 		assert request !=null;
 		
-		return this.repository.findTools();
+		final int id = request.getModel().getInteger("id");
+		return this.repository.findItemByToolkitId(id);
 	}
-
+	
 	@Override
 	public void unbind(final Request<Item> request, final Item entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "name", "code", "description" , "info");
+		request.unbind(entity, model, "name", "description" , "info", "technology", "type");
 	}
 
 }

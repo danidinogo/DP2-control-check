@@ -42,6 +42,9 @@ public class Item extends AbstractEntity{
 	protected String info;
 	
 	@NotNull
+	protected Status status;
+	
+	@NotNull
 	protected ItemType type;
 	
 	@ManyToOne

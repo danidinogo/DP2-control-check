@@ -1,2 +1,0 @@
-timestamp,test-class,test-method,time,description,result
-"2022-04-25 16:35:15.515","acme.testing.inventor.patronageReport.TestInventorPatronageReport","testInventorsOnPatronageReportsList",8622,""[1] recordIndex=0, status=accepted, code=abc-123, budget=Legalidad patronage 1"","Column 3 in record 0 is out of range"
