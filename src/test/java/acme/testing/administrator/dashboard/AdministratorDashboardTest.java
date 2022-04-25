@@ -31,11 +31,8 @@ public class AdministratorDashboardTest extends TestHarness {
 
 	@Test
 	@Order(0)
-	public void anonymousAccess() {
-		System.out.println("asdasdasd");
-		System.out.println(this.adminPath);
-		
-		this.checkXpathNotExists("//*[text() = '\\n					Administrator \\n				']");
+	public void anonymousAccess() {		
+		this.checkXpathNotExists("//*[@id='mainMenu']/ul[1]/li[2]/div/a[3][normalize-space() = 'Administrator']");
 		
 		this.navigate(this.adminPath);
 		this.checkPanicExists();
