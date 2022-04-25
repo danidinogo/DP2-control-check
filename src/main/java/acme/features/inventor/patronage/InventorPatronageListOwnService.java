@@ -1,4 +1,4 @@
-package acme.inventor.patronage;
+package acme.features.inventor.patronage;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import acme.framework.services.AbstractListService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorPatronageListService implements AbstractListService<Inventor, Patronage>{
+public class InventorPatronageListOwnService implements AbstractListService<Inventor, Patronage>{
 	
 	@Autowired
 	protected InventorPatronageRepository repository;

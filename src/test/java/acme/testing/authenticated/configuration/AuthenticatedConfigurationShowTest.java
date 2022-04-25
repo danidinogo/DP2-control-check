@@ -9,7 +9,7 @@ import acme.testing.TestHarness;
 public class AuthenticatedConfigurationShowTest extends TestHarness{
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/authenticated/configuration/show.csv", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/authenticated/configuration/show.csv", encoding = "utf-8" ,numLinesToSkip = 1)
 	@Order(10)
 	public void positiveCase(final String defaultCurr, final String acceptedCurr) {
 		super.signIn("administrator", "administrator");
