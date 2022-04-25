@@ -11,6 +11,4 @@
 	<acme:input-textbox code="any.item.form.label.technology" path="technology" readonly="true"/>
 	<acme:input-textbox code="any.item.form.label.description" path="description" readonly="true"/>
 	<acme:input-textbox code="any.item.form.label.info" path="info" readonly="true"/>
-	<acme:input-url code="any.item.form.label.name" path="name"/>
-	
 </acme:form>
