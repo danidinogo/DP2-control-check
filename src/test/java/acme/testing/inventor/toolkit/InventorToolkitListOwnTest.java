@@ -38,12 +38,9 @@ public class InventorToolkitListOwnTest extends TestHarness{
 		super.checkListingExists();
 		
 		super.checkColumnHasValue(recordIndex, 0, name);
-		super.checkColumnHasValue(recordIndex, 1, code2);
-		super.checkColumnHasValue(recordIndex, 2, technology);
-		super.checkColumnHasValue(recordIndex, 3, description);
-		super.checkColumnHasValue(recordIndex, 4, retailPrice2);
-		super.checkColumnHasValue(recordIndex, 5, info);
-		super.checkColumnHasValue(recordIndex, 6, type);
+		super.checkColumnHasValue(recordIndex, 1, description);
+		super.checkColumnHasValue(recordIndex, 2, retailPrice2);
+		super.checkColumnHasValue(recordIndex, 3, type);
 		
 		super.signOut();
 	}
