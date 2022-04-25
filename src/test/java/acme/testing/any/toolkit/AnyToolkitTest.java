@@ -14,7 +14,7 @@ public class AnyToolkitTest extends TestHarness{
 	public void positiveCase(final int recordIndex, final String code, final String title, final String descripcion, final String assemblyNotes, final String link) {
 		
 		
-		super.clickOnMenu("Anonymous", "List Toolkit");
+		super.clickOnMenu("Anonymous", "List Published Toolkits");
 		
 		super.checkListingExists();
 		
@@ -30,11 +30,5 @@ public class AnyToolkitTest extends TestHarness{
 		super.checkInputBoxHasValue("descripcion", descripcion);
 		super.checkInputBoxHasValue("assemblyNotes", assemblyNotes);
 		super.checkInputBoxHasValue("link", link);
-		
-		
-		
-	
-		
-		
 	}
 }

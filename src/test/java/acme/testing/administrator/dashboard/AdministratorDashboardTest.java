@@ -68,28 +68,28 @@ public class AdministratorDashboardTest extends TestHarness {
 		inputsMap.put("//*[@id=\"totals\"]/div[1]/div[2]/div/div/label/input", "3");
 		
 		// Total proposed, accepted & denied patronages
-		inputsMap.put("//*[@id=\"totals\"]/div[2]/div[1]/div/div/label/input", "4");
-		inputsMap.put("//*[@id=\"totals\"]/div[2]/div[2]/div/div/label/input", "4");
-		inputsMap.put("//*[@id=\"totals\"]/div[2]/div[3]/div/div/label/input", "4");
+		inputsMap.put("//*[@id=\"totals\"]/div[2]/div[1]/div/div/label/input", "6");
+		inputsMap.put("//*[@id=\"totals\"]/div[2]/div[2]/div/div/label/input", "6");
+		inputsMap.put("//*[@id=\"totals\"]/div[2]/div[3]/div/div/label/input", "6");
 		
 		// Budgets
 		// Proposed
-		inputsMap.put("//*[@id=\"budgets\"]/div[1]/div[1]/div/div/label/input", "325.0");
+		inputsMap.put("//*[@id=\"budgets\"]/div[1]/div[1]/div/div/label/input", "326.0");
 		inputsMap.put("//*[@id=\"budgets\"]/div[1]/div[2]/div/div/label/input", "250.0");
-		inputsMap.put("//*[@id=\"budgets\"]/div[1]/div[3]/div/div/label/input", "287.5");
-		inputsMap.put("//*[@id=\"budgets\"]/div[1]/div[4]/div/div/label/input", "27.95084971874737");
+		inputsMap.put("//*[@id=\"budgets\"]/div[1]/div[3]/div/div/label/input", "300.3333333333333");
+		inputsMap.put("//*[@id=\"budgets\"]/div[1]/div[4]/div/div/label/input", "29.15857030483871");
 		
 		// Acepted
-		inputsMap.put("//*[@id=\"budgets\"]/div[2]/div[1]/div/div/label/input", "125.0");
+		inputsMap.put("//*[@id=\"budgets\"]/div[2]/div[1]/div/div/label/input", "266.0");
 		inputsMap.put("//*[@id=\"budgets\"]/div[2]/div[2]/div/div/label/input", "50.0");
-		inputsMap.put("//*[@id=\"budgets\"]/div[2]/div[3]/div/div/label/input", "87.5");
-		inputsMap.put("//*[@id=\"budgets\"]/div[2]/div[4]/div/div/label/input", "27.95084971874737");
+		inputsMap.put("//*[@id=\"budgets\"]/div[2]/div[3]/div/div/label/input", "140.33333333333334");
+		inputsMap.put("//*[@id=\"budgets\"]/div[2]/div[4]/div/div/label/input", "78.97397602304756");
 		
 		// Denied
-		inputsMap.put("//*[@id=\"budgets\"]/div[3]/div[1]/div/div/label/input", "225.0");
-		inputsMap.put("//*[@id=\"budgets\"]/div[3]/div[2]/div/div/label/input", "150.0");
-		inputsMap.put("//*[@id=\"budgets\"]/div[3]/div[3]/div/div/label/input", "187.5");
-		inputsMap.put("//*[@id=\"budgets\"]/div[3]/div[4]/div/div/label/input", "27.95084971874737");
+		inputsMap.put("//*[@id=\"budgets\"]/div[3]/div[1]/div/div/label/input", "300.0");
+		inputsMap.put("//*[@id=\"budgets\"]/div[3]/div[2]/div/div/label/input", "126.0");
+		inputsMap.put("//*[@id=\"budgets\"]/div[3]/div[3]/div/div/label/input", "196.0");
+		inputsMap.put("//*[@id=\"budgets\"]/div[3]/div[4]/div/div/label/input", "56.46532859492924");
 		
 		// Components data by tech & currency
 		// Server in USD
