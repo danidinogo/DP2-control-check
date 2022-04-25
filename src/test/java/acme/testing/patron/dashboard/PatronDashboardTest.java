@@ -43,15 +43,14 @@ public class PatronDashboardTest extends TestHarness {
 	public void checkDashboard() {
 		this.signIn("administrator", "administrator");
 		
-		// check that an admin user has admin dashboard link on menu
+		// check that an patron user has patron dashboard link on menu
 		this.checkXpathContains("//*[@id=\"mainMenu\"]/ul[1]/li[6]/div/a[2]", "Show Dashboard");
 		
-		// check that an admin user can access to admin dashboard
+		// check that an patron user can access to patron dashboard
 		this.navigate(this.patronPath);
 		this.checkNotPanicExists();
 		
-		// check admin dashboard input exists
-		//this.checkXpathExists("//*[@id=\"totals\"]/div[1]/div[1]/div/div/label/input");
+		
 	}
 	
 	@Test
