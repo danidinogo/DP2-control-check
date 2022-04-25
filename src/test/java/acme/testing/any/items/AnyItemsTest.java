@@ -16,7 +16,7 @@ public class AnyItemsTest extends TestHarness {
 		
 		// Name,Code,Technology,Description,Info
 		
-		super.clickOnMenu("Show items", "List Tools");
+		super.clickOnMenu("Anonymous", "List Tools");
 		
 		super.checkListingExists();
 		super.checkColumnHasValue(recordIndex, 0, name);
@@ -32,7 +32,7 @@ public class AnyItemsTest extends TestHarness {
 	@Order(1)
 	public void checkShow(final int recordIndex, final String name, final String code, final String technology, final String description, final String retailPrice, final String info, final String type, final String inventor) {
 
-		super.clickOnMenu("Show items", "List Tools");
+		super.clickOnMenu("Anonymous", "List Tools");
 		super.clickOnListingRecord(recordIndex);
 		
 		super.checkFormExists();
@@ -52,7 +52,7 @@ public class AnyItemsTest extends TestHarness {
 	public void checkComponentListing(final int recordIndex, final String name, final String code, final String technology, final String description, final String retailPrice, final String info, final String type, final String inventor) {
 		
 		
-		super.clickOnMenu("Show items", "List Components");
+		super.clickOnMenu("Anonymous", "List Components");
 		
 		super.checkListingExists();
 		super.checkColumnHasValue(recordIndex, 0, name);
@@ -68,7 +68,7 @@ public class AnyItemsTest extends TestHarness {
 	@Order(4)
 	public void checkComponentShow(final int recordIndex, final String name, final String code, final String technology, final String description, final String retailPrice, final String info, final String type, final String inventor) {
 
-		super.clickOnMenu("Show items", "List Components");
+		super.clickOnMenu("Anonymous", "List Components");
 		super.clickOnListingRecord(recordIndex);
 		
 		super.checkFormExists();
