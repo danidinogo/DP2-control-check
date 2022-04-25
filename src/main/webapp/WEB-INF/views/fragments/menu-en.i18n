@@ -26,7 +26,9 @@ master.menu.anonymous.favourite-link-elomordom = 49546083N: Moreno, Eloy
 master.menu.anonymous.favourite-link-diegonqui = 29539782P: González, Diego
 master.menu.anonymous.favourite-link-juamenvar = 77200485L: Mena, Juan Antonio
 master.menu.anonymous.favourite-link-dandianog = 30267676K: Díaz, Daniel
-any.menu.toolkits.favourite-link-dandianog= List Toolkit
+
+master.menu.anonymous.any-chirp = Chirps
+
 
 # master.menu.autehticated #######################################################
 master.menu.authenticated = Authenticated
@@ -61,6 +63,7 @@ master.menu.patron.dashboard = Show Dashboard
 # master.menu.inventor ##########################################################
 master.menu.inventor = Inventor
 master.menu.inventor.toolkits = List Own Toolkits
+master.menu.inventor.patronage = List Own Patronages
 
 # master.menu.patron ##########################################################
 
