@@ -1,7 +1,5 @@
 package acme.features.inventor.item;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,21 +10,18 @@ import acme.framework.services.AbstractShowService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorComponentShowService implements AbstractShowService<Inventor, Item>{
+public class InventorItemShowService implements AbstractShowService<Inventor, Item>{
 
 	@Autowired
-	protected InventorItemRepository componentRepository; 
+	protected InventorItemRepository itemRepository; 
 	@Override
 	public boolean authorise(final Request<Item> request) {
 		assert request != null;
 
-		final int componentId = request.getModel().getInteger("id");
+		final int itemId = request.getModel().getInteger("id");
 		final int inventorId = request.getPrincipal().getActiveRoleId();
-		
-		final List<Item> components = this.componentRepository.findComponentsByInventorId(inventorId);
-		final Item component = this.componentRepository.findOneComponentById(componentId);
-		
-		return components.contains(component);
+		final Item item = this.itemRepository.findOneItemById(itemId);	
+		return item.getInventor().getId() == inventorId;
 	}
 
 	@Override
@@ -35,7 +30,7 @@ public class InventorComponentShowService implements AbstractShowService<Invento
 		
 		final int id = request.getModel().getInteger("id");
 		
-		return this.componentRepository.findOneComponentById(id);
+		return this.itemRepository.findOneItemById(id);
 		
 	
 	}

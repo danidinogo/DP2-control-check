@@ -12,7 +12,7 @@ import acme.framework.services.AbstractListService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorComponentListService implements AbstractListService<Inventor, Item> {
+public class InventorItemListOwnComponentService implements AbstractListService<Inventor, Item> {
 
 	@Autowired
 	protected InventorItemRepository componentRepository;
