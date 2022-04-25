@@ -61,6 +61,7 @@
 		
 		<acme:menu-option code="master.menu.inventor" access="hasRole('Inventor')">
 			<acme:menu-suboption code="master.menu.inventor.toolkits" action="/inventor/toolkit/list-mine"/>
+			<acme:menu-suboption code="master.menu.inventor.components" action="/inventor/item/list-component"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">
