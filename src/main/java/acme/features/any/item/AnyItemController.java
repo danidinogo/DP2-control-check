@@ -19,7 +19,7 @@ public class AnyItemController extends AbstractController<Any, Item>{
 		protected AnyItemShowService showService;
 		
 		@Autowired
-		protected AnyItemListToolService listToolService;
+		protected AnyToolListService listToolService;
 		
 		@Autowired
 		protected AnyItemListByToolkitService listByToolkitService;
