@@ -12,7 +12,7 @@ import acme.framework.services.AbstractListService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorComponentListService implements AbstractListService<Inventor, Item> {
+public class InventorItemListComponentService implements AbstractListService<Inventor, Item> {
 
 	@Autowired
 	protected InventorItemRepository componentRepository;
@@ -46,7 +46,7 @@ public class InventorComponentListService implements AbstractListService<Invento
 		assert model != null;
 		
 		
-		request.unbind(entity, model, "name","description", "retailPrice");
+		request.unbind(entity, model, "name","description", "retailPrice", "type");
 		
 	}
 	

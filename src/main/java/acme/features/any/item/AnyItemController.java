@@ -10,29 +10,26 @@ import acme.framework.controllers.AbstractController;
 import acme.framework.roles.Any;
 
 @Controller
-public class AnyComponentController extends AbstractController<Any, Item>{
+public class AnyItemController extends AbstractController<Any, Item>{
 		
 		@Autowired
-		protected AnyComponentListService listService;
+		protected AnyItemtListComponentService listService;
 		
 		@Autowired
-		protected AnyComponentShowService showService;
+		protected AnyItemShowService showService;
 		
 		@Autowired
-		protected AnyToolShowService showToolService;
+		protected AnyItemListToolService listToolService;
 		
 		@Autowired
-		protected AnyToolListService listToolService;
+		protected AnyItemListByToolkitService listByToolkitService;
 		
-		@Autowired
-		protected AnyItemListByToolkit listByToolkitService;
 		
 		@PostConstruct
 		protected void initialise() {
 			super.addCommand("list-component", "list", this.listService);
-			super.addCommand("show-component", "list", this.showService);
+			super.addCommand("show", this.showService);
 			super.addCommand("list-tool", "list", this.listToolService);
-			super.addCommand("show-tool", this.showToolService);
 			super.addCommand("list-by-toolkit", "list", this.listByToolkitService);
 		}
 		

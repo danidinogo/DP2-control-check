@@ -12,8 +12,11 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AnyItemRepository extends AbstractRepository {
 	
-	@Query( "select t from Item t where t.type = 'COMPONENT'")
-	Collection<Item> findAnyComponents();
+	@Query( "select t from Item t where t.type = 'COMPONENT' and t.status='PUBLISHED'" )
+	Collection<Item> findPublishedComponents();
+	
+	@Query( "select t from Item t where t.type = 'TOOL' and t.status='PUBLISHED'" )
+	Collection<Item> findPublishedTools();
 	
 	@Query("select t from Item t where t.id= :id")
 	Item findItemById(int id);
@@ -26,4 +29,5 @@ public interface AnyItemRepository extends AbstractRepository {
 	
 	@Query("SELECT item FROM Item item WHERE item.type = acme.entities.item.ItemType.TOOL AND item.id = :id")
 	Item findToolById(Integer id);
+	
 }

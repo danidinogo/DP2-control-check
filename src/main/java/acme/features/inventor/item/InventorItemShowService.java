@@ -1,6 +1,4 @@
-package acme.features.any.item;
-
-import java.util.Collection;
+package acme.features.inventor.item;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,29 +6,30 @@ import org.springframework.stereotype.Service;
 import acme.entities.item.Item;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
-import acme.framework.roles.Any;
-import acme.framework.services.AbstractListService;
+import acme.framework.services.AbstractShowService;
+import acme.roles.Inventor;
 
 @Service
-public class AnyComponentListService  implements AbstractListService<Any, Item>{
+public class InventorItemShowService implements AbstractShowService<Inventor, Item>{
 
 	@Autowired
-	protected AnyItemRepository repository;
-	
+	protected InventorItemRepository componentRepository; 
 	@Override
 	public boolean authorise(final Request<Item> request) {
 		assert request != null;
-		
+
 		return true;
 	}
-	
+
 	@Override
-	public Collection<Item> findMany(final Request<Item> request){
-		assert request !=null;
+	public Item findOne(final Request<Item> request) {
+		assert request != null;
 		
-		Collection<Item> res;
-		res=this.repository.findAnyComponents();
-		return res;
+		final int id = request.getModel().getInteger("id");
+		
+		return this.componentRepository.findItemById(id);
+		
+	
 	}
 
 	@Override
@@ -39,7 +38,9 @@ public class AnyComponentListService  implements AbstractListService<Any, Item>{
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "name", "code", "technology", "description" , "info");
+		
+		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "info", "type");
 		
 	}
+
 }
