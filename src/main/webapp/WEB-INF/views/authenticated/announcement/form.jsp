@@ -10,6 +10,4 @@
 	<acme:input-textbox code="authenticated.announcement.form.label.creation" path="creation" readonly="true"/>
 	<acme:input-url code="authenticated.announcement.form.label.link" path="link"/>
 	<acme:input-textbox code="authenticated.announcement.form.label.critic" path="critic" readonly="true"/>
-	
-	<acme:button code="authenticated.announcement.form.buttom.announcements" action="/authenticated/announcements/list-by-announcement?id=${id}"/>
-</acme:form>
+	</acme:form>

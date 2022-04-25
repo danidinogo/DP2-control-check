@@ -10,22 +10,20 @@ import acme.framework.controllers.AbstractController;
 import acme.framework.roles.Any;
 
 @Controller
-public class AnyComponentController extends AbstractController<Any, Item>{
+public class AnyItemController extends AbstractController<Any, Item>{
 		
 		@Autowired
-		protected AnyComponentListService listService;
+		protected AnyItemtListComponentService listService;
 		
 		@Autowired
-		protected AnyComponentShowService showService;
+		protected AnyItemShowService showService;
 		
 		@Autowired
-		protected AnyToolShowService showToolService;
+		protected AnyItemListToolService listToolService;
 		
 		@Autowired
-		protected AnyToolListService listToolService;
+		protected AnyItemListByToolkitService listByToolkitService;
 		
-		@Autowired
-		protected AnyItemListByToolkit listByToolkitService;
 		
 		@PostConstruct
 		protected void initialise() {

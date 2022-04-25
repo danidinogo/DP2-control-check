@@ -1,6 +1,6 @@
 package acme.features.any.item;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import acme.framework.roles.Any;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AnyItemListByToolkit  implements AbstractListService<Any, Item>{
+public class AnyItemtListComponentService  implements AbstractListService<Any, Item>{
 
 	@Autowired
 	protected AnyItemRepository repository;
@@ -25,12 +25,11 @@ public class AnyItemListByToolkit  implements AbstractListService<Any, Item>{
 	}
 	
 	@Override
-	public List<Item> findMany(final Request<Item> request){
+	public Collection<Item> findMany(final Request<Item> request){
 		assert request !=null;
 		
-		List<Item> res;
-		final int id = request.getModel().getInteger("id");
-		res=this.repository.findItemByToolkitId(id);
+		Collection<Item> res;
+		res=this.repository.findPublishedComponents();
 		return res;
 	}
 
@@ -40,7 +39,7 @@ public class AnyItemListByToolkit  implements AbstractListService<Any, Item>{
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "name", "code", "technology", "description" , "info");
+		request.unbind(entity, model, "name", "code", "technology", "description" , "info", "type");
 		
 	}
 }

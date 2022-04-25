@@ -10,6 +10,7 @@
 	<acme:input-textbox code="inventor.item.form.label.code" path="code" readonly="true"/>
 	<acme:input-textbox code="inventor.item.form.label.technology" path="technology" readonly="true"/>
 	<acme:input-textbox code="inventor.item.form.label.description" path="description" readonly="true"/>
-	<acme:input-textbox code="inventor.item.form.label.price" path="retailPrice" readonly="true"/>
-	<acme:input-textbox code="inventor.item.form.label.info" path="info" readonly="true"/>
+	<acme:input-money code="inventor.item.form.label.price" path="retailPrice" readonly="true"/>
+	<acme:input-textbox code="inventor.item.form.label.type" path="type" readonly="true"/>
+	
 </acme:form>

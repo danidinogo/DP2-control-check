@@ -16,10 +16,10 @@ public class InventorItemController extends AbstractController<Inventor, Item>{
 	protected InventorItemToolkitListService listByToolkitService;
 	
 	@Autowired
-	protected InventorComponentListService listByComponentService;
+	protected InventorItemListComponentService listByComponentService;
 	
 	@Autowired
-	protected InventorComponentShowService showComponentService;
+	protected InventorItemShowService showComponentService;
 	
 	@PostConstruct
 	protected void initialize() {

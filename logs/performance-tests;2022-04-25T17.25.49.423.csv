@@ -1,2 +1,0 @@
-timestamp,test-class,test-method,time,description,result
-"2022-04-25 17:22:37.517","acme.testing.inventor.patronageReport.TestInventorPatronageReport","testInventorsOnPatronageReportsList",18775,""[1] recordIndex=0, status=accepted, code=abc-123, legalStuff=Legalidad patronage 1, budget=EUR 50.00, starsAt=2021/02/02 15:22, finishesAt=2021/02/03 15:22, link=https://youtube.com/, seqNumber=abd-123, createdAt=2022/03/10 15:22, memorandum=Memorandum del reporte, link2=https://google.es"","OK"

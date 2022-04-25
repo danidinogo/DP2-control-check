@@ -20,7 +20,7 @@ public class AnyToolkitController extends AbstractController<Any, Toolkit> {
 	
 	@PostConstruct
 	protected void initialise() {
-		super.addCommand("list", this.listService);
+		super.addCommand("list-published", "list", this.listService);
 		super.addCommand("show", this.showService);
 	}
 
