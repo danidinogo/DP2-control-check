@@ -1,0 +1,4 @@
+recordIndex,name,code,technology,description,retailPrice,info,type,key:inventor
+0,GitHub,123-456,Scrum,Herramienta de gestión de código,EUR 100.00,https://google.com,TOOL,inventor-01
+1,Dbeaver,125-456,Software,Cliente de bases de datos,EUR 186.00,https://google.com,TOOL,inventor-01
+2,Eclipse,127-456,Software,IDE para la programación del sistema,USD 980.00,https://google.com,TOOL,inventor-01

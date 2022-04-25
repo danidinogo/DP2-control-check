@@ -29,7 +29,7 @@
 	<acme:input-textbox code="inventor.patronage.list.label.patronage.identify.status" path="patronage.status"/>
 	<acme:input-textbox code="inventor.patronage.list.label.patronage.identify.code" path="patronage.code"/>
 	<acme:input-textbox code="inventor.patronage.list.label.patronage.identify.legalStuff" path="patronage.legalStuff"/>
-	<acme:input-textbox code="inventor.patronage.list.label.patronage.identify.budget" path="patronage.budget"/>
+	<acme:input-money code="inventor.patronage.list.label.patronage.identify.budget" path="patronage.budget"/>
 	<acme:input-textbox code="inventor.patronage.list.label.patronage.identify.startsAt" path="patronage.startsAt"/>
 	<acme:input-textbox code="inventor.patronage.list.label.patronage.identify.finishesAt" path="patronage.finishesAt"/>
 	<acme:input-textbox code="inventor.patronage.list.label.patronage.identify.link" path="patronage.link"/>

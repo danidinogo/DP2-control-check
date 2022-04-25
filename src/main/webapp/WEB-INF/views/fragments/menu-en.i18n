@@ -64,6 +64,7 @@ master.menu.patron.dashboard = Show Dashboard
 master.menu.inventor = Inventor
 master.menu.inventor.toolkits = List Own Toolkits
 master.menu.inventor.components = List Own Components
+master.menu.inventor.tools = List Own Tools
 master.menu.inventor.patronage = List Own Patronages
 
 # master.menu.patron ##########################################################

@@ -10,7 +10,7 @@
 	<acme:input-textbox code="inventor.toolkit.form.label.title" path="title" readonly="true"/>
 	<acme:input-textbox code="inventor.toolkit.form.label.descripcion" path="descripcion" readonly="true"/>
 	<acme:input-textbox code="inventor.toolkit.form.label.assemblyNotes" path="assemblyNotes" readonly="true"/>
-	<acme:input-textbox code="inventor.toolkit.form.label.retailPrice" path="retailPrice" readonly="true"/>
+	<acme:input-money code="inventor.toolkit.form.label.retailPrice" path="retailPrice" readonly="true"/>
 	<acme:input-url code="inventor.toolkit.form.label.link" path="link"/>
 	<acme:button code="inventor.toolkit.form.buttom.items" action="/inventor/item/list-by-toolkit?id=${id}"/>
 </acme:form>
