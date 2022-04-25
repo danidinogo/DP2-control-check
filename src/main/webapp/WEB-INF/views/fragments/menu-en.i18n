@@ -32,6 +32,7 @@ any.menu.toolkits.favourite-link-dandianog= List Toolkit
 master.menu.authenticated = Authenticated
 master.menu.authenticated.user-account = List Enabled Accounts
 master.menu.authenticated.configuration = System configuration
+authenticated.menu.announcement.favourite-link-dandianog= List Announcement
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator

@@ -38,6 +38,7 @@
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.user-account" action="/any/user-account/list-enabled"/>
 			<acme:menu-suboption code="master.menu.authenticated.configuration" action="/authenticated/configuration/show"/>
+			<acme:menu-suboption code="authenticated.menu.announcement.favourite-link-dandianog" action="/authenticated/announcement/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
