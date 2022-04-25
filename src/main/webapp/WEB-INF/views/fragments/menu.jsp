@@ -28,15 +28,14 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-juamenvar" action="https://www.netflix.com"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-dandianog" action="https://kwertyx.com"/>
 			<acme:menu-suboption code="master.menu.anonymous.any-chirp" action="/any/chirp/list"/>
-		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.items" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.list-component" action="/any/item/list-component"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-tool" action="/any/item/list-tool"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-toolkit" action="/any/toolkit/list-published"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.user-account" action="/any/user-account/list-enabled"/>
+			<acme:menu-suboption code="master.menu.authenticated.list-toolkit" action="/any/toolkit/list-published"/>
 			<acme:menu-suboption code="master.menu.authenticated.configuration" action="/authenticated/configuration/show"/>
 
 			<acme:menu-suboption code="authenticated.menu.announcement.favourite-link-dandianog" action="/authenticated/announcement/list"/>

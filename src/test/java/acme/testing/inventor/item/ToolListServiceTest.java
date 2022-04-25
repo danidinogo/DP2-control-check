@@ -15,7 +15,7 @@ public class ToolListServiceTest extends TestHarness{
 	@CsvFileSource(resources = "/inventor/item/tool.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void InventorListToolTest(final int recordIndex, final String name, final String code,
-		final String technology, final String description, final String retailPrice, final String info) {
+		final String technology, final String description, final String retailPrice) {
 		
 		super.signIn("administrator", "administrator");
 		
@@ -35,7 +35,6 @@ public class ToolListServiceTest extends TestHarness{
 		super.checkInputBoxHasValue("technology", technology);
 		super.checkInputBoxHasValue("description", description);
 		super.checkInputBoxHasValue("retailPrice", retailPrice);
-		super.checkInputBoxHasValue("info", info);
 
 		super.signOut();
 
