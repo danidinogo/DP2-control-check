@@ -15,7 +15,7 @@ public class ComponentListServiceTest extends TestHarness{
 	@CsvFileSource(resources = "/inventor/item/component.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void InventorListComponentTest(final int recordIndex, final String name, final String code,
-		final String technology, final String description, final String retailPrice, final String info) {
+		final String technology, final String description, final String retailPrice) {
 		
 		super.signIn("administrator", "administrator");
 		
@@ -35,7 +35,6 @@ public class ComponentListServiceTest extends TestHarness{
 		super.checkInputBoxHasValue("technology", technology);
 		super.checkInputBoxHasValue("description", description);
 		super.checkInputBoxHasValue("retailPrice", retailPrice);
-		super.checkInputBoxHasValue("info", info);
 
 		super.signOut();
 

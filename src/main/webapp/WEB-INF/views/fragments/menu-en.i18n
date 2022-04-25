@@ -26,6 +26,7 @@ master.menu.anonymous.favourite-link-elomordom = 49546083N: Moreno, Eloy
 master.menu.anonymous.favourite-link-diegonqui = 29539782P: González, Diego
 master.menu.anonymous.favourite-link-juamenvar = 77200485L: Mena, Juan Antonio
 master.menu.anonymous.favourite-link-dandianog = 30267676K: Díaz, Daniel
+master.menu.anonymous.list-toolkit = List Published Toolkits
 
 master.menu.anonymous.any-chirp = Chirps
 
@@ -35,6 +36,8 @@ master.menu.authenticated = Authenticated
 master.menu.authenticated.user-account = List Enabled Accounts
 master.menu.authenticated.configuration = System configuration
 authenticated.menu.announcement.favourite-link-dandianog= List Announcement
+master.menu.authenticated.list-toolkit = List Published Toolkits
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
