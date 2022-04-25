@@ -27,6 +27,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-diegonqui" action="https://www.diariodesevilla.es"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-juamenvar" action="https://www.netflix.com"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-dandianog" action="https://kwertyx.com"/>
+			<acme:menu-suboption code="any.menu.toolkits.favourite-link-dandianog" action="/any/toolkit/list"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.items" access="isAnonymous()">
