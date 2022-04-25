@@ -27,10 +27,14 @@ master.menu.anonymous.favourite-link-diegonqui = 29539782P: González, Diego
 master.menu.anonymous.favourite-link-juamenvar = 77200485L: Mena, Juan Antonio
 master.menu.anonymous.favourite-link-dandianog = 30267676K: Díaz, Daniel
 
+master.menu.anonymous.any-chirp = Chirps
+
+
 # master.menu.autehticated #######################################################
 master.menu.authenticated = Authenticated
 master.menu.authenticated.user-account = List Enabled Accounts
 master.menu.authenticated.configuration = System configuration
+authenticated.menu.announcement.favourite-link-dandianog= List Announcement
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
@@ -60,12 +64,18 @@ master.menu.patron.dashboard = Show Dashboard
 master.menu.inventor = Inventor
 master.menu.inventor.toolkits = List Own Toolkits
 master.menu.inventor.components = List Own Components
+master.menu.inventor.patronage = List Own Patronages
 
 # master.menu.patron ##########################################################
 
 master.menu.patron = Patron
 master.menu.patron.patronage = List Patronage
 
+# master.menu.inventor ########################################################
+
+master.menu.inventor = Inventor
+master.menu.inventor.patronage = Patronages
+master.menu.inventor.patronage-report = Patronage Report
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account

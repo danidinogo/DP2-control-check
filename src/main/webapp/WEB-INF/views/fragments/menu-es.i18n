@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-﻿# master.menu #################################################################
+# master.menu #################################################################
 
 master.menu.home = Inicio
 master.menu.sign-up = Registrarse
@@ -27,11 +27,14 @@ master.menu.anonymous.favourite-link-diegonqui = 29539782P: González, Diego
 master.menu.anonymous.favourite-link-juamenvar = 77200485L: Mena, Juan Antonio
 master.menu.anonymous.favourite-link-dandianog = 30267676K: Díaz, Daniel
 
+master.menu.anonymous.any-chirp = Lista de chirridos
+
+
 # master.menu.authenticated #######################################################
 master.menu.authenticated = Autenticado
 master.menu.anonymous.user-account = Listar cuentas habilitadas
 master.menu.authenticated.configuration = Configuración del sistema
-
+authenticated.menu.announcement.favourite-link-dandianog= Lista de anuncios
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
@@ -57,13 +60,14 @@ master.menu.consumer.favourite-link = Enlace favorito
 master.menu.inventor = Inventor
 master.menu.inventor.toolkits = Listar toolkits propias
 master.menu.inventor.components = Listar componentes propios
+master.menu.inventor.patronage = Listar patronages propios
+
 
 # master.menu.patron ##########################################################
 
 master.menu.patron = Patron
 master.menu.patron.patronage = Lista de Patronages
 master.menu.patron.dashboard =  Estadisticas 
-
 
 # master.menu.user-account ####################################################
 

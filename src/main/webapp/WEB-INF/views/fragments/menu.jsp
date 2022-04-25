@@ -27,6 +27,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-diegonqui" action="https://www.diariodesevilla.es"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-juamenvar" action="https://www.netflix.com"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-dandianog" action="https://kwertyx.com"/>
+			<acme:menu-suboption code="master.menu.anonymous.any-chirp" action="/any/chirp/list"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.items" access="isAnonymous()">
@@ -37,6 +38,9 @@
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.user-account" action="/any/user-account/list-enabled"/>
 			<acme:menu-suboption code="master.menu.authenticated.configuration" action="/authenticated/configuration/show"/>
+
+			<acme:menu-suboption code="authenticated.menu.announcement.favourite-link-dandianog" action="/authenticated/announcement/list"/>
+
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -62,6 +66,7 @@
 		<acme:menu-option code="master.menu.inventor" access="hasRole('Inventor')">
 			<acme:menu-suboption code="master.menu.inventor.toolkits" action="/inventor/toolkit/list-mine"/>
 			<acme:menu-suboption code="master.menu.inventor.components" action="/inventor/item/list-component"/>
+			<acme:menu-suboption code="master.menu.inventor.patronage" action="/inventor/patronage/list-mine"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">

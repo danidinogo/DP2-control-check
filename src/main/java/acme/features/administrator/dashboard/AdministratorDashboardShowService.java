@@ -44,7 +44,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setItemsRetailPrice(this.getItemsData(result.getDataKeys()));
 		result.setComponentsRetailPrice(this.getComponentsData(result.getDataKeys()));
 		
-		System.out.println(this.getItemsData(result.getDataKeys()).toString());
+		//System.out.println(this.getItemsData(result.getDataKeys()).toString());
 		
 		//result.setComponentsData(this.getComponentsData(result.getDataKeys()));
 		
