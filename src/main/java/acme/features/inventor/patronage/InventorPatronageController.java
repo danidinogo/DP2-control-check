@@ -13,7 +13,7 @@ import acme.roles.Inventor;
 public class InventorPatronageController extends AbstractController<Inventor, Patronage>{
 
 	@Autowired
-	protected InventorPatronageListService listService;
+	protected InventorPatronageListOwnService listService;
 
 	@Autowired
 	protected InventorPatronageShowService showService;

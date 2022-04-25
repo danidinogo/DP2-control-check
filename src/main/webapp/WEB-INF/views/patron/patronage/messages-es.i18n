@@ -1,0 +1,24 @@
+
+authenticated.patron.patronage.form.label.status = Estado
+authenticated.patron.patronage.form.label.code = Código
+authenticated.patron.patronage.form.label.legalStuff = Material legal
+authenticated.patron.patronage.form.label.budget = Presupuesto
+authenticated.patron.patronage.form.label.startsAt = Empieza A
+authenticated.patron.patronage.form.label.finishesAt = Termina A
+authenticated.patron.patronage.form.label.link = Link
+authenticated.patron.patronage.form.label.inventor.company = Compañia del Inventor
+authenticated.patron.patronage.form.label.inventor.statement = Declaracion del Inventor
+authenticated.patron.patronage.form.label.inventor.link = Link del Invetor
+
+patron.patronage.form.buttom.patronage-reports = Reportes del patronage
+
+
+
+
+authenticated.patron.patronage.list.label.status = Estado
+authenticated.patron.patronage.list.label.code = Código
+authenticated.patron.patronage.list.label.legalStuff = Material legal
+authenticated.patron.patronage.list.label.budget = Presupuesto
+authenticated.patron.patronage.list.label.startsAt = Empieza A
+authenticated.patron.patronage.list.label.finishesAt = Termina A
+
