@@ -11,7 +11,7 @@ public class AnyItemsTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/any/item/tools.csv", numLinesToSkip = 1)
 	@Order(0)
-	public void checkToolListing(final int recordIndex, final String name, final String code, final String technology, final String description, final String retailPrice, final String info, final String type, final String inventor) {
+	public void checkToolListing(final int recordIndex, final String name, final String code , final String technology, final String description, final String retailPrice, final String info, final String type, final String inventor) {
 		//super.signIn("administrator", "administrator");
 		
 		// Name,Code,Technology,Description,Info
@@ -24,6 +24,7 @@ public class AnyItemsTest extends TestHarness {
 		super.checkColumnHasValue(recordIndex, 2, technology);
 		super.checkColumnHasValue(recordIndex, 3, description);
 		super.checkColumnHasValue(recordIndex, 4, info);
+		super.checkColumnHasValue(recordIndex, 5, type);
 	}
 
 	@ParameterizedTest
@@ -40,7 +41,7 @@ public class AnyItemsTest extends TestHarness {
 		super.checkInputBoxHasValue("technology", technology);
 		super.checkInputBoxHasValue("description", description);
 		super.checkInputBoxHasValue("info", info);
-		
+		super.checkInputBoxHasValue("type", type);
 		
 	}
 	
@@ -59,6 +60,7 @@ public class AnyItemsTest extends TestHarness {
 		super.checkColumnHasValue(recordIndex, 2, technology);
 		super.checkColumnHasValue(recordIndex, 3, description);
 		super.checkColumnHasValue(recordIndex, 4, info);
+		super.checkColumnHasValue(recordIndex, 5, type);
 	}
 
 	@ParameterizedTest
@@ -75,7 +77,7 @@ public class AnyItemsTest extends TestHarness {
 		super.checkInputBoxHasValue("technology", technology);
 		super.checkInputBoxHasValue("description", description);
 		super.checkInputBoxHasValue("info", info);
-		
+		super.checkInputBoxHasValue("type", type);
 		
 	}
 }

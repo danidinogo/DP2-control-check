@@ -30,11 +30,5 @@ public class AnyToolkitTest extends TestHarness{
 		super.checkInputBoxHasValue("descripcion", descripcion);
 		super.checkInputBoxHasValue("assemblyNotes", assemblyNotes);
 		super.checkInputBoxHasValue("link", link);
-		
-		
-		
-	
-		
-		
 	}
 }
