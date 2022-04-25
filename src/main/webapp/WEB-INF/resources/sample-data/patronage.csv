@@ -1,2 +1,19 @@
 key,status,code,legalStuff,budget,startsAt,finishesAt,link,key:patron,key:inventor
 patronage-01,accepted,abc-123,Legalidad patronage 1,50.00 eur,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-02,accepted,abc-124,Legalidad patronage 2,75.00 eur,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-03,accepted,abc-125,Legalidad patronage 1,100.00 eur,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-04,accepted,abc-126,Legalidad patronage 1,125.00 eur,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-05,denied,abc-127,Legalidad patronage 1,150.00 eur,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-06,denied,abc-128,Legalidad patronage 1,175.00 eur,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-07,denied,abc-129,Legalidad patronage 1,200.00 eur,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-08,denied,abc-130,Legalidad patronage 1,225.00 eur,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-09,proposed,abc-131,Legalidad patronage 1,250.00 eur,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-10,proposed,abc-132,Legalidad patronage 1,275.00 eur,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-11,proposed,abc-133,Legalidad patronage 1,300.00 eur,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-12,proposed,abc-134,Legalidad patronage 1,325.00 eur,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-13,proposed,abc-135,Legalidad patronage 1,326.00 usd,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-14,proposed,abc-136,Legalidad patronage 1,326.00 gbp,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-15,accepted,abc-137,Legalidad patronage 1,266.00 usd,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-16,denied,abc-138,Legalidad patronage 1,300.00 usd,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-17,denied,abc-139,Legalidad patronage 1,126.00 gbp,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01
+patronage-18,accepted,abc-140,Legalidad patronage 1,226.00 gbp,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/,patron-01,inventor-01

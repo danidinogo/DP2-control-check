@@ -1,2 +1,2 @@
 key,weakSpamWords,strongSpamWords,strongSpamThreshold,weakSpamThreshold,defaultCurr,AcceptedCurr
-configuration-01,"viagra,sex,prueba","million dollar,shib,droga",0.05,0.1,EUR,"EUR,USD,GBP"
+configuration-01,"viagra,sex,prueba","pura,bitcoin,droga",0.05,0.1,EUR,"EUR,USD,GBP"

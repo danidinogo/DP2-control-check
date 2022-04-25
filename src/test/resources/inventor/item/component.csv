@@ -1,0 +1,5 @@
+recordIndex,name,code,technology,description,retailPrice,info
+0,Views,128-456,Server,Componente de la aplicación web,USD 10.00,https://google.com
+1,MySQL,124-456,Server,Bases de datos MySQL,GBP 125.00,https://google.com
+2,Web Server,126-456,Server,Http server,GBP 122.00,https://google.com
+

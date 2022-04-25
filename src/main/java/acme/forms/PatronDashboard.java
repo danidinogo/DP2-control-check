@@ -2,7 +2,12 @@
 package acme.forms;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
+import acme.enums.Status;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,9 +18,8 @@ public class PatronDashboard implements Serializable {
 	// Serialisation identifier -----------------------------------------------
 
 	protected static final long	serialVersionUID	= 1L;
-
 	// Attributes -------------------------------------------------------------
-
+	/*
 	Double	totalNumberPatronagesPropose;
 	Double	totalNumberPatronagesAccepted;
 	Double	totalNumberPatronagesDenied;
@@ -67,7 +71,21 @@ public class PatronDashboard implements Serializable {
 	Double	maximunBudgetPatronagesProposedCurr3;
 	Double	maximunBudgetPatronagesAcceptedCurr3;
 	Double	maximunBudgetPatronagesDeniedCurr3;
-
+*/
+	
+	public List<String> getTotalscurre() {
+		return new ArrayList<String>(Arrays.asList("EUR", "USD", "GBP"));
+	}
+	
+	public List<String> getDataKeys() {
+		return new ArrayList<String>(Arrays.asList("Min", "Max", "Avg", "Dev"));
+	}
+	
+	
+	Map<Status,  Integer> totalNumberPatronage;
+	
+	Map<Status, Map<String, Map<String, Double>>> PatronagesBudgets;
+	
 
 	// Derived attributes -----------------------------------------------------
 

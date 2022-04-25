@@ -6,7 +6,12 @@ authenticated.patron.patronage.form.label.budget = Presupuesto
 authenticated.patron.patronage.form.label.startsAt = Empieza A
 authenticated.patron.patronage.form.label.finishesAt = Termina A
 authenticated.patron.patronage.form.label.link = Link
+authenticated.patron.patronage.form.label.inventor.company = Compañia del Inventor
+authenticated.patron.patronage.form.label.inventor.statement = Declaracion del Inventor
+authenticated.patron.patronage.form.label.inventor.link = Link del Invetor
+
 patron.patronage.form.buttom.patronage-reports = Reportes del patronage
+
 
 
 

@@ -45,7 +45,7 @@ public class PatronPatronageShowService implements AbstractShowService<Patron, P
 
 
 		return result;
-	}
+	} 
 
 	@Override
 	public void unbind(final Request<Patronage> request, final Patronage entity, final Model model) {
@@ -54,7 +54,7 @@ public class PatronPatronageShowService implements AbstractShowService<Patron, P
 		assert model != null;
 
 		
-		request.unbind(entity, model, "status", "code", "legalStuff", "budget",  "startsAt", "finishesAt",  "link");
+		request.unbind(entity, model, "status", "code", "legalStuff", "budget",  "startsAt", "finishesAt",  "link", "inventor.company","inventor.statement","inventor.link");
 		
 	}
 

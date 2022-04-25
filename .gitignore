@@ -30,5 +30,6 @@ mvnw
 
 mvnw\.cmd
 *.log
+logs
 
 logs/
