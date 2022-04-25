@@ -1,0 +1,14 @@
+inventor.patronage.list.label.status = Estado
+inventor.patronage.list.label.code = Código
+inventor.patronage.list.label.budget = Presupuesto
+
+inventor.patronage.form.label.status = Estado
+inventor.patronage.form.label.code = Código
+inventor.patronage.form.label.legalStuff = Legal
+inventor.patronage.form.label.budget = Presupuesto
+inventor.patronage.form.label.startsAt = Fecha inicio
+inventor.patronage.form.label.finishesAt = Fecha fin
+inventor.patronage.form.label.link = Link
+inventor.patronage.form.label.patronCompany = Compañía del patrón
+inventor.patronage.form.label.patronStatement = Declaración del patrón
+inventor.patronage.form.buttom.patronage-report = Informe de patrocinio

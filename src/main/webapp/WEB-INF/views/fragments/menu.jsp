@@ -19,6 +19,7 @@
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.anonymous.user-account" action="/any/user-account/list-enabled"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="http://www.example.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-luibelzan" action="https://www.binance.com/es"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-josgarqui" action="https://sevillafc.es"/>
@@ -26,15 +27,26 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-diegonqui" action="https://www.diariodesevilla.es"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-juamenvar" action="https://www.netflix.com"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-dandianog" action="https://kwertyx.com"/>
+			<acme:menu-suboption code="master.menu.anonymous.any-chirp" action="/any/chirp/list"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.items" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.anonymous.list-component" action="/any/item/list-component"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-tool" action="/any/item/list-tool"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.user-account" action="/any/user-account/list-enabled"/>
 			<acme:menu-suboption code="master.menu.authenticated.configuration" action="/authenticated/configuration/show"/>
+
+			<acme:menu-suboption code="authenticated.menu.announcement.favourite-link-dandianog" action="/authenticated/announcement/list"/>
+
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-suboption code="master.menu.administrator.configurations" action="/administrator/configuration/list"/>
+			<acme:menu-suboption code="master.menu.administrator.dashboard" action="/administrator/dashboard/show"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/populate-sample"/>			
@@ -48,6 +60,17 @@
 
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
+		</acme:menu-option>
+		
+		
+		<acme:menu-option code="master.menu.inventor" access="hasRole('Inventor')">
+			<acme:menu-suboption code="master.menu.inventor.toolkits" action="/inventor/toolkit/list-mine"/>
+			<acme:menu-suboption code="master.menu.inventor.patronage" action="/inventor/patronage/list-mine"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">
+			<acme:menu-suboption code="master.menu.patron.patronage" action="/patron/patronage/list-mine"/>
+			<acme:menu-suboption code="master.menu.patron.dashboard" action="/patron/patron-dashboard/show"/>
 		</acme:menu-option>
 	</acme:menu-left>
 
