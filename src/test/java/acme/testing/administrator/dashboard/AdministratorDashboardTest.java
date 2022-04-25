@@ -12,6 +12,9 @@
 
 package acme.testing.administrator.dashboard;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -32,7 +35,7 @@ public class AdministratorDashboardTest extends TestHarness {
 		System.out.println("asdasdasd");
 		System.out.println(this.adminPath);
 		
-		this.checkXpathNotExists("//*[@id=\"mainMenu\"]/ul[1]/li[2]/a[text() = 'Administrator']");
+		this.checkXpathNotExists("//*[text() = '\\n					Administrator \\n				']");
 		
 		this.navigate(this.adminPath);
 		this.checkPanicExists();
@@ -42,13 +45,97 @@ public class AdministratorDashboardTest extends TestHarness {
 	@Order(1)
 	public void checkDashboard() {
 		this.signIn("administrator", "administrator");
+		
+		// check that an admin user has admin dashboard link on menu
+		this.checkXpathContains("//*[@id='mainMenu']/ul[1]/li[2]/div/a[3]", "Dashboard");
+		
+		// check that an admin user can access to admin dashboard
 		this.navigate(this.adminPath);
 		this.checkNotPanicExists();
+		
+		// check admin dashboard input exists
 		this.checkXpathExists("//*[@id=\"totals\"]/div[1]/div[1]/div/div/label/input");
+	}
+	
+	@Test
+	@Order(2)
+	public void checkDashboardInputs() {
 		
-		this.checkXpathExists("//*[@id=\"mainMenu\"]/ul[1]/li[2]/a[text() = 'Administrator']");
+		this.signIn("administrator", "administrator");
+		this.navigate(this.adminPath);
 		
-		this.checkXpathNotExists("//*[@id=\"totalss\"]/div[1]/div[1]/div/div/label/input");
+		final Map<String, String> inputsMap = new HashMap<String, String>();
+		
+		// Total items & patronages
+		inputsMap.put("//*[@id=\"totals\"]/div[1]/div[1]/div/div/label/input", "3");
+		inputsMap.put("//*[@id=\"totals\"]/div[1]/div[2]/div/div/label/input", "3");
+		
+		// Total proposed, accepted & denied patronages
+		inputsMap.put("//*[@id=\"totals\"]/div[2]/div[1]/div/div/label/input", "4");
+		inputsMap.put("//*[@id=\"totals\"]/div[2]/div[2]/div/div/label/input", "4");
+		inputsMap.put("//*[@id=\"totals\"]/div[2]/div[3]/div/div/label/input", "4");
+		
+		// Budgets
+		// Proposed
+		inputsMap.put("//*[@id=\"budgets\"]/div[1]/div[1]/div/div/label/input", "325.0");
+		inputsMap.put("//*[@id=\"budgets\"]/div[1]/div[2]/div/div/label/input", "250.0");
+		inputsMap.put("//*[@id=\"budgets\"]/div[1]/div[3]/div/div/label/input", "287.5");
+		inputsMap.put("//*[@id=\"budgets\"]/div[1]/div[4]/div/div/label/input", "27.95084971874737");
+		
+		// Acepted
+		inputsMap.put("//*[@id=\"budgets\"]/div[2]/div[1]/div/div/label/input", "125.0");
+		inputsMap.put("//*[@id=\"budgets\"]/div[2]/div[2]/div/div/label/input", "50.0");
+		inputsMap.put("//*[@id=\"budgets\"]/div[2]/div[3]/div/div/label/input", "87.5");
+		inputsMap.put("//*[@id=\"budgets\"]/div[2]/div[4]/div/div/label/input", "27.95084971874737");
+		
+		// Denied
+		inputsMap.put("//*[@id=\"budgets\"]/div[3]/div[1]/div/div/label/input", "225.0");
+		inputsMap.put("//*[@id=\"budgets\"]/div[3]/div[2]/div/div/label/input", "150.0");
+		inputsMap.put("//*[@id=\"budgets\"]/div[3]/div[3]/div/div/label/input", "187.5");
+		inputsMap.put("//*[@id=\"budgets\"]/div[3]/div[4]/div/div/label/input", "27.95084971874737");
+		
+		// Components data by tech & currency
+		// Server in USD
+		inputsMap.put("//*[@id=\"components\"]/div[1]/div[1]/div/div/label/input", "10.0");
+		inputsMap.put("//*[@id=\"components\"]/div[1]/div[2]/div/div/label/input", "10.0");
+		inputsMap.put("//*[@id=\"components\"]/div[1]/div[3]/div/div/label/input", "10.0");
+		inputsMap.put("//*[@id=\"components\"]/div[1]/div[4]/div/div/label/input", "0.0");
+		
+		// Server in GBP
+		inputsMap.put("//*[@id=\"components\"]/div[2]/div[1]/div/div/label/input", "125.0");
+		inputsMap.put("//*[@id=\"components\"]/div[2]/div[2]/div/div/label/input", "122.0");
+		inputsMap.put("//*[@id=\"components\"]/div[2]/div[3]/div/div/label/input", "123.5");
+		inputsMap.put("//*[@id=\"components\"]/div[2]/div[4]/div/div/label/input", "1.5");
+		
+		// Total items and patronages
+		// Component -> currency GBP
+		inputsMap.put("//*[@id=\"items\"]/div[1]/div[1]/div/div/label/input", "125.0");
+		inputsMap.put("//*[@id=\"items\"]/div[1]/div[2]/div/div/label/input", "122.0");
+		inputsMap.put("//*[@id=\"items\"]/div[1]/div[3]/div/div/label/input", "123.5");
+		inputsMap.put("//*[@id=\"items\"]/div[1]/div[4]/div/div/label/input", "1.5");
+		
+		// Component -> currency USD
+		inputsMap.put("//*[@id=\"items\"]/div[2]/div[1]/div/div/label/input", "10.0");
+		inputsMap.put("//*[@id=\"items\"]/div[2]/div[2]/div/div/label/input", "10.0");
+		inputsMap.put("//*[@id=\"items\"]/div[2]/div[3]/div/div/label/input", "10.0");
+		inputsMap.put("//*[@id=\"items\"]/div[2]/div[4]/div/div/label/input", "0.0");
+		
+		// Tool -> currency eur
+		inputsMap.put("//*[@id=\"items\"]/div[3]/div[1]/div/div/label/input", "186.0");
+		inputsMap.put("//*[@id=\"items\"]/div[3]/div[2]/div/div/label/input", "100.0");
+		inputsMap.put("//*[@id=\"items\"]/div[3]/div[3]/div/div/label/input", "143.0");
+		inputsMap.put("//*[@id=\"items\"]/div[3]/div[4]/div/div/label/input", "43.0");
+		
+		// Tool -> currency eur
+		inputsMap.put("//*[@id=\"items\"]/div[4]/div[1]/div/div/label/input", "980.0");
+		inputsMap.put("//*[@id=\"items\"]/div[4]/div[2]/div/div/label/input", "980.0");
+		inputsMap.put("//*[@id=\"items\"]/div[4]/div[3]/div/div/label/input", "980.0");
+		inputsMap.put("//*[@id=\"items\"]/div[4]/div[4]/div/div/label/input", "0.0");
+		
+		for(final Map.Entry<String, String> entry : inputsMap.entrySet()) {
+			this.checkXpathInputValue(entry.getKey(), entry.getValue());
+		}
+		
 	}
 	
 	// Ancillary methods ------------------------------------------------------ 
