@@ -41,7 +41,7 @@ public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> 
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model,"code", "title", "description","assemblyNotes", "link","retailPrice");
+		request.unbind(entity, model,"code", "title", "descripcion","assemblyNotes", "link","retailPrice");
 		
 	}
 }
