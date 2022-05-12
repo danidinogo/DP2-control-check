@@ -19,12 +19,13 @@
 	<acme:button code="patron.patronage.form.buttom.patronage-reports" action="/patron/patronage-report/list-by-patronage?id=${id}"/>
 	
 <jstl:choose>
+
 		<jstl:when test="${acme:anyOf(command, 'show, update, delete') && draftMode == true}">
-			<acme:submit code="employer.duty.form.button.update" action="/employer/duty/update"/>
-			<acme:submit code="employer.duty.form.button.delete" action="/employer/duty/delete"/>
+			<acme:submit code="employer.duty.form.button.update" action="/patron/patronge/update"/>
+			<acme:submit code="employer.duty.form.button.delete" action="/patron/patronge/delete"/>
 		</jstl:when>
 		<jstl:when test="${command == 'create'}">
-			<acme:submit code="employer.duty.form.button.create" action="/employer/duty/create?masterId=${masterId}"/>
+			<acme:submit code="employer.duty.form.button.create" action="/patron/patronge/create?masterId=${masterId}"/>
 		</jstl:when>		
 	</jstl:choose>	
 </acme:form>

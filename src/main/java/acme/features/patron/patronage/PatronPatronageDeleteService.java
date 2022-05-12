@@ -45,6 +45,8 @@ public class PatronPatronageDeleteService implements AbstractDeleteService<Patro
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
+		
 
 		request.bind(entity, errors, "title", "description", "workLoad", "moreInfo");
 	}
