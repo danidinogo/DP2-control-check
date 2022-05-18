@@ -34,11 +34,11 @@ private static final long	serialVersionUID	= 1L;
 	protected Double weakSpamThreshold;
 	
 	@NotBlank
-	@Pattern(regexp="EUR")
+	@Pattern(regexp="[A-Z]{3}")
 	protected String defaultCurr;
 	
 	@NotBlank
-	@Pattern(regexp = "EUR,USD,GBP")
+	@Pattern(regexp = "([A-Z]{3})(,\\s*[A-Z]{3})*")
 	protected String acceptedCurr;
 	
 	
