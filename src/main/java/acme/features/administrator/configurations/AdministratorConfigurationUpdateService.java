@@ -44,6 +44,8 @@ public class AdministratorConfigurationUpdateService implements AbstractUpdateSe
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
+		request.bind(entity, errors, "weakSpamWords", "weakSpamThreshold", "strongSpamWords", "strongSpamThreshold", "acceptedCurr", "defaultCurr");
 	}
 
 	@Override
@@ -51,6 +53,8 @@ public class AdministratorConfigurationUpdateService implements AbstractUpdateSe
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		
+		request.unbind(entity, model, "weakSpamWords", "weakSpamThreshold", "strongSpamWords", "strongSpamThreshold", "acceptedCurr", "defaultCurr");
 	}
 
 	@Override
@@ -74,7 +78,6 @@ public class AdministratorConfigurationUpdateService implements AbstractUpdateSe
 		assert entity != null;
 
 		this.repository.save(entity);
-		
 	}
 
 }
