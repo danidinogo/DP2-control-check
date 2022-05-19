@@ -6,6 +6,8 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:form>
+<jstl:choose>
+	<jstl:when test="${command == 'show'}">
 	<acme:input-textbox code="inventor.patronage.form.label.status" path="status" readonly="true"/>
 	<acme:input-textbox code="inventor.patronage.form.label.code" path="code" readonly="true"/>
 	<acme:input-textbox code="inventor.patronage.form.label.legalStuff" path="legalStuff" readonly="true"/>
@@ -16,5 +18,9 @@
 	<acme:input-textbox code="inventor.patronage.form.label.patronCompany" path="patron.company" readonly="true"/>
 	<acme:input-textbox code="inventor.patronage.form.label.patronStatement" path="patron.statement" readonly="true"/>
 	<acme:button code="inventor.patronage.form.buttom.patronage-report" action="/inventor/patronage-report/list-by-patronage?id=${id}"/>
-	
+		
+	<acme:button code="inventor.patronage-report.form.button.create" action="/inventor/patronage-report/create?id=${id}"/>
+	</jstl:when>
+</jstl:choose>	
+
 </acme:form>
