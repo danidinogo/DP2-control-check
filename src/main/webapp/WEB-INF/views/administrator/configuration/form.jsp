@@ -11,5 +11,5 @@
 	<acme:input-textbox code="administrator.configuration.form.label.acceptedCurr" path="acceptedCurr" />
 	<acme:input-textbox code="administrator.configuration.form.label.defaultCurr" path="defaultCurr" />
 	
-	<acme:submit code="administrator.configuration.form.button.update" action="/administrator/configuration/update"/>
+	<acme:submit code="administrator.configuration.form.button.update" action="/administrator/configuration/update" />
 </acme:form>
