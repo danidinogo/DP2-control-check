@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.quantity.Quantity;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Inventor;
@@ -20,6 +21,9 @@ public interface InventorToolkitRepository extends AbstractRepository {
 	
 	@Query("select i from Inventor i where i.userAccount.id = :id")
 	Inventor findInventorByUserAccountId(int id);
+	
+	@Query("select q from Quantity q where q.toolkit.id = :id ")
+	List<Quantity> findQuantityByToolkitId(int id);
 	
 	
 
