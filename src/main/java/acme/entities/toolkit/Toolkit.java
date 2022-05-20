@@ -71,12 +71,17 @@ public class Toolkit extends AbstractEntity {
 		final List<Quantity> cantidad = this.quantity;
 		Double aux = 0.0;
 		final Money res = new Money();
-		final String curr = cantidad.get(0).getItem().getRetailPrice().getCurrency();
-		for(final Quantity c: cantidad ) {
-			aux = aux + (c.getNumber()*c.getItem().getRetailPrice().getAmount());
+		if(!cantidad.isEmpty()) {
+			final String curr = cantidad.get(0).getItem().getRetailPrice().getCurrency();
+			for(final Quantity c: cantidad ) {
+				aux = aux + (c.getNumber()*c.getItem().getRetailPrice().getAmount());
+			}
+			res.setAmount(aux);
+			res.setCurrency(curr);
+		} else {
+			res.setAmount(0.0);
+			res.setCurrency("EUR");
 		}
-		res.setAmount(aux);
-		res.setCurrency(curr);
 		return res;
 	}
 	

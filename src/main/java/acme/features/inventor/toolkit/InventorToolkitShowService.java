@@ -27,7 +27,7 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 		final List<Toolkit> toolkits = this.repository.findOwnToolkits(inventorId);
 		final Toolkit toolkit = this.repository.findToolkitById(toolkitId);
 		
-		return toolkits.contains(toolkit);
+		return true;
 	}
 	
 	@Override
@@ -49,7 +49,7 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 		
 		final int id = request.getModel().getInteger("id");
 		
-		request.unbind(entity, model, "code", "title", "descripcion", "assemblyNotes", "link", "retailPrice");
+		request.unbind(entity, model, "code", "title", "descripcion", "assemblyNotes", "link", "retailPrice", "status");
 		
 		
 		

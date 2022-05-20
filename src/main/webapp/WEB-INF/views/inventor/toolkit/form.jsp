@@ -10,27 +10,25 @@
 	<acme:input-textbox code="inventor.toolkit.form.label.title" path="title"/>
 	<acme:input-textbox code="inventor.toolkit.form.label.descripcion" path="descripcion"/>
 	<acme:input-textbox code="inventor.toolkit.form.label.assemblyNotes" path="assemblyNotes"/>
-	<acme:input-money code="inventor.toolkit.form.label.retailPrice" path="retailPrice" readonly="true"/>
 	<acme:input-url code="inventor.toolkit.form.label.link" path="link"/>
-	
-	<jstl:choose>
-	
-		<jstl:when test="${command == 'show' }">
-			<acme:button code="inventor.toolkit.form.buttom.items" action="/inventor/item/list-by-toolkit?id=${id}"/>
-			<acme:button code="inventor.toolkit.form.buttom.update" action="/inventor/toolkit/update?id=${id}"/>
-			<acme:submit code = "inventor.toolkit.form.button.delete" action = "/inventor/toolkit/delete?id=${id}"/>
-		</jstl:when>
-		
-		<jstl:when test = "${command == 'update' }">
-			<acme:submit code = "inventor.toolkit.form.button.update" action = "/inventor/toolkit/update"/>
-			<acme:submit code = "inventor.toolkit.form.button.publish" action = "/inventor/toolkit/publish"/>
-		</jstl:when>
-		
-		<jstl:when test = "${command == 'create' }">
-			<acme:submit code = "inventor.toolkit.form.button.create" action = "/inventor/toolkit/create"/>
-		</jstl:when>
-	
-	</jstl:choose>
+	<acme:input-url code="inventor.toolkit.form.label.status" path="link"/>
 
+
+	<jstl:choose>
+		<jstl:when test="${command == 'show' }">
+			<acme:input-textbox code="inventor.toolkit.form.label.retailPrice" path="retailPrice" readonly="true"/>
+			<acme:button code="inventor.toolkit.form.buttom.items" action="/inventor/item/list-by-toolkit?id=${id}"/>			
+		</jstl:when>
+		
+		<jstl:when test="${command == 'create' }">
+			<acme:input-select code="inventor.toolkit.form.label.qquantity" path="quantity">
+				<jstl:forEach items="${items}" var="items">
+					<acme:input-option code="inventor.toolkit.quantity" value="${items.getName()}"/>
+				</jstl:forEach>
+			</acme:input-select>
+			<acme:button code="inventor.toolkit.form.buttom.create" action="/inventor/toolkit/create"/>
+		</jstl:when>
+		
+	</jstl:choose>
 
 </acme:form>
