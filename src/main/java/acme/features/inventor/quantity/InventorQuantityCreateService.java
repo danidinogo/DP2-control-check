@@ -28,8 +28,7 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 		final Toolkit toolkit = this.repository.findOneToolkitById(id);
 		final Inventor i = this.repository.findInventorByUserId(request.getPrincipal().getAccountId());
 		
-		//return toolkit.getInventor().getId() == i.getId();
-		return true;
+		return toolkit.getInventor().getId() == i.getId();
 	}
 
 	@Override

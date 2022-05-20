@@ -1,34 +1,30 @@
 package acme.features.inventor.toolkit;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.item.Item;
-import acme.entities.quantity.Quantity;
-import acme.entities.toolkit.Status;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
-import acme.framework.services.AbstractCreateService;
+import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorToolkitCreateService implements AbstractCreateService<Inventor, Toolkit>{
-
+public class InventorToolkitUpdateService implements AbstractUpdateService<Inventor, Toolkit>{
+	
 	@Autowired
 	protected InventorToolkitRepository repository;
-	
+
 	@Override
 	public boolean authorise(final Request<Toolkit> request) {
 		assert request != null;
 		
+		final int id = request.getModel().getInteger("id");
 		final Inventor i = this.repository.findInventorByUserAccountId(request.getPrincipal().getAccountId());
+		final Toolkit t = this.repository.findToolkitById(id);
 		
-		return i!=null;
+		return t.getInventor().getId()==i.getId();
 	}
 
 	@Override
@@ -37,8 +33,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-		
-		request.bind(entity, errors, "code", "title", "descripcion", "assemblyNotes", "link");
+		request.bind(entity, errors, "code", "descripcion", "assemblyNotes", "title", "link");
 		
 	}
 
@@ -50,27 +45,13 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		
 		request.unbind(entity, model, "code", "title", "descripcion", "assemblyNotes", "link");
 		
-		final List<Item> items = this.repository.findManyItem();
-		model.setAttribute("items", items);
 	}
 
 	@Override
-	public Toolkit instantiate(final Request<Toolkit> request) {
+	public Toolkit findOne(final Request<Toolkit> request) {
 		assert request != null;
 		
-		final Toolkit res = new Toolkit();
-		final Inventor i = this.repository.findInventorByUserAccountId(request.getPrincipal().getAccountId());
-		final List<Quantity> quantities = new ArrayList<>();
-		
-		res.setInventor(i);
-		res.setQuantity(quantities);
-		res.setCode("");
-		res.setDescripcion("");
-		res.setAssemblyNotes("");
-		res.setLink("");
-		res.setStatus(Status.NONE_PUBLISHED);
-		
-		return res;
+		return this.repository.findToolkitById(request.getModel().getInteger("id"));
 	}
 
 	@Override
@@ -82,7 +63,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 	}
 
 	@Override
-	public void create(final Request<Toolkit> request, final Toolkit entity) {
+	public void update(final Request<Toolkit> request, final Toolkit entity) {
 		assert request != null;
 		assert entity != null;
 		

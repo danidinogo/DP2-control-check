@@ -23,12 +23,20 @@ public class InventorToolkitController extends AbstractController<Inventor, Tool
 	@Autowired
 	protected InventorToolkitCreateService createService;
 	
+	@Autowired
+	protected InventorToolkitUpdateService updateService;
+	
+	@Autowired
+	protected InventorToolkitDeleteService deleteService;
+	
 	
 	@PostConstruct
 	protected void initialise() {
 		super.addCommand("list-mine", "list", this.listService);
 		super.addCommand("show", this.showService);
 		super.addCommand("create", this.createService);	
+		super.addCommand("update", this.updateService);
+		super.addCommand("delete", this.deleteService);
 		}
 	
 	
