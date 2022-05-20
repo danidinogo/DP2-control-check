@@ -38,7 +38,7 @@
 	</jstl:when>	
 	<jstl:when test="${command == 'create'}">
 	<acme:input-textbox code="inventor.patronage-report.form.label.seqNumber" path="seqNumber"/>
-	<acme:input-moment code="inventor.patronage-report.form.label.createdAt" path="createdAt"/>	
+	<acme:input-moment readonly="true" code="inventor.patronage-report.form.label.createdAt" path="createdAt"/>	
 	<acme:input-textarea  code="inventor.patronage-report.form.label.memorandum" path="memorandum"/>
 	<acme:input-url code="inventor.patronage-report.form.label.link" path="link"/>
 	<acme:input-checkbox code="inventor.patronage-report.form.label.confirm" path="confirm"/>
