@@ -2,6 +2,7 @@ package acme.entities.toolkit;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -59,7 +60,7 @@ public class Toolkit extends AbstractEntity {
 	protected Inventor inventor;
 	
 	@Valid
-	@OneToMany(mappedBy="toolkit", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="toolkit", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	protected List<Quantity> quantity;
 	
 	@NotNull
