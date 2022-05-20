@@ -35,8 +35,6 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-		entity.setStatus(Status.NONE_PUBLISHED);
-		entity.setInventor(this.repository.findInventorByUserAccountId(request.getPrincipal().getAccountId()));
 		
 		request.bind(entity, errors, "code", "title", "descripcion", "assemblyNotes", "link");
 		
@@ -48,7 +46,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "code", "title", "descripcion", "assemblyNotes", "link", "status", "quantity");
+		request.unbind(entity, model, "code", "title", "descripcion", "assemblyNotes", "link");
 		
 		final List<Item> items = this.repository.findManyItem();
 		model.setAttribute("items", items);
