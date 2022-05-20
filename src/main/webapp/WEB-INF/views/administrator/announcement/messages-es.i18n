@@ -1,0 +1,16 @@
+administrator.announcement.list.label.creation = Momento de creación
+administrator.announcement.list.label.title = Título 
+administrator.announcement.list.label.body = Cuerpo 
+administrator.announcement.list.label.critic = Es crítico
+administrator.announcement.list.label.link = Link
+
+
+administrator.announcement.form.label.title = Título
+administrator.announcement.form.label.body = Cuerpo
+administrator.announcement.form.label.critic = Es crítico
+administrator.announcement.form.label.link = Link
+
+administrator.announcement.form.label.confirm=Confirma
+administrator.announcement.form.button.create=Crea
+
+administrator.announcement.form.buttom.announcements = Objetos
