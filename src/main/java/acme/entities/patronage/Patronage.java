@@ -14,6 +14,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.URL;
 
+import acme.enums.PublishedStatus;
 import acme.enums.Status;
 import acme.framework.datatypes.Money;
 import acme.framework.entities.AbstractEntity;
@@ -42,6 +43,10 @@ public class Patronage extends AbstractEntity {
 	 
 	@NotNull
 	protected Money budget;
+	
+	
+	@NotNull
+	protected PublishedStatus publishedStatus;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull

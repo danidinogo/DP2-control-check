@@ -1,15 +1,20 @@
 package acme.features.patron.patronage;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import acme.entities.patronage.Patronage;
+import acme.entities.patronagereport.PatronageReport;
 import acme.framework.services.AbstractDeleteService;
 import acme.roles.Patron;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
 
+
+@Service
 public class PatronPatronageDeleteService implements AbstractDeleteService<Patron, Patronage> {
 
 	// Internal state ---------------------------------------------------------
@@ -48,7 +53,7 @@ public class PatronPatronageDeleteService implements AbstractDeleteService<Patro
 		
 		
 
-		request.bind(entity, errors, "title", "description", "workLoad", "moreInfo");
+		request.bind(entity, errors, "code", "legalStuff", "budget", "startsAt", "finishesAt","link","publishedStatus");
 	}
 
 	@Override
@@ -58,7 +63,7 @@ public class PatronPatronageDeleteService implements AbstractDeleteService<Patro
 		assert model != null;
 		
 		
-		request.unbind(entity, model, "status", "code", "legalStuff", "budget",  "startsAt", "finishesAt",  "link", "inventor.company","inventor.statement","inventor.link");
+		request.unbind(entity, model, "code", "legalStuff", "budget", "startsAt", "finishesAt","link","publishedStatus");
 		
 
 	}
@@ -74,7 +79,10 @@ public class PatronPatronageDeleteService implements AbstractDeleteService<Patro
 	public void delete(final Request<Patronage> request, final Patronage entity) {
 		assert request != null;
 		assert entity != null;
-
+		final List<PatronageReport> patronagereports = this.repository.findPatronageReportBypatronageId(entity.getId());
+		for(final PatronageReport p : patronagereports) {
+			this.repository.delete(p);
+		}
 		this.repository.delete(entity);
 	}
 
