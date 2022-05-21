@@ -9,7 +9,14 @@
     <acme:input-textbox code="authenticated.patron.patronage.form.label.status" path="status"/>	
 	<acme:input-textbox code="authenticated.patron.patronage.form.label.code" path="code"/>	
 	<acme:input-textbox code="authenticated.patron.patronage.form.label.legalStuff" path="legalStuff"/>	
-	<acme:input-money code="authenticated.patron.patronage.form.label.budget" path="budget"/>	
+	<acme:input-money code="authenticated.patron.patronage.form.label.budget" path="budget"/>
+	
+	<jstl:choose>
+		<jstl:when test="${command == 'show' }">
+			<acme:input-money code="authenticated.patron.patronage.form.label.moneyExchange" path="moneyExchange"/>
+		</jstl:when>
+	</jstl:choose>
+	
 	<acme:input-textbox code="authenticated.patron.patronage.form.label.startsAt" path="startsAt"/>
 	<acme:input-textarea code="authenticated.patron.patronage.form.label.finishesAt" path="finishesAt"/>
 	<acme:input-url code="authenticated.patron.patronage.form.label.link" path="link"/>
