@@ -21,11 +21,15 @@ public class InventorQuantityController extends AbstractController<Inventor, Qua
 	@Autowired
 	protected InventorQuantityShowService showService;
 	
+	@Autowired
+	protected InventorQuantityUpdateService updateService;
+	
 	@PostConstruct
 	protected void initialise() {
 		
 		super.addCommand("create", this.createService);
 		super.addCommand("list-by-toolkit",  "list", this.listService);
 		super.addCommand("show", this.showService);
+		super.addCommand("update", this.updateService);
 	}
 }

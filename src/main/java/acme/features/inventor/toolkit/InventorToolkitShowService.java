@@ -27,7 +27,7 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 		final List<Toolkit> toolkits = this.repository.findOwnToolkits(inventorId);
 		final Toolkit toolkit = this.repository.findToolkitById(toolkitId);
 		
-		return true;
+		return toolkits.contains(toolkit);
 	}
 	
 	@Override

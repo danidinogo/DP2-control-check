@@ -8,16 +8,17 @@
 	
 	<jstl:choose>
 	
-		<jstl:when test="${command == 'show'}">
+		<jstl:when test="${acme:anyOf(command, 'show, update')}">
 			<acme:input-integer code="inventor.quantity.form.label.number" path="number"/>
-			<acme:input-integer code="inventor.quantity.form.label.name" path="item.name"/>
-			<acme:input-integer code="inventor.quantity.form.label.code" path="item.code"/>
-			<acme:input-integer code="inventor.quantity.form.label.technology" path="item.technology"/>
-			<acme:input-integer code="inventor.quantity.form.label.description" path="item.description"/>
-			<acme:input-integer code="inventor.quantity.form.label.retailPrice" path="item.retailPrice"/>
-			<acme:input-integer code="inventor.quantity.form.label.info" path="item.info"/>
-			<acme:input-integer code="inventor.quantity.form.label.status" path="item.status"/>
-			<acme:input-integer code="inventor.quantity.form.label.type" path="item.type"/>
+			<acme:input-textbox code="inventor.quantity.form.label.name" path="item.name"/>
+			<acme:input-textbox code="inventor.quantity.form.label.code" path="item.code"/>
+			<acme:input-textbox code="inventor.quantity.form.label.technology" path="item.technology"/>
+			<acme:input-textarea code="inventor.quantity.form.label.description" path="item.description"/>
+			<acme:input-money code="inventor.quantity.form.label.retailPrice" path="item.retailPrice"/>
+			<acme:input-url code="inventor.quantity.form.label.info" path="item.info"/>
+			<acme:input-textbox code="inventor.quantity.form.label.status" path="item.status"/>
+			<acme:input-textbox code="inventor.quantity.form.label.type" path="item.type"/>
+			<acme:submit code="inventor.quantity.form.button.update" action="/inventor/quantity/update"/>
 		</jstl:when>	
 		
 		<jstl:when test="${command == 'create'}">
