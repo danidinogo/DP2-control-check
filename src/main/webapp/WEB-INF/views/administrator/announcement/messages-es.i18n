@@ -12,5 +12,4 @@ administrator.announcement.form.label.link = Link
 
 administrator.announcement.form.label.confirm=Confirma
 administrator.announcement.form.button.create=Crea
-
-administrator.announcement.form.buttom.announcements = Objetos
+administrator.announcement.accept.error= Confirma la creación por favor

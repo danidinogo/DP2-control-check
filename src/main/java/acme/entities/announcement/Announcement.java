@@ -40,9 +40,11 @@ public class Announcement extends AbstractEntity {
 	@Length(min = 1,max = 255)
 	protected String body;
 	
+	
 	protected boolean critic;
 
 	@URL
+	@NotBlank
 	protected String link;
 
 }
