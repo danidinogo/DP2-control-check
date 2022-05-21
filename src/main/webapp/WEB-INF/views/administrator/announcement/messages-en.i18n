@@ -14,3 +14,5 @@ administrator.announcement.form.label.link = Link
 administrator.announcement.form.label.confirm=Confirm
 administrator.announcement.form.button.create=Create
 administrator.announcement.accept.error= Confirm the creation to continue please
+administrator.announcement.strongspam= Strong Spam
+administrator.announcement.weakspam= Weak Spam
