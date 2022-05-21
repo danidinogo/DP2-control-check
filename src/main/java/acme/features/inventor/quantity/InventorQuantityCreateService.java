@@ -24,7 +24,7 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 	public boolean authorise(final Request<Quantity> request) {
 		assert request != null;
 		
-		final int id = request.getModel().getInteger("toolkitId");
+		final int id = request.getModel().getInteger("id");
 		final Toolkit toolkit = this.repository.findOneToolkitById(id);
 		final Inventor i = this.repository.findInventorByUserId(request.getPrincipal().getAccountId());
 		
@@ -48,8 +48,9 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 		assert entity != null;
 		assert model != null;
 		
-		final int toolkitId = request.getModel().getInteger("toolkitId");
-		model.setAttribute("toolkitId", toolkitId);
+		//final int id = request.getModel().getInteger("id");
+		//model.setAttribute("id", id);
+		
 		final List<Item> items = this.repository.findManyItem();
 		model.setAttribute("items", items);
 		
@@ -62,7 +63,7 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 		assert request != null;
 		final Quantity res = new Quantity();
 		res.setNumber(0);
-		final int id = request.getModel().getInteger("toolkitId");
+		final int id = request.getModel().getInteger("id");
 		final Toolkit toolkit = this.repository.findOneToolkitById(id);
 		res.setToolkit(toolkit);
 		return res;

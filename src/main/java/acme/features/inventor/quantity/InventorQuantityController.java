@@ -13,12 +13,19 @@ import acme.roles.Inventor;
 public class InventorQuantityController extends AbstractController<Inventor, Quantity>{
 
 	@Autowired
-	InventorQuantityCreateService createService;
+	protected InventorQuantityCreateService createService;
+	
+	@Autowired
+	protected InventorQuantityListService listService;
+	
+	@Autowired
+	protected InventorQuantityShowService showService;
 	
 	@PostConstruct
 	protected void initialise() {
 		
 		super.addCommand("create", this.createService);
-
+		super.addCommand("list-by-toolkit",  "list", this.listService);
+		super.addCommand("show", this.showService);
 	}
 }

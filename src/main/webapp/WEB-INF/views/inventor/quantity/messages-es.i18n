@@ -1,0 +1,18 @@
+inventor.quantity.list.label.number = Cantidad
+inventor.quantity.list.label.name = Nombre
+inventor.quantity.list.label.code = Código
+inventor.quantity.list.label.retailPrice = Precio
+
+inventor.quantity.form.label.number = Cantidad 
+inventor.quantity.form.label.name = Nombre
+inventor.quantity.form.label.code = Código
+inventor.quantity.form.label.technology = Tecnología
+inventor.quantity.form.label.description = Descripción
+inventor.quantity.form.label.retailPrice = Precio
+inventor.quantity.form.label.info = Url
+inventor.quantity.form.label.status = Estado
+inventor.quantity.form.label.type = Tipo
+
+inventor.quantity.form.label.item = Item
+
+inventor.toolkit.form.button.quantity = Añadir Items
