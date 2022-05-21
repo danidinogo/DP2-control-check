@@ -37,7 +37,7 @@
 	<acme:input-textbox code="inventor.patronage.list.label.patronage.identify.link" path="patronage.link"/>
 	</jstl:when>	
 	<jstl:when test="${command == 'create'}">
-	<acme:input-textbox code="inventor.patronage-report.form.label.seqNumber" path="seqNumber"/>
+	<acme:input-textbox readonly="true" code="inventor.patronage-report.form.label.seqNumber" path="seqNumber"/>
 	<acme:input-moment readonly="true" code="inventor.patronage-report.form.label.createdAt" path="createdAt"/>	
 	<acme:input-textarea  code="inventor.patronage-report.form.label.memorandum" path="memorandum"/>
 	<acme:input-url code="inventor.patronage-report.form.label.link" path="link"/>
