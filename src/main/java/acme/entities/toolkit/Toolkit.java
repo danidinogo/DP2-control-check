@@ -16,6 +16,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.entities.quantity.Quantity;
+import acme.forms.MoneyExchange;
 import acme.framework.datatypes.Money;
 import acme.framework.entities.AbstractEntity;
 import acme.roles.Inventor;
@@ -66,16 +67,21 @@ public class Toolkit extends AbstractEntity {
 	protected Status status;
 	
 	
-	public Money getRetailPrice() {
-		final List<Quantity> cantidad = this.quantity;
-		Double aux = 0.0;
+	public Money getRetailPrice(final String targetCurrency) {
+		
 		final Money res = new Money();
-		final String curr = cantidad.get(0).getItem().getRetailPrice().getCurrency();
+		
+		final List<Quantity> cantidad = this.quantity;
+		
+		Double aux = 0.0;
 		for(final Quantity c: cantidad ) {
-			aux = aux + (c.getNumber()*c.getItem().getRetailPrice().getAmount());
+			final MoneyExchange me = new MoneyExchange(c.getItem().getRetailPrice(), targetCurrency);
+			
+			aux = aux + (c.getNumber()*me.getExchange().getAmount());
 		}
 		res.setAmount(aux);
-		res.setCurrency(curr);
+		res.setCurrency(targetCurrency);
+		
 		return res;
 	}
 	

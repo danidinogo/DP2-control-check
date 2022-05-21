@@ -10,9 +10,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.boot.json.JsonParser;
-import org.springframework.boot.json.JsonParserFactory;
-
 import acme.framework.datatypes.Money;
 
 public class MoneyExchange {
@@ -24,7 +21,7 @@ public class MoneyExchange {
 	@NotBlank
 	public String targetCurrency;
 	
-	private final String apiUrl = "https://v6.exchangerate-api.com/v6/9a03b319bdec3db5ab97a9bb/pair";
+	private final String apiUrl = "https://v6.exchangerate-api.com/v6/9a03b319bdec3db5ab97a9bb/pair/";
 
 	public MoneyExchange(final Money source, final String target) {
 		this.source = source;
@@ -35,10 +32,10 @@ public class MoneyExchange {
 		return this.apiUrl + "/" + this.source.getCurrency() + "/" + this.targetCurrency + "/" + this.source.getAmount();
 	}
 	
-	public String getExchange() {
+	public Money getExchange() {
 		final String url_str = this.currencyPairUrl();
 		
-		Double conversion = 0.0;
+		final Money conversion = new Money();
 
 		try {
 			// Making Request
@@ -47,8 +44,6 @@ public class MoneyExchange {
 			request.setRequestMethod("GET");
 			
 			request.connect();
-			
-			final JsonParser springParser = JsonParserFactory.getJsonParser();
 			
 			final BufferedReader in = new BufferedReader(new InputStreamReader(request.getInputStream()));
 			String inputLine;
@@ -68,14 +63,15 @@ public class MoneyExchange {
 			
 			final String[] conv = values[values.length - 1].split(":");
 			
-			conversion = Double.parseDouble(conv[conv.length - 1]);
+			conversion.setAmount(Double.parseDouble(conv[conv.length - 1]));
+			conversion.setCurrency(this.targetCurrency);
 			
 		} catch (final IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return this.targetCurrency + " " + conversion.toString();
+		return conversion;
 	}
 	
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.toolkit.Toolkit;
+import acme.features.administrator.configurations.AdministratorConfigurationRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractShowService;
@@ -16,6 +17,9 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 	
 	@Autowired
 	protected InventorToolkitRepository repository;
+	
+	@Autowired
+	protected AdministratorConfigurationRepository configRepository;
 	
 	@Override
 	public boolean authorise(final Request<Toolkit> request) {
@@ -49,7 +53,10 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 		
 		final int id = request.getModel().getInteger("id");
 		
-		request.unbind(entity, model, "code", "title", "descripcion", "assemblyNotes", "link", "retailPrice");
+		final String defaultCurrency = this.configRepository.getDefaultCurrency();
+		model.setAttribute("retailPrice", entity.getRetailPrice(defaultCurrency));
+		
+		request.unbind(entity, model, "code", "title", "descripcion", "assemblyNotes", "link");
 		
 		
 		

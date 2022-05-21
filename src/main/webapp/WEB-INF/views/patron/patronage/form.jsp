@@ -13,7 +13,7 @@
 	
 	<jstl:choose>
 		<jstl:when test="${command == 'show' }">
-			<acme:input-money code="authenticated.patron.patronage.form.label.moneyExchange" path="moneyExchange"/>
+			<acme:input-money code="patron.label.moneyExchange" path="moneyExchange"/>
 		</jstl:when>
 	</jstl:choose>
 	

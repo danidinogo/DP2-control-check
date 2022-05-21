@@ -10,3 +10,5 @@ inventor.toolkit.form.label.retailPrice = Precio
 inventor.toolkit.form.label.link = Link
 
 inventor.toolkit.form.buttom.items = Objetos
+
+inventor.label.moneyExchange = Precio en la divisa del sistema

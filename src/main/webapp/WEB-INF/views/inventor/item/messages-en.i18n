@@ -11,5 +11,6 @@ inventor.item.form.label.price = Retail Price
 inventor.item.form.label.info = Info
 inventor.item.form.label.type = Type
 
+inventor.label.moneyExchange = System's Currency
 
 
