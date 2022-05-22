@@ -17,6 +17,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.entities.quantity.Quantity;
+import acme.forms.MoneyExchange;
 import acme.framework.datatypes.Money;
 import acme.framework.entities.AbstractEntity;
 import acme.roles.Inventor;
@@ -36,7 +37,7 @@ public class Toolkit extends AbstractEntity {
 	
 	@NotBlank
 	@Column(unique=true)
-	@Pattern(regexp="(\\w{3})-(\\d{3})")
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
 	protected String code;
 	
 	@NotBlank
@@ -67,16 +68,26 @@ public class Toolkit extends AbstractEntity {
 	protected Status status;
 	
 	
-	public Money getRetailPrice() {
-		final List<Quantity> cantidad = this.quantity;
-		Double aux = 0.0;
+	public Money getRetailPrice(final String targetCurrency) {
+		
 		final Money res = new Money();
-		final String curr = cantidad.get(0).getItem().getRetailPrice().getCurrency();
-		for(final Quantity c: cantidad ) {
-			aux = aux + (c.getNumber()*c.getItem().getRetailPrice().getAmount());
+		
+		final List<Quantity> cantidad = this.quantity;
+		
+		if(!cantidad.isEmpty()) {
+			Double aux = 0.0;
+			for(final Quantity c: cantidad ) {
+				final MoneyExchange me = new MoneyExchange(c.getItem().getRetailPrice(), targetCurrency);
+				
+				aux = aux + (c.getNumber()*me.getExchange().getAmount());
+			}
+			res.setAmount(aux);
+			res.setCurrency(targetCurrency);
+		} else {
+			res.setAmount(0.0);
+			res.setCurrency("EUR");
 		}
-		res.setAmount(aux);
-		res.setCurrency(curr);
+		
 		return res;
 	}
 	

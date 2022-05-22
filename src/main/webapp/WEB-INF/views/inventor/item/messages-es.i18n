@@ -11,6 +11,7 @@ inventor.item.form.label.price = Precio
 inventor.item.form.label.info = Información
 inventor.item.form.label.status = Status
 inventor.item.form.label.type = Tipo
+
 inventor.item.form.label.component = Componente
 inventor.item.form.label.tool = Herramienta
 
@@ -25,3 +26,7 @@ inventor.item.form.label.nonpublished = No publicado
 
 inventor.item.strongspam = Spam Fuerte
 inventor.item.weakspam =  Spam Débil 
+inventor.label.moneyExchange = Divisa del sistema
+
+
+

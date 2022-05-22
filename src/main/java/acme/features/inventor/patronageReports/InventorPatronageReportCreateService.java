@@ -1,5 +1,7 @@
 package acme.features.inventor.patronageReports;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +43,7 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		int patronageId;
 		Patronage patronage;
 		Date date;
-		String numSeqPatronageReports;		
+		final String numSeqPatronageReports;		
 		int patronageReportId;
 		
 		patronageId = request.getModel().getInteger("id");
@@ -49,14 +51,21 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		date = new Date();
 		patronageReportId = request.getModel().getInteger("id");
 		
-		numSeqPatronageReports = Integer.toString(this.repository.findPatronageReportById2(patronageReportId).size()+1);
-		
 		result = new PatronageReport();
 		result.setPatronage(patronage);
 		result.setCreatedAt(date);
-		result.setSeqNumber("abc-00"+ numSeqPatronageReports);
+		result.setSeqNumber(this.generateCode(patronage.getCode()));
 
 		return result;
+	}
+	
+	private String generateCode(final String patronageCode) {
+		final List<String> code = new ArrayList<String>();
+		
+		code.add(patronageCode);
+		code.add(String.format("%04d" , this.repository.findPatronageReports().size()+1));
+		
+		return String.join("-", code);
 	}
 	
 	@Override
@@ -94,6 +103,9 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 	public void create(final Request<PatronageReport> request, final PatronageReport entity) {
 		assert request != null;
 		assert entity != null;
+		
+		entity.setCreatedAt(new Date());
+		entity.setSeqNumber(this.generateCode(entity.getPatronage().getCode()));
 
 		this.repository.save(entity);
 		

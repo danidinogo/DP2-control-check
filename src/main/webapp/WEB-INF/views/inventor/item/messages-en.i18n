@@ -14,11 +14,15 @@ inventor.item.form.label.type = Type
 inventor.item.form.label.component = Component
 inventor.item.form.label.tool = Tool
 
+
 inventor.item.list.button.create = Create
 inventor.item.form.button.create = Create 
 inventor.item.form.button.delete = Delete
 inventor.item.form.button.update = Update
 inventor.item.form.button.publish = Publish
+inventor.label.moneyExchange = System's Currency
+
+
 
 inventor.item.form.label.published = Published
 inventor.item.form.label.nonpublished = Non Published

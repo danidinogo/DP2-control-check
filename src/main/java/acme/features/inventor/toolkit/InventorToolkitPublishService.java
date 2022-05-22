@@ -1,20 +1,18 @@
 package acme.features.inventor.toolkit;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.quantity.Quantity;
+import acme.entities.toolkit.Status;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
-import acme.framework.services.AbstractDeleteService;
+import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorToolkitDeleteService implements AbstractDeleteService<Inventor, Toolkit>{
+public class InventorToolkitPublishService implements AbstractUpdateService<Inventor, Toolkit>{
 
 	@Autowired
 	protected InventorToolkitRepository repository;
@@ -32,11 +30,11 @@ public class InventorToolkitDeleteService implements AbstractDeleteService<Inven
 
 	@Override
 	public void bind(final Request<Toolkit> request, final Toolkit entity, final Errors errors) {
-		assert request != null;
+		assert request != null; 
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity, errors, "code", "title", "descripcion", "assemblyNotes", "status", "link");
+		request.bind(entity, errors, "code", "title", "descripcion", "assemblyNotes", "link");
 		
 	}
 
@@ -46,7 +44,7 @@ public class InventorToolkitDeleteService implements AbstractDeleteService<Inven
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "code", "title", "descripcion", "assemblyNotes", "status", "link");
+		request.unbind(entity, model, "code", "title", "descripcion", "assemblyNotes", "link", "status");
 		
 	}
 
@@ -65,16 +63,15 @@ public class InventorToolkitDeleteService implements AbstractDeleteService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-		
 	}
 
 	@Override
-	public void delete(final Request<Toolkit> request, final Toolkit entity) {
-		final List<Quantity> quantities = entity.getQuantity();
-		for(final Quantity q: quantities) {
-			this.repository.delete(q);
-		}
-		this.repository.delete(entity);
+	public void update(final Request<Toolkit> request, final Toolkit entity) {
+		assert request != null;
+		assert entity != null;
+		
+		entity.setStatus(Status.PUBLISHED);
+		this.repository.save(entity);
 		
 	}
 
