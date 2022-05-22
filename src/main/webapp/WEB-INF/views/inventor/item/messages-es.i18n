@@ -9,4 +9,19 @@ inventor.item.form.label.technology = Tecnología
 inventor.item.form.label.description = Descripción
 inventor.item.form.label.price = Precio
 inventor.item.form.label.info = Información
+inventor.item.form.label.status = Status
 inventor.item.form.label.type = Tipo
+inventor.item.form.label.component = Componente
+inventor.item.form.label.tool = Herramienta
+
+inventor.item.list.button.create = Crear
+inventor.item.form.button.create = Crear
+inventor.item.form.button.delete = Borrar
+inventor.item.form.button.update = Actualizar
+inventor.item.form.button.publish = Publicar
+
+inventor.item.form.label.published = Publicado
+inventor.item.form.label.nonpublished = No publicado
+
+inventor.item.strongspam = Spam Fuerte
+inventor.item.weakspam =  Spam Débil 
