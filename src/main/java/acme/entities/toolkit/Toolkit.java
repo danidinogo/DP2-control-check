@@ -2,6 +2,7 @@ package acme.entities.toolkit;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -60,7 +61,7 @@ public class Toolkit extends AbstractEntity {
 	protected Inventor inventor;
 	
 	@Valid
-	@OneToMany(mappedBy="toolkit", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="toolkit", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	protected List<Quantity> quantity;
 	
 	@NotNull
@@ -73,14 +74,19 @@ public class Toolkit extends AbstractEntity {
 		
 		final List<Quantity> cantidad = this.quantity;
 		
-		Double aux = 0.0;
-		for(final Quantity c: cantidad ) {
-			final MoneyExchange me = new MoneyExchange(c.getItem().getRetailPrice(), targetCurrency);
-			
-			aux = aux + (c.getNumber()*me.getExchange().getAmount());
+		if(!cantidad.isEmpty()) {
+			Double aux = 0.0;
+			for(final Quantity c: cantidad ) {
+				final MoneyExchange me = new MoneyExchange(c.getItem().getRetailPrice(), targetCurrency);
+				
+				aux = aux + (c.getNumber()*me.getExchange().getAmount());
+			}
+			res.setAmount(aux);
+			res.setCurrency(targetCurrency);
+		} else {
+			res.setAmount(0.0);
+			res.setCurrency("EUR");
 		}
-		res.setAmount(aux);
-		res.setCurrency(targetCurrency);
 		
 		return res;
 	}

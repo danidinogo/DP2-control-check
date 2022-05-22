@@ -29,11 +29,7 @@ public class InventorToolkitListOwnService implements AbstractListService<Invent
 	public boolean authorise(final Request<Toolkit> request) {
 		assert request != null;
 		
-		final int id = request.getPrincipal().getActiveRoleId();
-		final List<Toolkit> toolkits = this.repository.findOwnToolkits(id);
-		
-		
-		return toolkits.get(0).getInventor().getId()==id;
+		return true;
 	}
 	
 	@Override

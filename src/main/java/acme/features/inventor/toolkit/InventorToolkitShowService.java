@@ -55,10 +55,8 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 		
 		final String defaultCurrency = this.configRepository.getDefaultCurrency();
 		model.setAttribute("retailPrice", entity.getRetailPrice(defaultCurrency));
-		
-		request.unbind(entity, model, "code", "title", "descripcion", "assemblyNotes", "link");
-		
-		
+		model.setAttribute("id", id);
+		request.unbind(entity, model, "code", "title", "descripcion", "assemblyNotes", "link", "retailPrice", "status");
 		
 	}
 
