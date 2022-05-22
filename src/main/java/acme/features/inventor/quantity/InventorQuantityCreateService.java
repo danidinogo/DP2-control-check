@@ -1,11 +1,14 @@
 package acme.features.inventor.quantity;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Item;
+import acme.entities.item.ItemType;
 import acme.entities.quantity.Quantity;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
@@ -74,6 +77,17 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
+		final Item i = entity.getItem();
+		errors.state(request, !(i.getType()==ItemType.TOOL && entity.getNumber()>1), "number", "inventor.quantity.number.tool");
+		errors.state(request, !(entity.getToolkit().getStatus().toString().equals("PUBLISHED")), "number", "inventor.quantity.toolkit.noPublished");
+		
+		final Collection<Quantity> items = this.repository.findQuantityByToolkitId(entity.getToolkit().getId());
+		final List<Item> aux = new ArrayList<>();
+		for(final Quantity q : items) {
+			aux.add(q.getItem());
+		} 
+		errors.state(request, !aux.contains(entity.getItem()), "number", "inventor.quantity.item.exist");
 		
 	}
 

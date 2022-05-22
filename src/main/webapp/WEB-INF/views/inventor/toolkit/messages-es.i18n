@@ -16,3 +16,14 @@ inventor.toolkit.form.button.create = Crear
 inventor.toolkit.form.button.update = Actualizar
 inventor.toolkit.form.button.delete = Eliminar
 inventor.toolkit.form.button.publish = Publicar
+
+inventor.toolkit.code.strongSpam = Contiene spam fuerte
+inventor.toolkit.title.strongSpam = Contiene spam fuerte
+inventor.toolkit.description.strongSpam = Contiene spam fuerte
+inventor.toolkit.assemblyNotes.strongSpam = Contiene spam fuerte
+inventor.toolkit.link.strongSpam = Contiene spam fuerte
+inventor.toolkit.code.weakSpam = Contiene spam débil
+inventor.toolkit.title.weakSpam = Contiene spam débil
+inventor.toolkit.description.weakSpam = Contiene spam débil
+inventor.toolkit.assemblyNotes.weakSpam = Contiene spam débil
+inventor.toolkit.link.weakSpam = Contiene spam débil

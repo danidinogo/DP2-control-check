@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.quantity.Quantity;
+import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractListService;
@@ -21,7 +22,11 @@ public class InventorQuantityListService implements AbstractListService<Inventor
 	public boolean authorise(final Request<Quantity> request) {
 		assert request != null;
 		
-		return true;
+		final Toolkit t = this.repository.findOneToolkitById(request.getModel().getInteger("id"));
+		final Inventor i = this.repository.findInventorByUserId(request.getPrincipal().getAccountId());
+		
+		
+		return t.getInventor().getId()==i.getId();
 	}
 
 	@Override
@@ -39,7 +44,10 @@ public class InventorQuantityListService implements AbstractListService<Inventor
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "number", "item.name", "item.code", "item.retailPrice");
+		final Toolkit t = this.repository.findOneToolkitById(request.getModel().getInteger("id"));
+		model.setAttribute("tStatus", t.getStatus());
+		
+		request.unbind(entity, model, "number", "item.name", "item.code", "item.retailPrice", "item.status");
 		
 		
 		

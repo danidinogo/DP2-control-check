@@ -4,8 +4,8 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:form> 
-	
-	
+
+		
 	<jstl:choose>
 	
 		<jstl:when test="${acme:anyOf(command, 'show, update')}">

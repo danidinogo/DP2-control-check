@@ -1,15 +1,18 @@
 package acme.features.inventor.toolkit;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.configuration.Configuration;
 import acme.entities.item.Item;
 import acme.entities.quantity.Quantity;
 import acme.entities.toolkit.Status;
 import acme.entities.toolkit.Toolkit;
+import acme.features.administrator.configurations.AdministratorConfigurationRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -21,6 +24,9 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 
 	@Autowired
 	protected InventorToolkitRepository repository;
+	
+	@Autowired
+	protected AdministratorConfigurationRepository confRepository;
 	
 	@Override
 	public boolean authorise(final Request<Toolkit> request) {
@@ -78,6 +84,22 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
+		final Collection<Configuration> config = this.confRepository.findConfigurations();
+		
+		for(final Configuration c : config) {
+			errors.state(request, !c.isSpamStrong(entity.getCode()), "code", "inventor.toolkit.code.strongSpam");
+			errors.state(request, !c.isSpamStrong(entity.getTitle()), "title", "inventor.toolkit.title.strongSpam");
+			errors.state(request, !c.isSpamStrong(entity.getDescripcion()), "descripcion", "inventor.toolkit.description.strongSpam");
+			errors.state(request, !c.isSpamStrong(entity.getAssemblyNotes()), "assemblyNotes", "inventor.toolkit.assemblyNotes.strongSpam");
+			errors.state(request, !c.isSpamStrong(entity.getLink()), "link", "inventor.toolkit.link.strongSpam");
+			
+			errors.state(request, !c.isSpamWeak(entity.getCode()), "code", "inventor.toolkit.code.strongSpam");
+			errors.state(request, !c.isSpamWeak(entity.getTitle()), "title", "inventor.toolkit.title.strongSpam");
+			errors.state(request, !c.isSpamWeak(entity.getDescripcion()), "descripcion", "inventor.toolkit.description.strongSpam");
+			errors.state(request, !c.isSpamWeak(entity.getAssemblyNotes()), "assemblyNotes", "inventor.toolkit.assemblyNotes.strongSpam");
+			errors.state(request, !c.isSpamWeak(entity.getLink()), "link", "inventor.toolkit.link.strongSpam");
+		}
 		
 	}
 

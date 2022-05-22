@@ -19,7 +19,10 @@ public class InventorQuantityShowService implements AbstractShowService<Inventor
 	public boolean authorise(final Request<Quantity> request) {
 		assert request != null;
 		
-		return true;
+		final Quantity q = this.repository.findOneQuantityById(request.getModel().getInteger("id"));
+		final Inventor i = this.repository.findInventorByUserId(request.getPrincipal().getAccountId());
+		
+		return q.getToolkit().getInventor().getId() == i.getId();
 	}
 
 	@Override
