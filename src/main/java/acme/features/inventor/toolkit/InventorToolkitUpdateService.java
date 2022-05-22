@@ -70,6 +70,8 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 		
 		final Collection<Configuration> config = this.confRepository.findConfigurations();
 		
+		errors.state(request, this.repository.findToolkitByCode(entity.getCode()) == null, "code", "inventor.toolkit.title.codeNotUnique");
+		
 		for(final Configuration c : config) {
 			errors.state(request, !c.isSpamStrong(entity.getCode()), "code", "inventor.toolkit.code.strongSpam");
 			errors.state(request, !c.isSpamStrong(entity.getTitle()), "title", "inventor.toolkit.title.strongSpam");

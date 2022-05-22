@@ -2,7 +2,6 @@ package acme.features.patron.patronage;
 
 import java.util.Date;
 
-import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,14 +26,14 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 	
 	
 	@Override
-	public boolean authorise(Request<Patronage> request) {
+	public boolean authorise(final Request<Patronage> request) {
 		assert request != null;
 
 		return true;
 	}
 
 	@Override
-	public void bind(Request<Patronage> request, Patronage entity, Errors errors) {
+	public void bind(final Request<Patronage> request, final Patronage entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -45,7 +44,7 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 	}
 
 	@Override
-	public void unbind(Request<Patronage> request, Patronage entity, Model model) {
+	public void unbind(final Request<Patronage> request, final Patronage entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
@@ -56,19 +55,19 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 	}
 
 	@Override
-	public Patronage instantiate(Request<Patronage> request) {
+	public Patronage instantiate(final Request<Patronage> request) {
 		assert request != null;
 
 		final Patronage result;
 		Date startTime;
 		Date finishedTime;
-		Inventor inventor = new Inventor();
+		final Inventor inventor = new Inventor();
 		
-		int id = request.getPrincipal().getActiveRoleId();
+		final int id = request.getPrincipal().getActiveRoleId();
 		startTime = new Date(System.currentTimeMillis());
 		finishedTime= new Date(System.currentTimeMillis());
 		
-		Money money = new Money();
+		final Money money = new Money();
 		money.setAmount(0.0);
 		money.setCurrency("EUR");
 		
@@ -90,13 +89,14 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 	}
 
 	@Override
-	public void validate(Request<Patronage> request, Patronage entity, Errors errors) {
+	public void validate(final Request<Patronage> request, final Patronage entity, final Errors errors) {
 		// TODO Auto-generated method stub
 		
+		errors.state(request, this.repository.findToolkitByCode(entity.getCode()) == null, "code", "inventor.toolkit.title.codeNotUnique");
 	}
 
 	@Override
-	public void create(Request<Patronage> request, Patronage entity) {
+	public void create(final Request<Patronage> request, final Patronage entity) {
 		assert request != null;
 		assert entity != null;
 		
