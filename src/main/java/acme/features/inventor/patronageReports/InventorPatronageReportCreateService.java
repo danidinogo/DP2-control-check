@@ -22,7 +22,15 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 	public boolean authorise(final Request<PatronageReport> request) {
 		assert request != null;
 
-		return true;
+		boolean result;
+		int patronageId;
+		Patronage patronage;
+
+		patronageId = request.getModel().getInteger("id");
+		patronage = this.repository.findPatronageById(patronageId);
+		result = request.getPrincipal().getActiveRoleId() == patronage.getInventor().getId();
+
+		return result;
 	}
 
 	@Override
