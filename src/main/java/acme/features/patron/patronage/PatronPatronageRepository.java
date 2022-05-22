@@ -2,17 +2,16 @@ package acme.features.patron.patronage;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.patronage.Patronage;
+import acme.entities.patronagereport.PatronageReport;
+import acme.entities.toolkit.Toolkit;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Inventor;
 import acme.roles.Patron;
-
-import acme.entities.patronagereport.PatronageReport;
 @Repository
 public interface PatronPatronageRepository extends AbstractRepository {
 
@@ -20,7 +19,6 @@ public interface PatronPatronageRepository extends AbstractRepository {
 	@Query("select p from Patronage p where p.id = :id")
 	Patronage findPatronageById(int id);
 
-	
 	@Query("select p from Patronage p where p.patron.id = :patronId")
 	Collection<Patronage> findAllPatronagesByPatronId(int patronId);
 	
@@ -35,4 +33,7 @@ public interface PatronPatronageRepository extends AbstractRepository {
 	
 	@Query("select i from Inventor i")
     Collection<Inventor> findInventors();
+	
+	@Query("select t from Toolkit t WHERE t.code = :code")
+	Toolkit findToolkitByCode(String code);
 }

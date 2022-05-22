@@ -10,7 +10,6 @@
 <acme:form>
 	<jstl:choose>
 	
-			
 		<jstl:when test="${command == 'show'}">
 			<acme:input-textbox readonly="true" code="authenticated.patron.patronage.form.label.status" path="status"/>
 			<acme:input-textbox readonly="true" code="authenticated.patron.patronage.form.label.code" path="code"/>	

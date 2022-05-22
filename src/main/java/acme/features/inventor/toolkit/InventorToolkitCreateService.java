@@ -1,8 +1,10 @@
 package acme.features.inventor.toolkit;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -70,13 +72,30 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		
 		res.setInventor(i);
 		res.setQuantity(quantities);
-		res.setCode("");
+		res.setCode(this.generateCode());
 		res.setDescripcion("");
 		res.setAssemblyNotes("");
 		res.setLink("");
 		res.setStatus(Status.NON_PUBLISHED);
 		
 		return res;
+	}
+	
+	private String generateCode() {
+		String code = "";
+		final List<String> alphabet = Arrays.asList("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+		
+		for(int i=0; i<3; i++) {
+			code += alphabet.get(ThreadLocalRandom.current().nextInt(0, alphabet.size()));
+		}
+		code += "-";
+		for(int i=0; i<3; i++) {
+			code += Integer.toString(ThreadLocalRandom.current().nextInt(0, 9));
+		}
+		code += "-";
+		code += alphabet.get(ThreadLocalRandom.current().nextInt(0, alphabet.size()));
+		
+		return code;
 	}
 
 	@Override
@@ -86,6 +105,8 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert errors != null;
 		
 		final Collection<Configuration> config = this.confRepository.findConfigurations();
+		
+		errors.state(request, this.repository.findToolkitByCode(entity.getCode()) == null, "code", "inventor.toolkit.title.codeNotUnique");
 		
 		for(final Configuration c : config) {
 			errors.state(request, !c.isSpamStrong(entity.getCode()), "code", "inventor.toolkit.code.strongSpam");
