@@ -14,6 +14,13 @@
 			<acme:input-textbox code="inventor.quantity.form.label.technology" path="item.technology"/>
 			<acme:input-textarea code="inventor.quantity.form.label.description" path="item.description"/>
 			<acme:input-money code="inventor.quantity.form.label.retailPrice" path="item.retailPrice"/>
+			
+			<jstl:choose>
+				<jstl:when test="${command == 'show' }">
+					<acme:input-money code="inventor.label.moneyExchange" path="moneyExchange"/>
+				</jstl:when>
+			</jstl:choose>
+			
 			<acme:input-url code="inventor.quantity.form.label.info" path="item.info"/>
 			<acme:input-textbox code="inventor.quantity.form.label.status" path="item.status" readonly="true" />
 			<acme:input-textbox code="inventor.quantity.form.label.type" path="item.type"/>
