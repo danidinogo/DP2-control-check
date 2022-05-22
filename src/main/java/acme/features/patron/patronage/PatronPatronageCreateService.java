@@ -1,6 +1,9 @@
 package acme.features.patron.patronage;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,7 +76,7 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		
 		result = new Patronage();
 		result.setStatus(Status.proposed);
-		result.setCode("");
+		result.setCode(this.generateCode());
 		result.setLegalStuff("");
 		result.setStartsAt(startTime);
 		result.setFinishesAt(finishedTime);
@@ -87,10 +90,29 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 
 		return result;
 	}
+	
+	private String generateCode() {
+		String code = "";
+		final List<String> alphabet = Arrays.asList("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+		
+		for(int i=0; i<3; i++) {
+			code += alphabet.get(ThreadLocalRandom.current().nextInt(0, alphabet.size()));
+		}
+		code += "-";
+		for(int i=0; i<3; i++) {
+			code += Integer.toString(ThreadLocalRandom.current().nextInt(0, 9));
+		}
+		code += "-";
+		code += alphabet.get(ThreadLocalRandom.current().nextInt(0, alphabet.size()));
+		
+		return code;
+	}
 
 	@Override
 	public void validate(final Request<Patronage> request, final Patronage entity, final Errors errors) {
-		// TODO Auto-generated method stub
+		assert request != null;
+		assert entity != null;
+		assert errors != null;
 		
 		errors.state(request, this.repository.findToolkitByCode(entity.getCode()) == null, "code", "inventor.toolkit.title.codeNotUnique");
 	}
