@@ -74,7 +74,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		res.setDescripcion("");
 		res.setAssemblyNotes("");
 		res.setLink("");
-		res.setStatus(Status.NONE_PUBLISHED);
+		res.setStatus(Status.NON_PUBLISHED);
 		
 		return res;
 	}

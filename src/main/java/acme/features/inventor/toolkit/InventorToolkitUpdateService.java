@@ -32,7 +32,7 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 		final Inventor i = this.repository.findInventorByUserAccountId(request.getPrincipal().getAccountId());
 		final Toolkit t = this.repository.findToolkitById(id);
 		
-		return t.getInventor().getId()==i.getId() && t.getStatus()==Status.NONE_PUBLISHED;
+		return t.getInventor().getId()==i.getId() && t.getStatus()==Status.NON_PUBLISHED;
 	}
 
 	@Override

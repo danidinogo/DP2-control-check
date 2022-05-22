@@ -22,7 +22,7 @@
 			<acme:button code="inventor.toolkit.form.buttom.items" action="/inventor/quantity/list-by-toolkit?id=${id}"/>
 		</jstl:when>
 		
-		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') && status == 'NONE_PUBLISHED'}">
+		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') && status == 'NON_PUBLISHED'}">
 			<acme:input-money code="inventor.toolkit.form.label.retailPrice" path="retailPrice" readonly="true"/>
 			<acme:input-textbox code="inventor.toolkit.form.label.status" path="status" readonly="true"/>	
 			<acme:button code="inventor.toolkit.form.buttom.items" action="/inventor/quantity/list-by-toolkit?id=${id}"/>

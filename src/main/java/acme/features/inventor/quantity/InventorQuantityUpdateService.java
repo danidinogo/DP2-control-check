@@ -41,7 +41,7 @@ public class InventorQuantityUpdateService implements AbstractUpdateService<Inve
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity, errors, "number", "item.name", "item.code", "item.technology", "item.description", "item.retailPrice", "item.info", "item.status", "item.type");
+		request.bind(entity, errors, "number", "item.name", "item.code", "item.technology", "item.description", "item.retailPrice", "item.info", "item.type");
 		
 	}
 
@@ -53,6 +53,7 @@ public class InventorQuantityUpdateService implements AbstractUpdateService<Inve
 		
 		request.unbind(entity, model, "number", "item.name", "item.code", "item.technology", "item.description", "item.retailPrice", "item.info", "item.status", "item.type");
 		
+		model.setAttribute("item", entity.getItem());
 	}
 
 	@Override
