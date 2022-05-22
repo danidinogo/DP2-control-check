@@ -17,8 +17,13 @@ public class AnyChirpController extends AbstractController<Any, Chirp>{
 	
 	//Me pide solo listar(list) por lo que no será necesario mostrar(show) nada.
 	
+	@Autowired
+	protected AnyChirpCreateService createService;
+	
 	@PostConstruct
 	protected void initialise() {
 		super.addCommand("list", this.listService);
+		super.addCommand("create", this.createService);
+
 	}
 }

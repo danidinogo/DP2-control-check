@@ -31,7 +31,7 @@ public class InventorToolkitController extends AbstractController<Inventor, Tool
 	
 	@Autowired
 	protected InventorToolkitPublishService publishService;
-	
+
 	@PostConstruct
 	protected void initialise() {
 		super.addCommand("list-mine", "list", this.listService);
@@ -41,7 +41,5 @@ public class InventorToolkitController extends AbstractController<Inventor, Tool
 		super.addCommand("delete", this.deleteService);
 		super.addCommand("publish",  "update", this.publishService);
 		}
-	
-	
 
 }

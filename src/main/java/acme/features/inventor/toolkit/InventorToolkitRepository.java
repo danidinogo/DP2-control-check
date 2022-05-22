@@ -28,7 +28,5 @@ public interface InventorToolkitRepository extends AbstractRepository {
 	
 	@Query("select i from Item i")
 	List<Item> findManyItem();
-	
-	
 
 }

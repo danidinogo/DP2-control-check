@@ -14,3 +14,4 @@
 	<acme:list-column code="authenticated.patron.patronage.list.label.startsAt" path="startsAt" width="10%"/>
 	<acme:list-column code="authenticated.patron.patronage.list.label.finishesAt" path="finishesAt" width="10%"/>
 </acme:list>
+<acme:button code="authenticated.patron.patronage.form.button.create" action="/patron/patronage/create"/>

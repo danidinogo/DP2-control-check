@@ -56,7 +56,7 @@ public class PatronPatronageShowService implements AbstractShowService<Patron, P
 		final MoneyExchange me = new MoneyExchange(entity.getBudget(), defaultCurrency);
 		model.setAttribute("moneyExchange", me.getExchange());
 		
-		request.unbind(entity, model, "status", "code", "legalStuff", "budget",  "startsAt", "finishesAt",  "link", "inventor.company","inventor.statement","inventor.link");
+		request.unbind(entity, model, "status", "code", "legalStuff", "budget",  "startsAt", "finishesAt",  "link","publishedStatus", "inventor.company","inventor.statement","inventor.link");
 		
 	}
 
