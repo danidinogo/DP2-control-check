@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.patronage.Patronage;
+import acme.features.administrator.configurations.AdministratorConfigurationRepository;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractListService;
@@ -16,6 +18,9 @@ public class InventorPatronageListService implements AbstractListService<Invento
 	
 	@Autowired
 	protected InventorPatronageRepository repository;
+	
+	@Autowired
+	protected AdministratorConfigurationRepository configRepository;
 	
 	@Override
 	public boolean authorise(final Request<Patronage> request) {
@@ -42,6 +47,10 @@ public class InventorPatronageListService implements AbstractListService<Invento
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		
+		final String defaultCurrency = this.configRepository.getDefaultCurrency();
+		final MoneyExchange me = new MoneyExchange(entity.getBudget(), defaultCurrency);
+		model.setAttribute("moneyExchange", me.getExchange());
 		
 		request.unbind(entity, model, "status", "code", "budget");
 	}

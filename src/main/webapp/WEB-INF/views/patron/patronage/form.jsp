@@ -8,9 +8,6 @@
 <%@ page import="acme.enums.PublishedStatus" %>
 
 <acme:form>
-   
-	
-	
 	<jstl:choose>
 	
 			
@@ -18,7 +15,14 @@
 			<acme:input-textbox readonly="true" code="authenticated.patron.patronage.form.label.status" path="status"/>
 			<acme:input-textbox readonly="true" code="authenticated.patron.patronage.form.label.code" path="code"/>	
 			<acme:input-textbox readonly="true" code="authenticated.patron.patronage.form.label.legalStuff" path="legalStuff"/>	
-			<acme:input-money readonly="true" code="authenticated.patron.patronage.form.label.budget" path="budget"/>	
+			<acme:input-money readonly="true" code="authenticated.patron.patronage.form.label.budget" path="budget"/>
+
+			<jstl:choose>
+				<jstl:when test="${command == 'show' }">
+					<acme:input-money code="patron.label.moneyExchange" path="moneyExchange"/>
+				</jstl:when>
+			</jstl:choose>
+
 			<acme:input-textbox readonly="true" code="authenticated.patron.patronage.form.label.startsAt" path="startsAt"/>
 			<acme:input-textbox readonly="true" code="authenticated.patron.patronage.form.label.finishesAt" path="finishesAt"/>
 			<acme:input-url readonly="true" code="authenticated.patron.patronage.form.label.link" path="link"/>	

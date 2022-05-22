@@ -10,3 +10,5 @@ inventor.item.form.label.description = Descripción
 inventor.item.form.label.price = Precio
 inventor.item.form.label.info = Información
 inventor.item.form.label.type = Tipo
+
+inventor.label.moneyExchange = Divisa del sistema

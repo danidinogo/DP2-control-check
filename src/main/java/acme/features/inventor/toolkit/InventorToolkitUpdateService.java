@@ -1,9 +1,14 @@
 package acme.features.inventor.toolkit;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.configuration.Configuration;
+import acme.entities.toolkit.Status;
 import acme.entities.toolkit.Toolkit;
+import acme.features.administrator.configurations.AdministratorConfigurationRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -12,15 +17,22 @@ import acme.roles.Inventor;
 
 @Service
 public class InventorToolkitUpdateService implements AbstractUpdateService<Inventor, Toolkit>{
-
+	
 	@Autowired
 	protected InventorToolkitRepository repository;
 	
+	@Autowired
+	protected AdministratorConfigurationRepository confRepository;
+
 	@Override
 	public boolean authorise(final Request<Toolkit> request) {
 		assert request != null;
 		
-		return true;
+		final int id = request.getModel().getInteger("id");
+		final Inventor i = this.repository.findInventorByUserAccountId(request.getPrincipal().getAccountId());
+		final Toolkit t = this.repository.findToolkitById(id);
+		
+		return t.getInventor().getId()==i.getId() && t.getStatus()==Status.NON_PUBLISHED;
 	}
 
 	@Override
@@ -29,7 +41,7 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity, errors, "code", "title", "descripcion", "assemblyNotes", "link", "retailPrice");
+		request.bind(entity, errors, "code", "descripcion", "assemblyNotes", "title", "link");
 		
 	}
 
@@ -39,7 +51,7 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "code", "title", "descripcion", "assemblyNotes", "link", "retailPrice");
+		request.unbind(entity, model, "code", "title", "descripcion", "assemblyNotes", "link", "status");
 		
 	}
 
@@ -47,21 +59,38 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 	public Toolkit findOne(final Request<Toolkit> request) {
 		assert request != null;
 		
-		final int id = request.getModel().getInteger("id");
-		final Toolkit res = this.repository.findToolkitById(id);
-		return res;
+		return this.repository.findToolkitById(request.getModel().getInteger("id"));
 	}
 
 	@Override
 	public void validate(final Request<Toolkit> request, final Toolkit entity, final Errors errors) {
 		assert request != null;
+		assert entity != null;
+		assert errors != null;
 		
-		//Añadir validación
+		final Collection<Configuration> config = this.confRepository.findConfigurations();
+		
+		for(final Configuration c : config) {
+			errors.state(request, !c.isSpamStrong(entity.getCode()), "code", "inventor.toolkit.code.strongSpam");
+			errors.state(request, !c.isSpamStrong(entity.getTitle()), "title", "inventor.toolkit.title.strongSpam");
+			errors.state(request, !c.isSpamStrong(entity.getDescripcion()), "descripcion", "inventor.toolkit.description.strongSpam");
+			errors.state(request, !c.isSpamStrong(entity.getAssemblyNotes()), "assemblyNotes", "inventor.toolkit.assemblyNotes.strongSpam");
+			errors.state(request, !c.isSpamStrong(entity.getLink()), "link", "inventor.toolkit.link.strongSpam");
+			
+			errors.state(request, !c.isSpamWeak(entity.getCode()), "code", "inventor.toolkit.code.weakSpam");
+			errors.state(request, !c.isSpamWeak(entity.getTitle()), "title", "inventor.toolkit.title.weakSpam");
+			errors.state(request, !c.isSpamWeak(entity.getDescripcion()), "descripcion", "inventor.toolkit.description.weakSpam");
+			errors.state(request, !c.isSpamWeak(entity.getAssemblyNotes()), "assemblyNotes", "inventor.toolkit.assemblyNotes.weakSpam");
+			errors.state(request, !c.isSpamWeak(entity.getLink()), "link", "inventor.toolkit.link.weakSpam");
+		}
 		
 	}
 
 	@Override
 	public void update(final Request<Toolkit> request, final Toolkit entity) {
+		assert request != null;
+		assert entity != null;
+		
 		this.repository.save(entity);
 		
 	}

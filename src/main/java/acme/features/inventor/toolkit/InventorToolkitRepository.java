@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.item.Item;
 import acme.entities.quantity.Quantity;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.repositories.AbstractRepository;
@@ -25,6 +26,7 @@ public interface InventorToolkitRepository extends AbstractRepository {
 	@Query("select q from Quantity q where q.toolkit.id = :id ")
 	List<Quantity> findQuantityByToolkitId(int id);
 	
-	
+	@Query("select i from Item i")
+	List<Item> findManyItem();
 
 }
