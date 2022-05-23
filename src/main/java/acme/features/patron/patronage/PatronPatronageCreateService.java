@@ -114,7 +114,9 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert entity != null;
 		assert errors != null;
 		
-		errors.state(request, this.repository.findToolkitByCode(entity.getCode()) == null, "code", "inventor.toolkit.title.codeNotUnique");
+		errors.state(request, this.repository.findPatronageByCode(entity.getCode()) == null, "code", "inventor.toolkit.title.codeNotUnique");
+		errors.state(request, entity.getBudget().getAmount() >= 0.00, "budget", "inventor.item.title.minPrice");
+		
 	}
 
 	@Override
