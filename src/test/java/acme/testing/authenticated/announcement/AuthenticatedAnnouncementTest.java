@@ -11,7 +11,7 @@ public class AuthenticatedAnnouncementTest extends TestHarness{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/authenticated/announcement/announcement.csv", encoding = "utf-8" ,numLinesToSkip = 1)
 	@Order(10)
-	public void positiveCase(final int recordIndex, final String creation, final String title, final String body, final String critic, final String link) {
+	public void positiveCase(final int recordIndex,final String title, final String creation, final String body,final String link, final String critic) {
 		super.signIn("administrator", "administrator");
 		
 		super.clickOnMenu("Authenticated", "List Announcement");
