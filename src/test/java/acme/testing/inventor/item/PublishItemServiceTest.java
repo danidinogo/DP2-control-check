@@ -11,7 +11,7 @@ public class PublishItemServiceTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/item/toolPositivo.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positiveTest(final int recordIndex, final String name,final String technology, 
+	public void positiveTest(final int recordIndex, final String name,final String code,final String technology, 
 		final String description, final String retailPrice, final String info, final String status, final String type) {
 
 		super.signIn("administrator", "administrator");

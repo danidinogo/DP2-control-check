@@ -13,9 +13,9 @@ inventor.patronage.form.label.patronCompany = Compañía del patrón
 inventor.patronage.form.label.patronStatement = Declaración del patrón
 inventor.patronage.form.buttom.patronage-report = Informe de patrocinio
 inventor.patronage.form.label.status = Estado
-inventor.patronage.form.label.status.proposed = Propuesto
-inventor.patronage.form.label.status.accepted = Aceptado
-inventor.patronage.form.label.status.denied = Denegado
+inventor.patronage.form.label.status.proposed = propuesto
+inventor.patronage.form.label.status.accepted = aceptado
+inventor.patronage.form.label.status.denied = denegado
 
 
 inventor.patronage-report.form.button.create = Crear

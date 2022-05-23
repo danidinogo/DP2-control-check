@@ -12,12 +12,8 @@
 
 package acme.testing.patron.patronage;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -34,14 +30,14 @@ public class PatronPatronageCreateTest extends TestHarness {
         super.clickOnMenu("Patron", "List Patronage");
         
        
-        super.clickOnButton("create");
+        super.clickOnButton("Create Patronage");
         super.fillInputBoxIn("code", code);
         super.fillInputBoxIn("legalStuff", legalStuff);
         super.fillInputBoxIn("budget", budget);
         super.fillInputBoxIn("startsAt", startsAt);
         super.fillInputBoxIn("finishesAt", finishesAt);
         super.fillInputBoxIn("link", link);
-        super.clickOnSubmit("create");
+        super.clickOnSubmit("Create Patronage");
         
         super.clickOnMenu("Patron", "List Patronage");
         super.checkListingExists();
