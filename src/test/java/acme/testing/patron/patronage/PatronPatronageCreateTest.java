@@ -74,22 +74,19 @@ public class PatronPatronageCreateTest extends TestHarness {
 	}
 
 	@Test
-	@Order(10)
-	public void hackingTest() {
+    @Order(10)
+    public void hackingTest() {
 
-		super.navigate("/patron/patronage/create");
-		super.checkPanicExists();
+        super.navigate("/patron/patronage/create");
+        super.checkPanicExists();
 
-		super.signIn("tester", "asdasdasd123");
-		super.navigate("/patron/patronage/create");
-		super.checkPanicExists();
-		super.signOut();
+        super.signIn("inventor1", "inventor1");
+        super.navigate("/patron/patronage/create");
+        super.checkPanicExists();
+        super.signOut();
 
-		super.signIn("tesla", "asdasdasd123");
-		super.navigate("/patron/patronage/create");
-		super.checkPanicExists();
-		super.signOut();
-	}
-	//	
+
+    }
+		
 
 }
