@@ -1,5 +1,9 @@
 package acme.features.inventor.item;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,7 +62,7 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		final Inventor inventor = this.repository.findInventorByUserAccountId(request.getPrincipal().getAccountId());
 			
 		result.setName("");
-		result.setCode("");
+		result.setCode(this.generateCode());
 		result.setTechnology("");
 		result.setDescription("");
 		result.setRetailPrice(result.getRetailPrice());
@@ -70,6 +74,23 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		return result;
 	}
 
+	private String generateCode() {
+		String code = "";
+		final List<String> alphabet = Arrays.asList("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+		
+		for(int i=0; i<3; i++) {
+			code += alphabet.get(ThreadLocalRandom.current().nextInt(0, alphabet.size()));
+		}
+		code += "-";
+		for(int i=0; i<3; i++) {
+			code += Integer.toString(ThreadLocalRandom.current().nextInt(0, 9));
+		}
+		code += "-";
+		code += alphabet.get(ThreadLocalRandom.current().nextInt(0, alphabet.size()));
+		
+		return code;
+	}
+	
 	@Override
 	public void validate(final Request<Item> request, final Item entity, final Errors errors) {
 		assert request != null;
@@ -88,6 +109,9 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		errors.state(request, !config.isSpamWeak(entity.getDescription()), "description","inventor.item.weakspam");
 		errors.state(request, !config.isSpamStrong(entity.getInfo()), "info","inventor.item.strongspam");
 		errors.state(request, !config.isSpamWeak(entity.getInfo()), "info","inventor.item.weakspam");
+		
+		errors.state(request, this.repository.findItemByCode(entity.getCode()) == null, "code", "inventor.item.title.codeNotUnique");
+
 		
 	}
 
