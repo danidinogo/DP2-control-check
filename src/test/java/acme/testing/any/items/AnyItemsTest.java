@@ -11,12 +11,12 @@ public class AnyItemsTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/any/item/tools.csv", numLinesToSkip = 1)
 	@Order(0)
-	public void checkToolListing(final int recordIndex, final String name, final String code , final String technology, final String description, final String retailPrice, final String info, final String type, final String inventor) {
+	public void checkToolListing(final int recordIndex, final String name, final String code , final String technology, final String description, final String retailPrice, final String info, final String type) {
 		//super.signIn("administrator", "administrator");
 		
 		// Name,Code,Technology,Description,Info
 		
-		super.clickOnMenu("Anonymous", "List Tools");
+		super.clickOnMenu("Anonymous", "List Published Tools");
 		
 		super.checkListingExists();
 		super.checkColumnHasValue(recordIndex, 0, name);
@@ -24,15 +24,15 @@ public class AnyItemsTest extends TestHarness {
 		super.checkColumnHasValue(recordIndex, 2, technology);
 		super.checkColumnHasValue(recordIndex, 3, description);
 		super.checkColumnHasValue(recordIndex, 4, info);
-		super.checkColumnHasValue(recordIndex, 5, type);
+		
 	}
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/any/item/tools.csv", numLinesToSkip = 1)
 	@Order(1)
-	public void checkShow(final int recordIndex, final String name, final String code, final String technology, final String description, final String retailPrice, final String info, final String type, final String inventor) {
+	public void checkShow(final int recordIndex, final String name, final String code, final String technology, final String description, final String retailPrice, final String info, final String type) {
 
-		super.clickOnMenu("Anonymous", "List Tools");
+		super.clickOnMenu("Anonymous", "List Published Tools");
 		super.clickOnListingRecord(recordIndex);
 		
 		super.checkFormExists();
@@ -49,10 +49,10 @@ public class AnyItemsTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/any/item/components.csv", numLinesToSkip = 1)
 	@Order(3)
-	public void checkComponentListing(final int recordIndex, final String name, final String code, final String technology, final String description, final String retailPrice, final String info, final String type, final String inventor) {
+	public void checkComponentListing(final int recordIndex, final String name, final String code, final String technology, final String description, final String retailPrice, final String info, final String type) {
 		
 		
-		super.clickOnMenu("Anonymous", "List Components");
+		super.clickOnMenu("Anonymous", "List Published Components");
 		
 		super.checkListingExists();
 		super.checkColumnHasValue(recordIndex, 0, name);
@@ -66,9 +66,9 @@ public class AnyItemsTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/any/item/components.csv", numLinesToSkip = 1)
 	@Order(4)
-	public void checkComponentShow(final int recordIndex, final String name, final String code, final String technology, final String description, final String retailPrice, final String info, final String type, final String inventor) {
+	public void checkComponentShow(final int recordIndex, final String name, final String code, final String technology, final String description, final String retailPrice, final String info, final String type) {
 
-		super.clickOnMenu("Anonymous", "List Components");
+		super.clickOnMenu("Anonymous", "List Published Components");
 		super.clickOnListingRecord(recordIndex);
 		
 		super.checkFormExists();

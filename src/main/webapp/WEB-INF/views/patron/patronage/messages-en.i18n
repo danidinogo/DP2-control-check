@@ -15,7 +15,8 @@ patron.patronage.form.buttom.patronage-reports = Patronage Reports
 
 authenticated.patron.patronage.form.label.publishedStatus = Published Status
 
-
+administrator.announcement.strongspam = Strong Spam
+administrator.announcement.weakspam = Weak Spam
 
 authenticated.patron.patronage.form.label.proposed = Proposed
 authenticated.patron.patronage.form.label.accepted = Accepted
