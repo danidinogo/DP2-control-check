@@ -25,7 +25,10 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 	public boolean authorise(final Request<Item> request) {
 		assert request != null;
 		
-		return true;
+		final int itemId = request.getModel().getInteger("id");
+		final int inventorId = request.getPrincipal().getActiveRoleId();
+		final Item item = this.repository.findOneItemById(itemId);	
+		return item.getInventor().getId() == inventorId;
 	}
 
 	@Override
