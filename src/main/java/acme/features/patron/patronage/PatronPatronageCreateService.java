@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,13 +61,19 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert request != null;
 
 		final Patronage result;
+		Date creationTime;
 		Date startTime;
 		Date finishedTime;
 		final Inventor inventor = new Inventor();
 		
 		final int id = request.getPrincipal().getActiveRoleId();
-		startTime = new Date(System.currentTimeMillis());
-		finishedTime= new Date(System.currentTimeMillis());
+		creationTime = new Date(System.currentTimeMillis());
+		startTime= DateUtils.addMonths( creationTime,1);
+		startTime= DateUtils.addMinutes(creationTime, 1);
+		finishedTime= DateUtils.addMonths( startTime,1);
+		finishedTime= DateUtils.addMinutes(startTime, 1);
+		
+		
 		
 		final Money money = new Money();
 		money.setAmount(0.0);
@@ -84,7 +91,7 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		result.setPublishedStatus(PublishedStatus.NONE_PUBLISHED);
 		result.setInventor(inventor);
 		result.setPatron(this.repository.findPatronById(id));
-
+		result.setCreationTime(creationTime);
 
 		return result;
 	}
@@ -114,6 +121,15 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		
 		errors.state(request, this.repository.findPatronageByCode(entity.getCode()) == null, "code", "inventor.toolkit.title.codeNotUnique");
 		errors.state(request, entity.getBudget().getAmount() >= 0.00, "budget", "inventor.item.title.minPrice");
+		
+		
+			final Date minimumStartAt= DateUtils.addMonths(entity.getCreationTime(),1);
+			errors.state(request,entity.getStartsAt().after(minimumStartAt), "startsAt", "patron.patronage.error.minimumStartAt");
+			
+			final Date minimumFinishesAt=DateUtils.addMonths(entity.getStartsAt(), 1);
+			errors.state(request,entity.getFinishesAt().after(minimumFinishesAt), "finishesAt", "patron.patronage.error.minimumFinishesAt");
+			
+		
 		
 	}
 

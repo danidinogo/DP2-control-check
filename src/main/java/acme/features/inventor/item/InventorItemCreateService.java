@@ -41,7 +41,7 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		assert entity != null;
 		assert errors != null;
 			
-		request.bind(entity, errors, "name", "code", "technology", "description", "retailPrice", "info", "type", "status");
+		request.bind(entity, errors, "name", "code", "technology", "description", "retailPrice", "link", "type", "status");
 
 	}
 
@@ -51,7 +51,7 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		assert entity != null;
 		assert model != null;
 			
-		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "info", "type", "status");
+		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "link", "type", "status");
 			
 	}
 
@@ -71,7 +71,7 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		result.setTechnology("");
 		result.setDescription("");
 		result.setRetailPrice(money);
-		result.setInfo("");
+		result.setLink("");
 		result.setType(ItemType.COMPONENT);
 		result.setStatus(Status.NON_PUBLISHED);
 		result.setInventor(inventor);
@@ -112,8 +112,8 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		errors.state(request, !config.isSpamWeak(entity.getTechnology()), "technology","inventor.item.weakspam");
 		errors.state(request, !config.isSpamStrong(entity.getDescription()), "description","inventor.item.strongspam");
 		errors.state(request, !config.isSpamWeak(entity.getDescription()), "description","inventor.item.weakspam");
-		errors.state(request, !config.isSpamStrong(entity.getInfo()), "info","inventor.item.strongspam");
-		errors.state(request, !config.isSpamWeak(entity.getInfo()), "info","inventor.item.weakspam");
+		errors.state(request, !config.isSpamStrong(entity.getLink()), "link","inventor.item.strongspam");
+		errors.state(request, !config.isSpamWeak(entity.getLink()), "link","inventor.item.weakspam");
 		
 		errors.state(request, this.repository.findItemByCode(entity.getCode()) == null, "code", "inventor.item.title.codeNotUnique");
 		

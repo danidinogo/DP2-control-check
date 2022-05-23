@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.enums.PublishedStatus;
@@ -38,7 +39,7 @@ public class Patronage extends AbstractEntity {
 	protected String code;
 	
 	@NotBlank
-	@Size(min = 1, max = 255)
+	@Length(min = 1, max = 255)
 	protected String legalStuff;
 	 
 	@NotNull
@@ -47,6 +48,10 @@ public class Patronage extends AbstractEntity {
 	
 	@NotNull
 	protected PublishedStatus publishedStatus;
+	
+
+	
+	
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
@@ -66,6 +71,11 @@ public class Patronage extends AbstractEntity {
 	@ManyToOne
 	@Valid
 	protected Inventor inventor;
+	
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
+	protected Date creationTime;
 	
 	
 }

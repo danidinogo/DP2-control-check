@@ -46,7 +46,7 @@ public class AnyItemShowService implements AbstractShowService<Any, Item> {
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "name", "code", "description" , "info", "technology", "retailPrice", "type");
+		request.unbind(entity, model, "name", "code", "description" , "link", "technology", "retailPrice", "type");
 		
 		final String defaultCurrency = this.configRepository.getDefaultCurrency();
 		final MoneyExchange me = new MoneyExchange(entity.getRetailPrice(), defaultCurrency);

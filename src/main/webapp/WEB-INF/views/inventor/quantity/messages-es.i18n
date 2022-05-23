@@ -10,7 +10,7 @@ inventor.quantity.form.label.code = Código
 inventor.quantity.form.label.technology = Tecnología
 inventor.quantity.form.label.description = Descripción
 inventor.quantity.form.label.retailPrice = Precio
-inventor.quantity.form.label.info = Url
+inventor.quantity.form.label.link = Enlace
 inventor.quantity.form.label.status = Estado
 inventor.quantity.form.label.type = Tipo
 
@@ -26,13 +26,13 @@ inventor.quantity.item.status = No puedes modificar un item que ha sido publicad
 
 inventor.quantity.item.code.strongSpam = Contiene spam fuerte
 inventor.quantity.item.description.strongSpam = Contiene spam fuerte
-inventor.quantity.item.info.strongSpam = Contiene spam fuerte
+inventor.quantity.item.link.strongSpam = Contiene spam fuerte
 inventor.quantity.item.name.strongSpam = Contiene spam fuerte
 inventor.quantity.item.technology.strongSpam = Contiene spam fuerte
 
 inventor.quantity.item.code.weakSpam = Contiene spam débil
 inventor.quantity.item.description.weakSpam = Contiene spam débil
-inventor.quantity.item.info.weakSpam = Contiene spam débil
+inventor.quantity.item.link.weakSpam = Contiene spam débil
 inventor.quantity.item.name.weakSpam = Contiene spam débil
 inventor.quantity.item.technology.weakSpam = Contiene spam débil
 
