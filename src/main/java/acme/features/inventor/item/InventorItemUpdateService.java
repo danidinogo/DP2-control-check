@@ -28,7 +28,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		final int itemId = request.getModel().getInteger("id");
 		final int inventorId = request.getPrincipal().getActiveRoleId();
 		final Item item = this.repository.findOneItemById(itemId);	
-		return item.getInventor().getId() == inventorId;
+		return item.getInventor().getId() == inventorId && item.getStatus()==acme.entities.item.Status.NON_PUBLISHED;
 	}
 
 	@Override

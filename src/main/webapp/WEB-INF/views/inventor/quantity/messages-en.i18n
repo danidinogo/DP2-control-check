@@ -38,5 +38,7 @@ inventor.quantity.item.technology.weakSpam = Contains weak spam
 
 inventor.quantity.item.exist = This item exist on the toolkit yet
 
-inventor.quantity.form.button.update = Update
+inventor.quantity.form.button.update = Update number of items
+
+inventor.quantity.form.button.updateItem = Update owned item
 
