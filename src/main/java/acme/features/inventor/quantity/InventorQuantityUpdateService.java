@@ -105,8 +105,15 @@ public class InventorQuantityUpdateService implements AbstractUpdateService<Inve
 		assert entity != null;
 		
 		final Item i = entity.getItem();
+		
+		if(entity.getItem().getType().equals(acme.entities.item.ItemType.TOOL) && entity.getNumber() > 1) {
+			entity.setNumber(1);
+		}
+		
 		this.repository.save(i);
 		this.repository.save(entity);
+		
+		
 		
 		
 	}
