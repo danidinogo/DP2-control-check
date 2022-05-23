@@ -24,8 +24,6 @@ import acme.roles.Patron;
 @Service
 public class PatronPatronageCreateService implements AbstractCreateService<Patron, Patronage> {
 
-	
-	
 	@Autowired
 	protected PatronPatronageRepository repository;
 	@Autowired
@@ -117,6 +115,7 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert entity != null;
 		assert errors != null;
 		
+
 		final Configuration config = this.configurationRepository.findConfiguration();
 		
 		errors.state(request, !config.isSpamStrong(entity.getLegalStuff()), "legalStuff","administrator.announcement.strongspam");
@@ -126,6 +125,10 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		
 		errors.state(request, this.repository.findToolkitByCode(entity.getCode()) == null, "code", "inventor.toolkit.title.codeNotUnique");
 		
+
+		errors.state(request, this.repository.findPatronageByCode(entity.getCode()) == null, "code", "inventor.toolkit.title.codeNotUnique");
+		errors.state(request, entity.getBudget().getAmount() >= 0.00, "budget", "inventor.item.title.minPrice");
+
 		
 	}
 

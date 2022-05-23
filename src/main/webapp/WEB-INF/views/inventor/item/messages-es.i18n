@@ -1,7 +1,7 @@
 inventor.item.list.label.name = Nombre
 inventor.item.list.label.description = Descripción
 inventor.item.list.label.price = Precio
-inventor.item.list.label.type = Type
+inventor.item.list.label.type = Tipo
 
 inventor.item.form.label.name = Nombre
 inventor.item.form.label.code = Código
@@ -28,5 +28,7 @@ inventor.item.strongspam = Spam Fuerte
 inventor.item.weakspam =  Spam Débil 
 inventor.label.moneyExchange = Divisa del sistema
 inventor.item.title.codeNotUnique = Este código ya está en uso
+
+inventor.item.title.minPrice = El precio mínimo debe ser 0 o superior
 
 

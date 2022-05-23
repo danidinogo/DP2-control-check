@@ -15,6 +15,7 @@ import acme.features.administrator.configurations.AdministratorConfigurationRepo
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractCreateService;
 import acme.roles.Inventor;
 
@@ -40,7 +41,7 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		assert entity != null;
 		assert errors != null;
 			
-		request.bind(entity, errors, "name", "code", "technology", "description", "retailPrice", "info", "status", "type");
+		request.bind(entity, errors, "name", "code", "technology", "description", "retailPrice", "info", "type", "status");
 
 	}
 
@@ -50,7 +51,7 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		assert entity != null;
 		assert model != null;
 			
-		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "info", "status", "type");
+		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "info", "type", "status");
 			
 	}
 
@@ -60,12 +61,16 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 			
 		final Item result = new Item();
 		final Inventor inventor = this.repository.findInventorByUserAccountId(request.getPrincipal().getAccountId());
+		
+		final Money money = new Money();
+		money.setCurrency("EUR");
+		money.setAmount(0.00);
 			
 		result.setName("");
 		result.setCode(this.generateCode());
 		result.setTechnology("");
 		result.setDescription("");
-		result.setRetailPrice(result.getRetailPrice());
+		result.setRetailPrice(money);
 		result.setInfo("");
 		result.setType(ItemType.COMPONENT);
 		result.setStatus(Status.NON_PUBLISHED);
@@ -111,7 +116,8 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		errors.state(request, !config.isSpamWeak(entity.getInfo()), "info","inventor.item.weakspam");
 		
 		errors.state(request, this.repository.findItemByCode(entity.getCode()) == null, "code", "inventor.item.title.codeNotUnique");
-
+		
+		errors.state(request, entity.getRetailPrice().getAmount() >= 0.00, "retailPrice", "inventor.item.title.minPrice");
 		
 	}
 
@@ -121,6 +127,8 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		assert entity != null;
 			 
 		entity.setInventor(this.repository.findInventorByUserAccountId(request.getPrincipal().getAccountId()));
+		
+		entity.setStatus(Status.NON_PUBLISHED);
 		this.repository.save(entity);
 	}
 

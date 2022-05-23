@@ -89,7 +89,7 @@ master.menu.user-account.inventor = Datos de inventor
 
 
 
-master.menu.anonymous.list-component = Listar Components
-master.menu.anonymous.list-tool = Listar Tools
+master.menu.anonymous.list-component = Listar Components Publicados
+master.menu.anonymous.list-tool = Listar Tools Publicados
 master.menu.anonymous.list-by-toolkit = Listar por Toolkit
 master.menu.items = Mostrar Items

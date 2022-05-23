@@ -29,3 +29,5 @@ inventor.item.form.label.nonpublished = Non Published
 
 inventor.item.strongspam = Strong Spam
 inventor.item.weakspam =  Weak Spam
+
+inventor.item.title.minPrice = Minimum price must be greather or equal than 0

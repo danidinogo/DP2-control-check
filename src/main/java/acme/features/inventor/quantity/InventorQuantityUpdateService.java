@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import acme.entities.configuration.Configuration;
 import acme.entities.item.Item;
 import acme.entities.item.ItemType;
-import acme.entities.item.Status;
 import acme.entities.quantity.Quantity;
 import acme.features.administrator.configurations.AdministratorConfigurationRepository;
 import acme.framework.components.models.Model;
@@ -54,6 +53,7 @@ public class InventorQuantityUpdateService implements AbstractUpdateService<Inve
 		request.unbind(entity, model, "number", "item.name", "item.code", "item.technology", "item.description", "item.retailPrice", "item.info", "item.status", "item.type");
 		
 		model.setAttribute("item", entity.getItem());
+		model.setAttribute("toolkit", entity.getToolkit());
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class InventorQuantityUpdateService implements AbstractUpdateService<Inve
 		final Item i = entity.getItem();
 		errors.state(request, !(i.getType()==ItemType.TOOL && entity.getNumber()>1), "number", "inventor.quantity.number.tool");
 		errors.state(request, !(entity.getToolkit().getStatus().toString().equals("PUBLISHED")), "number", "inventor.quantity.toolkit.noPublished");
-		errors.state(request, !(entity.getItem().getStatus()==Status.PUBLISHED), "item.status", "inventor.quantity.item.status");
+		//errors.state(request, !(entity.getItem().getStatus()==Status.PUBLISHED), "item.status", "inventor.quantity.item.status");
 		
 		final Collection<Configuration> conf = this.confRepository.findConfigurations();
 		for(final Configuration c : conf) {
@@ -88,6 +88,14 @@ public class InventorQuantityUpdateService implements AbstractUpdateService<Inve
 			errors.state(request, !c.isSpamWeak(i.getTechnology()), "item.technology", "inventor.quantity.item.technology.weakSpam");
 			
 		}
+		
+		final Item item = this.repository.findItemByCode(entity.getItem().getCode());
+		
+		if(item != null) {
+			errors.state(request, item.getId() == entity.getItem().getId(), "item.code", "inventor.item.title.codeNotUnique");
+		}
+		
+		errors.state(request, entity.getItem().getRetailPrice().getAmount() >= 0.00, "item.retailPrice", "inventor.item.title.minPrice");
 		
 	}
 
