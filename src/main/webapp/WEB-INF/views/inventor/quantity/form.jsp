@@ -8,24 +8,25 @@
 	<jstl:choose>
 	
 		<jstl:when test="${acme:anyOf(command, 'show, update')}">
-			<acme:input-integer code="inventor.quantity.form.label.number" path="number" />
-			<acme:input-textbox code="inventor.quantity.form.label.name" path="item.name"/>
-			<acme:input-textbox code="inventor.quantity.form.label.code" path="item.code"/>
-			<acme:input-textbox code="inventor.quantity.form.label.technology" path="item.technology"/>
-			<acme:input-textarea code="inventor.quantity.form.label.description" path="item.description"/>
-			<acme:input-money code="inventor.quantity.form.label.retailPrice" path="item.retailPrice"/>
+			<acme:input-integer code="inventor.quantity.form.label.number" path="number" readonly="${item.type == 'TOOL'}" />
 			
-			<jstl:choose>
-				<jstl:when test="${command == 'show' }">
-					<acme:input-money code="inventor.label.moneyExchange" path="moneyExchange" readonly="true"/>
-				</jstl:when>
-			</jstl:choose>
+			<acme:input-textbox code="inventor.quantity.form.label.name" path="item.name" readonly="${item.status == 'PUBLISHED'}"/>
+			<acme:input-textbox code="inventor.quantity.form.label.code" path="item.code" readonly="${item.status == 'PUBLISHED'}"/>
+			<acme:input-textbox code="inventor.quantity.form.label.technology" path="item.technology" readonly="${item.status == 'PUBLISHED'}"/>
+			<acme:input-textarea code="inventor.quantity.form.label.description" path="item.description" readonly="${item.status == 'PUBLISHED'}"/>
+			<acme:input-money code="inventor.quantity.form.label.retailPrice" path="item.retailPrice" readonly="${item.status == 'PUBLISHED'}"/>
 			
-			<acme:input-url code="inventor.quantity.form.label.info" path="item.info"/>
+			<jstl:if test="${command == 'show'}">
+				<acme:input-money code="inventor.label.moneyExchange" path="moneyExchange" readonly="true"/>
+			</jstl:if>
+			
+			<acme:input-url code="inventor.quantity.form.label.info" path="item.info" readonly="${item.status == 'PUBLISHED'}"/>
+			
 			<acme:input-textbox code="inventor.quantity.form.label.status" path="item.status" readonly="true" />
-			<acme:input-textbox code="inventor.quantity.form.label.type" path="item.type"/>
+			
+			<acme:input-textbox code="inventor.quantity.form.label.type" path="item.type" readonly="${item.status == 'PUBLISHED'}"/>
 				
-			<jstl:if test="${item.status == 'NON_PUBLISHED'}" >
+			<jstl:if test="${item.status == 'NON_PUBLISHED' || toolkit.status == 'NON_PUBLISHED'}" >
 				<acme:submit code="inventor.quantity.form.button.update" action="/inventor/quantity/update"/>
 			</jstl:if>
 			
