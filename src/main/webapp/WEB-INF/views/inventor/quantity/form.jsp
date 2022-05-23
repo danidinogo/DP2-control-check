@@ -17,7 +17,7 @@
 			
 			<jstl:choose>
 				<jstl:when test="${command == 'show' }">
-					<acme:input-money code="inventor.label.moneyExchange" path="moneyExchange"/>
+					<acme:input-money code="inventor.label.moneyExchange" path="moneyExchange" readonly="true"/>
 				</jstl:when>
 			</jstl:choose>
 			

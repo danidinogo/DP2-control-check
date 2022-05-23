@@ -1,18 +1,18 @@
 # i18n-es.i18n
 #
 
-administrator.configuration.list.label.defaultCurr = Predeterminado
-administrator.configuration.list.label.acceptedCurr = Aceptadas
-administrator.configuration.list.label.strongSpamThreshold = Ponderación
-administrator.configuration.list.label.strongSpamWords = SPAM Fuerte
-administrator.configuration.list.label.weakSpamThreshold = Ponderación
-administrator.configuration.list.label.weakSpamWords = SPAM Débil
+administrator.configuration.list.label.defaultCurr = Default
+administrator.configuration.list.label.acceptedCurr = Acepted
+administrator.configuration.list.label.strongSpamThreshold = Strong SPAM Weighting
+administrator.configuration.list.label.strongSpamWords = Strong SPAM word list
+administrator.configuration.list.label.weakSpamThreshold = Weak SPAM Weighing
+administrator.configuration.list.label.weakSpamWords = Weak SPAM 
 
-administrator.configuration.form.label.defaultCurr = Divisa predeterminada
-administrator.configuration.form.label.acceptedCurr = Divisas aceptadas
-administrator.configuration.form.label.strongSpamThreshold = Ponderación SPAM Fuerte
-administrator.configuration.form.label.strongSpamWords = Lista de palabras SPAM fuerte
-administrator.configuration.form.label.weakSpamThreshold = Ponderación SPAM Débil
-administrator.configuration.form.label.weakSpamWords = Lista de palabras SPAM débil
+administrator.configuration.form.label.defaultCurr = Default currency
+administrator.configuration.form.label.acceptedCurr = Acepted currency
+administrator.configuration.form.label.strongSpamThreshold = Strong SPAM Weighting
+administrator.configuration.form.label.strongSpamWords = Strong SPAM word list
+administrator.configuration.form.label.weakSpamThreshold = Weak SPAM Weighting
+administrator.configuration.form.label.weakSpamWords = Weak SPAM word list
 
-administrator.configuration.form.button.update = Actualizar configuración
+administrator.configuration.form.button.update = Update configuration
