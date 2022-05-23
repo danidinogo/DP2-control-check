@@ -1,7 +1,7 @@
 inventor.item.list.label.name = Nombre
 inventor.item.list.label.description = Descripción
 inventor.item.list.label.price = Precio
-inventor.item.list.label.type = Type
+inventor.item.list.label.type = Tipo
 
 inventor.item.form.label.name = Nombre
 inventor.item.form.label.code = Código

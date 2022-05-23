@@ -9,7 +9,7 @@ import acme.testing.TestHarness;
 public class UpdateItemServiceTest extends TestHarness {
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "/inventor/item/componentPositivo2.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/inventor/item/toolPositivo.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void positiveTest(final int recordIndex, final String name, final String code,
 		final String technology, final String description, final String retailPrice, final String info) {
@@ -40,7 +40,7 @@ public class UpdateItemServiceTest extends TestHarness {
 	}
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "/inventor/item/componentNegativo.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/inventor/item/toolNegativo.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void negativeTest(final int recordIndex, final String name, final String code,
 		final String technology, final String description, final String retailPrice, final String info) {
