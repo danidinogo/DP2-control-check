@@ -53,6 +53,7 @@ public class InventorQuantityShowService implements AbstractShowService<Inventor
 		model.setAttribute("moneyExchange", me.getExchange());
 		
 		model.setAttribute("item", entity.getItem());
+		model.setAttribute("toolkit", entity.getToolkit());
 	}
 
 }

@@ -22,8 +22,6 @@ import acme.roles.Patron;
 @Service
 public class PatronPatronageCreateService implements AbstractCreateService<Patron, Patronage> {
 
-	
-	
 	@Autowired
 	protected PatronPatronageRepository repository;
 	
