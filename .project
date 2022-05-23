@@ -38,9 +38,7 @@
 		<link>
 			<name>classes</name>
 			<type>2</type>
-
-			<location>C:/Users/juana/OneDrive/Escritorio/TERCERO CARRERA/DP2/Workspace-22.0/Frameworks/Acme-Framework-22.5.2/target/classes</location>
-
+			<locationURI>WORKSPACE_LOC/Frameworks/Acme-Framework-22.5.2/target/classes</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

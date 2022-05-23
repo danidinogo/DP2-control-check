@@ -56,7 +56,13 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		assert entity != null;
 		assert errors != null;
 		
-		errors.state(request, this.repository.findToolkitByCode(entity.getCode()) == null, "code", "inventor.toolkit.title.codeNotUnique");
+		final Patronage patronage = this.repository.findPatronageByCode(entity.getCode());
+		
+		if(patronage != null) {
+			errors.state(request, patronage.getId() == entity.getId(), "code", "inventor.item.title.codeNotUnique");
+		}
+		
+		errors.state(request, entity.getBudget().getAmount() >= 0.00, "budget", "inventor.item.title.minPrice");
 	}
 
 	
