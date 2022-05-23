@@ -38,4 +38,6 @@ inventor.quantity.item.technology.weakSpam = Contiene spam débil
 
 inventor.quantity.item.exist = Este item ya forma parte de la toolkit
 
-inventor.quantity.form.button.update = Actualizar
+inventor.quantity.form.button.update = Actualizar cantidad
+
+inventor.quantity.form.button.updateItem = Actualizar item en propiedad

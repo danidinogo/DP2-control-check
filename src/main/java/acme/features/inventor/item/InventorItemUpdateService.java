@@ -28,7 +28,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		final int itemId = request.getModel().getInteger("id");
 		final int inventorId = request.getPrincipal().getActiveRoleId();
 		final Item item = this.repository.findOneItemById(itemId);	
-		return item.getInventor().getId() == inventorId;
+		return item.getInventor().getId() == inventorId && item.getStatus()==acme.entities.item.Status.NON_PUBLISHED;
 	}
 
 	@Override
@@ -84,8 +84,13 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 			errors.state(request, item.getId() == entity.getId(), "code", "inventor.item.title.codeNotUnique");
 		}
 		
-		errors.state(request, entity.getRetailPrice().getAmount() >= 0.00, "retailPrice", "inventor.item.title.minPrice");
+		if(entity.getType() == acme.entities.item.ItemType.COMPONENT) {
+			errors.state(request, entity.getRetailPrice().getAmount() > 0.00, "retailPrice", "authenticated.patron.patronage.list.label.priceGreatherZero");
+		} else {
+			errors.state(request, entity.getRetailPrice().getAmount() >= 0.00, "retailPrice", "inventor.item.title.minPrice");
+		}
 	}
+		
 
 	@Override
 	public void update(final Request<Item> request, final Item entity) {

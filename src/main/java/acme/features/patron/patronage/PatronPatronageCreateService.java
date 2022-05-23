@@ -130,24 +130,19 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		errors.state(request, !config.isSpamStrong(entity.getLink()), "link","administrator.announcement.strongspam");
 		errors.state(request, !config.isSpamWeak(entity.getLink()), "link","administrator.announcement.weakspam");
 		
-		
-    final Patronage patronage = this.repository.findPatronageByCode(entity.getCode());
+    	final Patronage patronage = this.repository.findPatronageByCode(entity.getCode());
 		
 		if(patronage != null) {
 			errors.state(request, patronage.getId() == entity.getId(), "code", "inventor.item.title.codeNotUnique");
 		}
  
-		errors.state(request, entity.getBudget().getAmount() >= 0.00, "budget", "inventor.item.title.minPrice");
+		errors.state(request, entity.getBudget().getAmount() > 0.00, "budget", "authenticated.patron.patronage.list.label.priceGreatherZero");
 
+		final Date minimumStartAt= DateUtils.addMonths(entity.getCreationTime(),1);
+		errors.state(request,entity.getStartsAt().after(minimumStartAt), "startsAt", "patron.patronage.error.minimumStartAt");
 		
-		
-			final Date minimumStartAt= DateUtils.addMonths(entity.getCreationTime(),1);
-			errors.state(request,entity.getStartsAt().after(minimumStartAt), "startsAt", "patron.patronage.error.minimumStartAt");
-			
-			final Date minimumFinishesAt=DateUtils.addMonths(entity.getStartsAt(), 1);
-			errors.state(request,entity.getFinishesAt().after(minimumFinishesAt), "finishesAt", "patron.patronage.error.minimumFinishesAt");
-			
-		
+		final Date minimumFinishesAt=DateUtils.addMonths(entity.getStartsAt(), 1);
+		errors.state(request,entity.getFinishesAt().after(minimumFinishesAt), "finishesAt", "patron.patronage.error.minimumFinishesAt");
 		
 	}
 
@@ -156,8 +151,6 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert request != null;
 		assert entity != null;
 		
-		
-
 		this.repository.save(entity);
 	}
 
