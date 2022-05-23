@@ -117,7 +117,12 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		
 		errors.state(request, this.repository.findItemByCode(entity.getCode()) == null, "code", "inventor.item.title.codeNotUnique");
 		
-		errors.state(request, entity.getRetailPrice().getAmount() >= 0.00, "retailPrice", "inventor.item.title.minPrice");
+		
+		if(entity.getType() == acme.entities.item.ItemType.COMPONENT) {
+			errors.state(request, entity.getRetailPrice().getAmount() > 0.00, "retailPrice", "authenticated.patron.patronage.list.label.priceGreatherZero");
+		} else {
+			errors.state(request, entity.getRetailPrice().getAmount() >= 0.00, "retailPrice", "inventor.item.title.minPrice");
+		}
 		
 	}
 

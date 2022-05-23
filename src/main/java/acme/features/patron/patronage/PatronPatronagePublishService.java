@@ -1,18 +1,17 @@
 package acme.features.patron.patronage;
 
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.patronage.Patronage;
 import acme.enums.PublishedStatus;
-
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
-
 import acme.framework.services.AbstractUpdateService;
-
 import acme.roles.Patron;
 
 @Service
@@ -23,14 +22,18 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 	
 	
 	@Override
-	public boolean authorise(Request<Patronage> request) {
+	public boolean authorise(final Request<Patronage> request) {
 		assert request != null;
 
-		return true;
+		final int id = request.getPrincipal().getActiveRoleId();
+		final Collection<Patronage> patronages = this.repository.findAllPatronagesByPatronId(id);
+		final int patronage_id = request.getModel().getInteger("id");
+		final Patronage patronage = this.repository.findPatronageById(patronage_id);
+		return patronages.contains(patronage);
 	}
 
 	@Override
-	public void bind(Request<Patronage> request, Patronage entity, Errors errors) {
+	public void bind(final Request<Patronage> request, final Patronage entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -39,7 +42,7 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 	}
 
 	@Override
-	public void unbind(Request<Patronage> request, Patronage entity, Model model) {
+	public void unbind(final Request<Patronage> request, final Patronage entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
@@ -49,14 +52,14 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 
 	
 	@Override
-	public void validate(Request<Patronage> request, Patronage entity, Errors errors) {
+	public void validate(final Request<Patronage> request, final Patronage entity, final Errors errors) {
 		
 	}
 
 	
 
 	@Override
-	public Patronage findOne(Request<Patronage> request) {
+	public Patronage findOne(final Request<Patronage> request) {
 		assert request != null;
 
 		Patronage result;
@@ -69,7 +72,7 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 	}
 
 	@Override
-	public void update(Request<Patronage> request, Patronage entity) {
+	public void update(final Request<Patronage> request, final Patronage entity) {
 		// TODO Auto-generated method stub
 		entity.setPublishedStatus(PublishedStatus.PUBLISHED);
 		this.repository.save(entity);
