@@ -131,7 +131,7 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		errors.state(request, !config.isSpamWeak(entity.getLink()), "link","administrator.announcement.weakspam");
 		
 		errors.state(request, this.repository.findPatronageByCode(entity.getCode()) == null, "code", "inventor.toolkit.title.codeNotUnique");
-		errors.state(request, entity.getBudget().getAmount() >= 0.00, "budget", "inventor.item.title.minPrice");
+		errors.state(request, entity.getBudget().getAmount() > 0.00, "budget", "authenticated.patron.patronage.list.label.priceGreatherZero");
 
 		final Date minimumStartAt= DateUtils.addMonths(entity.getCreationTime(),1);
 		errors.state(request,entity.getStartsAt().after(minimumStartAt), "startsAt", "patron.patronage.error.minimumStartAt");

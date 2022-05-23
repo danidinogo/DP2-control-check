@@ -1,5 +1,6 @@
 package acme.features.patron.patronage;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.apache.commons.lang3.time.DateUtils;
@@ -26,7 +27,11 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 	public boolean authorise(final Request<Patronage> request) {
 		assert request != null;
 
-		return true;
+		final int id = request.getPrincipal().getActiveRoleId();
+		final Collection<Patronage> patronages = this.repository.findAllPatronagesByPatronId(id);
+		final int patronage_id = request.getModel().getInteger("id");
+		final Patronage patronage = this.repository.findPatronageById(patronage_id);
+		return patronages.contains(patronage);
 	}
 
 	@Override
@@ -65,7 +70,7 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 			errors.state(request, patronage.getId() == entity.getId(), "code", "inventor.item.title.codeNotUnique");
 		}
 		
-		errors.state(request, entity.getBudget().getAmount() >= 0.00, "budget", "inventor.item.title.minPrice");
+		errors.state(request, entity.getBudget().getAmount() > 0.00, "budget", "authenticated.patron.patronage.list.label.priceGreatherZero");
 		
 
 		final Date minimumStartAt= DateUtils.addMonths(entity.getCreationTime(),1);
