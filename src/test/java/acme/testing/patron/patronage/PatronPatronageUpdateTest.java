@@ -1,10 +1,7 @@
 package acme.testing.patron.patronage;
 
 
-
-
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -15,7 +12,7 @@ public class PatronPatronageUpdateTest extends TestHarness{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/patron/patronage/patronagePositivo.csv" , encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positiveTest(final int recordIndex, final String legalStuff,final String budget ,final String startsAt, final String finishesAt, final String link) {
+	public void positiveTest(final int recordIndex, final String status, final String code,final String legalStuff,final String budget ,final String startsAt, final String finishesAt, final String link) {
 		
 		
 		super.signIn("administrator", "administrator");

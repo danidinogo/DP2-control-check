@@ -56,21 +56,17 @@ public class CreateTestInventorPatronageReport extends TestHarness{
 		}
 		
 		@Test
-		@Order(10)
-		public void hackingTest() {
-			
-			super.navigate("/inventor/patronageReport/create");
-			super.checkPanicExists();
-			
-			super.signIn("tester", "asdasdasd123");
-			super.navigate("/inventor/patronageReport/create");
-			super.checkPanicExists();
-			super.signOut();
+        @Order(10)
+        public void hackingTest() {
 
-			super.signIn("tesla", "asdasdasd123");
-			super.navigate("/inventor/patronageReport/create");
-			super.checkPanicExists();
-			super.signOut();
-		}
+            super.navigate("/inventor/patronageReport/create");
+            super.checkPanicExists();
+
+            super.signIn("patron1", "patron1");
+            super.navigate("/inventor/patronageReport/create");
+            super.checkPanicExists();
+            super.signOut();
+
+        }
 		
 }

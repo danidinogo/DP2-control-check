@@ -12,7 +12,7 @@ public class CreateItemServiceTest extends TestHarness {
 	@CsvFileSource(resources = "/inventor/item/componentPositivo.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void positiveTest(final int recordIndex, final String name, final String code,
-		final String technology, final String description, final String retailPrice, final String info) {
+		final String technology, final String description, final String retailPrice, final String link) {
 
 		super.signIn("administrator", "administrator");
 		
@@ -23,7 +23,7 @@ public class CreateItemServiceTest extends TestHarness {
 		super.fillInputBoxIn("technology",technology);
 		super.fillInputBoxIn("description",description);
 		super.fillInputBoxIn("retailPrice",retailPrice);
-		super.fillInputBoxIn("info", info);
+		super.fillInputBoxIn("link", link);
 		super.clickOnSubmit("Create");
 		
 		super.clickOnMenu("Inventor", "List Own Components");
@@ -41,7 +41,7 @@ public class CreateItemServiceTest extends TestHarness {
 	@CsvFileSource(resources = "/inventor/item/componentNegativo.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void negativeTest(final int recordIndex, final String name, final String code,
-		final String technology, final String description, final String retailPrice, final String info) {
+		final String technology, final String description, final String retailPrice, final String link) {
 
 		super.signIn("administrator", "administrator");
 		
@@ -52,7 +52,7 @@ public class CreateItemServiceTest extends TestHarness {
 		super.fillInputBoxIn("technology",technology);
 		super.fillInputBoxIn("description",description);
 		super.fillInputBoxIn("retailPrice",retailPrice);
-		super.fillInputBoxIn("info", info);
+		super.fillInputBoxIn("link", link);
 		super.clickOnSubmit("Create");
 		
 		super.checkErrorsExist();

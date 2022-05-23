@@ -12,7 +12,7 @@ public class PublishItemServiceTest extends TestHarness {
 	@CsvFileSource(resources = "/inventor/item/toolPositivo.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void positiveTest(final int recordIndex, final String name,final String code,final String technology, 
-		final String description, final String retailPrice, final String info, final String status, final String type) {
+		final String description, final String retailPrice, final String link, final String status, final String type) {
 
 		super.signIn("administrator", "administrator");
 		
@@ -30,7 +30,7 @@ public class PublishItemServiceTest extends TestHarness {
 		super.checkInputBoxHasValue("technology", technology);
 		super.checkInputBoxHasValue("description", description);
 		super.checkInputBoxHasValue("retailPrice", retailPrice);
-		super.checkInputBoxHasValue("info", info);
+		super.checkInputBoxHasValue("link", link);
 		super.checkInputBoxHasValue("status", status);
 		super.checkInputBoxHasValue("type", type);
 		super.signOut();

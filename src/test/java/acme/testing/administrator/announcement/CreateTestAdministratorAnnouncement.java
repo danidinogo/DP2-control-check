@@ -56,21 +56,21 @@ public class CreateTestAdministratorAnnouncement extends TestHarness{
 	}
 	
 	@Test
-	@Order(10)
-	public void hackingTest() {
-		
-		super.navigate("/administrator/announcement/create");
-		super.checkPanicExists();
-		
-		super.signIn("tester", "asdasdasd123");
-		super.navigate("/administrator/announcement/create");
-		super.checkPanicExists();
-		super.signOut();
+    @Order(10)
+    public void hackingTest() {
 
-		super.signIn("tesla", "asdasdasd123");
-		super.navigate("/administrator/announcement/create");
-		super.checkPanicExists();
-		super.signOut();
-	}
+        super.navigate("/administrator/announcement/create");
+        super.checkPanicExists();
+
+        super.signIn("inventor1", "inventor1");
+        super.navigate("/administrator/announcement/create");
+        super.checkPanicExists();
+        super.signOut();
+
+        super.signIn("patron1", "patron1");
+        super.navigate("/administrator/announcement/create");
+        super.checkPanicExists();
+        super.signOut();
+    }
 
 }

@@ -18,11 +18,11 @@ public class TestsAnyChirp extends TestHarness {
 		super.clickOnMenu("Anonymous","Chirps");
 		super.checkListingExists();
 		
-		super.checkColumnHasValue(recordIndex, 1, author);
-		super.checkColumnHasValue(recordIndex, 2, body);
-		super.checkColumnHasValue(recordIndex, 3, creationTime);
-		super.checkColumnHasValue(recordIndex, 4, email);
-		super.checkColumnHasValue(recordIndex, 5, title);
+		super.checkColumnHasValue(recordIndex, 0, author);
+		super.checkColumnHasValue(recordIndex, 1, body);
+		super.checkColumnHasValue(recordIndex, 2, creationTime);
+		super.checkColumnHasValue(recordIndex, 3, email);
+		super.checkColumnHasValue(recordIndex, 4, title);
 
 	}
 }
