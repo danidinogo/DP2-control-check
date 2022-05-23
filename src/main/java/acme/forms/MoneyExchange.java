@@ -21,7 +21,7 @@ public class MoneyExchange {
 	@NotBlank
 	public String targetCurrency;
 	
-	private final String apiUrl = "https://v6.exchangerate-api.com/v6/9a03b319bdec3db5ab97a9bb/pair/";
+	private final String apiUrl = "https://v6.exchangerate-api.com/v6/b54b52d9c9cac14a4ce130da/pair/";
 
 	public MoneyExchange(final Money source, final String target) {
 		this.source = source;

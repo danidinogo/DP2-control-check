@@ -1,6 +1,5 @@
 recordIndex,status,code,legalStuff,budget,startsAt,finishesAt,link
-0,proposed,abc-132,Legalidad patronage 1,EUR 275.00,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/
-1,proposed,abc-133,Legalidad patronage 1,EUR 300.00,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/
-2,accepted,abc-123,Legalidad patronage 1,EUR 50.00,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/
-3,proposed,abc-134,Legalidad patronage 1,EUR 325.00,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/
-4,accepted,abc-124,Legalidad patronage 2,EUR 75.00,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/
+0,accepted,ABC-123,Legalidad patronage 1,EUR 50.00,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/
+1,accepted,ABC-124,Legalidad patronage 2,EUR 75.00,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/
+2,accepted,ABC-125-D,Legalidad patronage 1,EUR 100.00,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/
+3,accepted,ABC-123-F,Legalidad patronage 1,EUR 125.00,2021/02/02 15:22,2021/02/03 15:22,https://youtube.com/

@@ -16,7 +16,8 @@ authenticated.patron.patronage.form.label.publishedStatus = Estatus de la Public
 
 authenticated.patron.patronage.form.label.inventor = Nombre de Usuario del Inventor
 
-
+administrator.announcement.strongspam = Spam Fuerte
+administrator.announcement.weakspam = Spam Debil
 
 authenticated.patron.patronage.form.label.proposed = Propuesta
 authenticated.patron.patronage.form.label.accepted = Aceptada
