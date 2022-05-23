@@ -12,13 +12,14 @@ public class InventorToolkitListOwnTest extends TestHarness{
 	@CsvFileSource(resources = "/inventor/toolkit/list-own.csv", encoding = "utf-8" ,numLinesToSkip = 1)
 	@Order(10)
 	public void positiveCase(final int recordIndex, final String code, final String title, final String descripcion, final String assemblyNotes, final String retailPrice, final String link, 
-		final String name, final String code2, final String technology, final String description, final String retailPrice2, final String info, final String type) {
+		final String name, final String code2,final String retailPrice2, final String status) {
 		super.signIn("administrator", "administrator");
 		
 		super.clickOnMenu("Inventor", "List Own Toolkits");
 		
 		super.checkListingExists();
-		
+		super.sortListing(0, "desc");
+
 		super.checkColumnHasValue(recordIndex, 0, title);
 		super.checkColumnHasValue(recordIndex, 1, descripcion);
 		super.checkColumnHasValue(recordIndex, 2, link);
@@ -37,10 +38,10 @@ public class InventorToolkitListOwnTest extends TestHarness{
 		
 		super.checkListingExists();
 		
-		super.checkColumnHasValue(recordIndex, 0, name);
-		super.checkColumnHasValue(recordIndex, 1, description);
-		super.checkColumnHasValue(recordIndex, 2, retailPrice2);
-		super.checkColumnHasValue(recordIndex, 3, type);
+		super.checkColumnHasValue(recordIndex, 1, name);
+		super.checkColumnHasValue(recordIndex, 2, code2);
+		super.checkColumnHasValue(recordIndex, 3, retailPrice2);
+		super.checkColumnHasValue(recordIndex, 5, status);
 		
 		super.signOut();
 	}
