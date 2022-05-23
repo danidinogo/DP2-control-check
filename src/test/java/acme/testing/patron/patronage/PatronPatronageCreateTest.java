@@ -41,8 +41,25 @@ public class PatronPatronageCreateTest extends TestHarness {
 		
 		super.clickOnSubmit("Create Patronage");
 
-		super.checkListingExists();
-		
+
+        super.signIn("administrator", "administrator");
+        super.clickOnMenu("Patron", "List Patronage");
+        
+       
+        super.clickOnButton("Create Patronage");
+        super.fillInputBoxIn("code", code);
+        super.fillInputBoxIn("legalStuff", legalStuff);
+        super.fillInputBoxIn("budget", budget);
+        super.fillInputBoxIn("startsAt", startsAt);
+        super.fillInputBoxIn("finishesAt", finishesAt);
+        super.fillInputBoxIn("link", link);
+        super.clickOnSubmit("Create Patronage");
+        
+        super.clickOnMenu("Patron", "List Patronage");
+        super.checkListingExists();
+        super.checkColumnHasValue(recordIndex, 0, status);
+        super.checkColumnHasValue(recordIndex, 1, code);
+
         super.checkColumnHasValue(recordIndex, 2, legalStuff);
         super.checkColumnHasValue(recordIndex, 3, budget);
         super.checkColumnHasValue(recordIndex, 5, startsAt);
