@@ -7,4 +7,5 @@
 	<acme:list-column code="inventor.patronage.list.label.status" path="status" width="20%"/>
 	<acme:list-column code="inventor.patronage.list.label.code" path="code" width="20%"/>
 	<acme:list-column code="inventor.patronage.list.label.budget" path="budget" width="20%"/>
+	<acme:list-column code="inventor.label.moneyExchange" path="moneyExchange" width="20%"/>
 </acme:list>

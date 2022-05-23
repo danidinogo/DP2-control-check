@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.patronage.Patronage;
+import acme.features.administrator.configurations.AdministratorConfigurationRepository;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractShowService;
@@ -14,9 +16,11 @@ import acme.roles.Inventor;
 @Service
 public class InventorPatronageShowService implements AbstractShowService<Inventor, Patronage>{
 
-	
 	@Autowired
 	protected InventorPatronageRepository repository;
+	
+	@Autowired
+	protected AdministratorConfigurationRepository configRepository;
 	
 	@Override
 	public boolean authorise(final Request<Patronage> request) {
@@ -48,9 +52,11 @@ public class InventorPatronageShowService implements AbstractShowService<Invento
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "status", "code", "legalStuff", "budget", "startsAt", "finishesAt", "link", "patron.name", "patron.company", "patron.statement");
+		final String defaultCurrency = this.configRepository.getDefaultCurrency();
+		final MoneyExchange me = new MoneyExchange(entity.getBudget(), defaultCurrency);
+		model.setAttribute("moneyExchange", me.getExchange());
 		
-		
+		request.unbind(entity, model, "status", "code", "legalStuff", "budget", "startsAt", "finishesAt", "link", "patron.company", "patron.statement");
 		
 	}
 	

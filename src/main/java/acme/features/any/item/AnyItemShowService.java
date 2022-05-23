@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Item;
+import acme.features.administrator.configurations.AdministratorConfigurationRepository;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.roles.Any;
@@ -28,6 +30,9 @@ public class AnyItemShowService implements AbstractShowService<Any, Item> {
 
 	@Autowired
 	protected AnyItemRepository repository;
+	
+	@Autowired
+	protected AdministratorConfigurationRepository configRepository;
 
 	@Override
 	public Item findOne(final Request<Item> request) {
@@ -41,7 +46,11 @@ public class AnyItemShowService implements AbstractShowService<Any, Item> {
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "name", "code", "description" , "info", "technology", "retailPrice", "type");
+		request.unbind(entity, model, "name", "code", "description" , "link", "technology", "retailPrice", "type");
+		
+		final String defaultCurrency = this.configRepository.getDefaultCurrency();
+		final MoneyExchange me = new MoneyExchange(entity.getRetailPrice(), defaultCurrency);
+		model.setAttribute("moneyExchange", me.getExchange());
 	}
 
 	@Override

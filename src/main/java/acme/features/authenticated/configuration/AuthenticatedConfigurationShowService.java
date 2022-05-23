@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.configuration.Configuration;
+import acme.features.administrator.configurations.AdministratorConfigurationRepository;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.roles.Authenticated;
 import acme.framework.services.AbstractShowService;
 
@@ -14,6 +17,9 @@ public class AuthenticatedConfigurationShowService implements AbstractShowServic
 	
 	@Autowired
 	protected AuthenticatedConfigurationRepository repository;
+	
+	@Autowired
+	protected AdministratorConfigurationRepository configRepository;
 	
 	
 	@Override
@@ -31,6 +37,14 @@ public class AuthenticatedConfigurationShowService implements AbstractShowServic
 		assert model != null;
 		
 		request.unbind(entity, model,"defaultCurr", "acceptedCurr");
+		
+		final Money money = new Money();
+		money.setAmount(1.00);
+		money.setCurrency("EUR");
+		
+		final String defaultCurrency = this.configRepository.getDefaultCurrency();
+		final MoneyExchange me = new MoneyExchange(money, defaultCurrency);
+		model.setAttribute("moneyExchange", me.getExchange());
 	}
 	
 	@Override

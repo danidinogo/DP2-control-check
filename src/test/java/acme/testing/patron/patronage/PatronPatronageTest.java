@@ -12,12 +12,8 @@
 
 package acme.testing.patron.patronage;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -38,8 +34,8 @@ public class PatronPatronageTest extends TestHarness {
         super.checkColumnHasValue(recordIndex, 1, code);
         super.checkColumnHasValue(recordIndex, 2, legalStuff);
         super.checkColumnHasValue(recordIndex, 3, budget);
-        super.checkColumnHasValue(recordIndex, 4, startsAt);
-        super.checkColumnHasValue(recordIndex, 5, finishesAt);
+        super.checkColumnHasValue(recordIndex, 5, startsAt);
+        super.checkColumnHasValue(recordIndex, 6, finishesAt);
         
         
         super.clickOnListingRecord(recordIndex);

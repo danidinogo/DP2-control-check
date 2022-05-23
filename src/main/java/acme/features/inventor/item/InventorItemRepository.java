@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import acme.entities.item.Item;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.repositories.AbstractRepository;
+import acme.roles.Inventor;
 
 @Repository
 public interface InventorItemRepository extends AbstractRepository{
@@ -38,6 +39,12 @@ public interface InventorItemRepository extends AbstractRepository{
 	@Query("select i from Item i where i.id = :id")
 	Item findOneItemById(int id);
 
-
+	@Query(value="select i from Inventor i where i.userAccount.id = :id")
+	Inventor findInventorByUserAccountId(int id);
 	
+	@Query("select i from Item i WHERE i.code = :code")
+	Item findItemByCode(String code);
+	
+	@Query("select i.id from Inventor i WHERE i.userAccount.id = :id")
+	Integer findUsersInventorId(Integer id);
 }

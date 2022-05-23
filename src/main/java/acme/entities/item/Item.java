@@ -6,8 +6,10 @@ import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
 import acme.framework.datatypes.Money;
 import acme.framework.entities.AbstractEntity;
@@ -26,6 +28,7 @@ public class Item extends AbstractEntity{
 	
 	@Column(unique=true)
 	@NotBlank
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
 	protected String code;
 	
 	@NotBlank
@@ -39,7 +42,8 @@ public class Item extends AbstractEntity{
 	@NotNull
 	protected Money retailPrice;
 	
-	protected String info;
+	@URL
+	protected String link;
 	
 	@NotNull
 	protected Status status;

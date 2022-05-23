@@ -12,4 +12,13 @@ inventor.patronage.form.label.link = Link
 inventor.patronage.form.label.patronCompany = Patron Company
 inventor.patronage.form.label.patronStatement = Patron Statement
 inventor.patronage.form.buttom.patronage-report = Patronage Reports
+inventor.patronage.form.label.status = Status
+inventor.patronage.form.label.status.proposed = proposed
+inventor.patronage.form.label.status.accepted = accepted
+inventor.patronage.form.label.status.denied = denied
 
+inventor.patronage-report.form.button.create = Create new patronage report
+inventor.patronage-report.form.label.confirm = Confirm creation 
+inventor.patronage-report.form.accept.error = Confirm the creation to continue please
+
+inventor.quantity.form.button.update = Accept or deny

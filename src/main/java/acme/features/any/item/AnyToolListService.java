@@ -30,7 +30,7 @@ public class AnyToolListService implements AbstractListService<Any, Item> {
 	public Collection<Item> findMany(final Request<Item> request) {
 		assert request !=null;
 		
-		return this.repository.findTools();
+		return this.repository.findPublishedTools();
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class AnyToolListService implements AbstractListService<Any, Item> {
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "name", "code", "technology", "description" , "info", "type");
+		request.unbind(entity, model, "name", "code", "technology", "description" , "link", "type");
 	}
 
 }

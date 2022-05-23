@@ -12,8 +12,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import acme.enums.PublishedStatus;
 import acme.enums.Status;
 import acme.framework.datatypes.Money;
 import acme.framework.entities.AbstractEntity;
@@ -32,16 +34,24 @@ public class Patronage extends AbstractEntity {
 	@NotNull
 	protected Status status;
 	
-	@Pattern(regexp = "(\\w{3})-(\\d{3})")
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
 	@Column(unique=true)
 	protected String code;
 	
 	@NotBlank
-	@Size(min = 1, max = 255)
+	@Length(min = 1, max = 255)
 	protected String legalStuff;
 	 
 	@NotNull
 	protected Money budget;
+	
+	
+	@NotNull
+	protected PublishedStatus publishedStatus;
+	
+
+	
+	
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
@@ -61,6 +71,11 @@ public class Patronage extends AbstractEntity {
 	@ManyToOne
 	@Valid
 	protected Inventor inventor;
+	
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
+	protected Date creationTime;
 	
 	
 }
