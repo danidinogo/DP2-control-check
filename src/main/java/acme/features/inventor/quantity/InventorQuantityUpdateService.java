@@ -54,6 +54,9 @@ public class InventorQuantityUpdateService implements AbstractUpdateService<Inve
 		
 		model.setAttribute("item", entity.getItem());
 		model.setAttribute("toolkit", entity.getToolkit());
+		
+		//model.setAttribute("inventorId", this.repository.findUsersInventorId(request.getPrincipal().getAccountId()));
+		model.setAttribute("inventorId", request.getPrincipal().getActiveRoleId());
 	}
 
 	@Override

@@ -54,6 +54,9 @@ public class InventorQuantityShowService implements AbstractShowService<Inventor
 		
 		model.setAttribute("item", entity.getItem());
 		model.setAttribute("toolkit", entity.getToolkit());
+		
+		//model.setAttribute("inventorId", this.repository.findUsersInventorId(request.getPrincipal().getAccountId()));
+		model.setAttribute("inventorId", request.getPrincipal().getActiveRoleId());
 	}
 
 }
