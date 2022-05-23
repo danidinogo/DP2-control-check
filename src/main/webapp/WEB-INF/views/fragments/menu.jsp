@@ -34,7 +34,10 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.anonymous.any-chirp" action="/any/chirp/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.user-account" action="/any/user-account/list-enabled"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-component" action="/any/item/list-component"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-tool" action="/any/item/list-tool"/>
 			<acme:menu-suboption code="master.menu.authenticated.list-toolkit" action="/any/toolkit/list-published"/>
 			<acme:menu-suboption code="master.menu.authenticated.configuration" action="/authenticated/configuration/show"/>
 

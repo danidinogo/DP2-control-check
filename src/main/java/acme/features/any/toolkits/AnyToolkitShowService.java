@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.toolkit.Toolkit;
+import acme.features.administrator.configurations.AdministratorConfigurationRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.roles.Any;
@@ -14,6 +15,9 @@ public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> 
 	
 	@Autowired
 	protected AnyToolkitRepository repository;
+
+	@Autowired
+	protected AdministratorConfigurationRepository configRepository;
 	
 	@Override
 	public boolean authorise(final Request<Toolkit> request) {
@@ -41,7 +45,8 @@ public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> 
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model,"code", "title", "descripcion","assemblyNotes", "link","retailPrice");
+		request.unbind(entity, model,"code", "title", "descripcion","assemblyNotes", "link");
+		model.setAttribute("retailPrice", entity.getRetailPrice(this.configRepository.getDefaultCurrency()));
 		
 	}
 }

@@ -95,7 +95,7 @@ master.menu.user-account.patron = Patron data
 master.menu.user-account.inventor = Inventor data
 
 
-master.menu.anonymous.list-component = List Components
-master.menu.anonymous.list-tool = List Tools
+master.menu.anonymous.list-component = List Published Components
+master.menu.anonymous.list-tool = List Published Tools
 master.menu.anonymous.list-by-toolkit = List by Toolkit
 master.menu.items = Show items
