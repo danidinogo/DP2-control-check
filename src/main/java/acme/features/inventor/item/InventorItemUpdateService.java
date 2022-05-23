@@ -11,6 +11,7 @@ import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
+import lib.SpamLib;
 
 @Service
 public class InventorItemUpdateService implements AbstractUpdateService<Inventor, Item>{
@@ -67,16 +68,18 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		
 		final Configuration config = this.configurationRepository.findConfiguration();
 		
-		errors.state(request, !config.isSpamStrong(entity.getName()), "name","inventor.item.strongspam");
-		errors.state(request, !config.isSpamWeak(entity.getName()), "name","inventor.item.weakspam");
-		errors.state(request, !config.isSpamStrong(entity.getCode()), "code","inventor.item.strongspam");
-		errors.state(request, !config.isSpamWeak(entity.getCode()), "code","inventor.item.weakspam");
-		errors.state(request, !config.isSpamStrong(entity.getTechnology()), "technology","inventor.item.strongspam");
-		errors.state(request, !config.isSpamWeak(entity.getTechnology()), "technology","inventor.item.weakspam");
-		errors.state(request, !config.isSpamStrong(entity.getDescription()), "description","inventor.item.strongspam");
-		errors.state(request, !config.isSpamWeak(entity.getDescription()), "description","inventor.item.weakspam");
-		errors.state(request, !config.isSpamStrong(entity.getLink()), "link","inventor.item.strongspam");
-		errors.state(request, !config.isSpamWeak(entity.getLink()), "link","inventor.item.weakspam");
+		final SpamLib spam = new SpamLib(config.getWeakSpamWords(), config.getStrongSpamWords(), config.getWeakSpamThreshold(), config.getStrongSpamThreshold());
+		
+		errors.state(request, !spam.isSpamStrong(entity.getName()), "name","inventor.item.strongspam");
+		errors.state(request, !spam.isSpamWeak(entity.getName()), "name","inventor.item.weakspam");
+		errors.state(request, !spam.isSpamStrong(entity.getCode()), "code","inventor.item.strongspam");
+		errors.state(request, !spam.isSpamWeak(entity.getCode()), "code","inventor.item.weakspam");
+		errors.state(request, !spam.isSpamStrong(entity.getTechnology()), "technology","inventor.item.strongspam");
+		errors.state(request, !spam.isSpamWeak(entity.getTechnology()), "technology","inventor.item.weakspam");
+		errors.state(request, !spam.isSpamStrong(entity.getDescription()), "description","inventor.item.strongspam");
+		errors.state(request, !spam.isSpamWeak(entity.getDescription()), "description","inventor.item.weakspam");
+		errors.state(request, !spam.isSpamStrong(entity.getLink()), "link","inventor.item.strongspam");
+		errors.state(request, !spam.isSpamWeak(entity.getLink()), "link","inventor.item.weakspam");
 		
 		final Item item = this.repository.findItemByCode(entity.getCode());
 		

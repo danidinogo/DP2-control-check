@@ -15,6 +15,7 @@ import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
 import acme.framework.roles.Administrator;
 import acme.framework.services.AbstractCreateService;
+import lib.SpamLib;
 
 @Service
 public class AdministratorAnnouncementCreateService implements AbstractCreateService<Administrator, Announcement> {
@@ -63,12 +64,14 @@ public class AdministratorAnnouncementCreateService implements AbstractCreateSer
 
 		final Configuration config = this.configurationRepository.findConfiguration();
 		
-		errors.state(request, !config.isSpamStrong(entity.getTitle()), "title","administrator.announcement.strongspam");
-		errors.state(request, !config.isSpamWeak(entity.getTitle()), "title","administrator.announcement.weakspam");
-		errors.state(request, !config.isSpamStrong(entity.getBody()), "body","administrator.announcement.strongspam");
-		errors.state(request, !config.isSpamWeak(entity.getBody()), "body","administrator.announcement.weakspam");
-		errors.state(request, !config.isSpamStrong(entity.getLink()), "link","administrator.announcement.strongspam");
-		errors.state(request, !config.isSpamWeak(entity.getLink()), "link","administrator.announcement.weakspam");
+		final SpamLib spam = new SpamLib(config.getWeakSpamWords(), config.getStrongSpamWords(), config.getWeakSpamThreshold(), config.getStrongSpamThreshold());
+		
+		errors.state(request, !spam.isSpamStrong(entity.getTitle()), "title","administrator.announcement.strongspam");
+		errors.state(request, !spam.isSpamWeak(entity.getTitle()), "title","administrator.announcement.weakspam");
+		errors.state(request, !spam.isSpamStrong(entity.getBody()), "body","administrator.announcement.strongspam");
+		errors.state(request, !spam.isSpamWeak(entity.getBody()), "body","administrator.announcement.weakspam");
+		errors.state(request, !spam.isSpamStrong(entity.getLink()), "link","administrator.announcement.strongspam");
+		errors.state(request, !spam.isSpamWeak(entity.getLink()), "link","administrator.announcement.weakspam");
 		
 
 		final boolean confirm = request.getModel().getBoolean("confirm");
