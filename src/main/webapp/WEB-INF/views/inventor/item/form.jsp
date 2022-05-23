@@ -32,7 +32,7 @@
 	
 		<jstl:when test="${command == 'create'}">
 			<acme:input-textbox code="inventor.item.form.label.name" path="name"/>
-			<acme:input-textbox code="inventor.item.form.label.code" path="code"/>
+			<acme:input-textbox code="inventor.item.form.label.code" path="code" readonly="true"/>
 			<acme:input-textbox code="inventor.item.form.label.technology" path="technology"/>
 			<acme:input-textbox code="inventor.item.form.label.description" path="description"/>
 			<acme:input-money code="inventor.item.form.label.price" path="retailPrice"/>
@@ -48,7 +48,7 @@
 		
 		<jstl:when test="${command == 'update'}">
 			<acme:input-textbox code="inventor.item.form.label.name" path="name"/>
-			<acme:input-textbox code="inventor.item.form.label.code" path="code"/>
+			<acme:input-textbox code="inventor.item.form.label.code" path="code" readonly="true"/>
 			<acme:input-textbox code="inventor.item.form.label.technology" path="technology"/>
 			<acme:input-textbox code="inventor.item.form.label.description" path="description"/>
 			<acme:input-money code="inventor.item.form.label.price" path="retailPrice"/>

@@ -75,7 +75,6 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		errors.state(request, !config.isSpamStrong(entity.getInfo()), "info","inventor.item.strongspam");
 		errors.state(request, !config.isSpamWeak(entity.getInfo()), "info","inventor.item.weakspam");
 		
-		errors.state(request, this.repository.findItemByCode(entity.getCode()) == null, "code", "inventor.item.title.codeNotUnique");
 	}
 
 	@Override
