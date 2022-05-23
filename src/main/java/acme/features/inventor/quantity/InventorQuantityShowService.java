@@ -46,7 +46,7 @@ public class InventorQuantityShowService implements AbstractShowService<Inventor
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "number", "item.name", "item.code", "item.technology", "item.description", "item.retailPrice", "item.info", "item.status", "item.type");
+		request.unbind(entity, model, "number", "item.name", "item.code", "item.technology", "item.description", "item.retailPrice", "item.link", "item.status", "item.type");
 		
 		final String defaultCurrency = this.configRepository.getDefaultCurrency();
 		final MoneyExchange me = new MoneyExchange(entity.getItem().getRetailPrice(), defaultCurrency);

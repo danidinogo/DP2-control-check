@@ -20,7 +20,10 @@
 				<acme:input-money code="inventor.label.moneyExchange" path="moneyExchange" readonly="true"/>
 			</jstl:if>
 			
-			<acme:input-url code="inventor.quantity.form.label.info" path="item.info" readonly="${item.status == 'PUBLISHED' || toolkit.status == 'PUBLISHED'}"/>
+
+
+			<acme:input-url code="inventor.quantity.form.label.link" path="item.link" readonly="${item.status == 'PUBLISHED' || toolkit.status == 'PUBLISHED'}"/>
+
 			
 			<acme:input-textbox code="inventor.quantity.form.label.status" path="item.status" readonly="true" />
 			

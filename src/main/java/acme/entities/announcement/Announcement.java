@@ -44,7 +44,6 @@ public class Announcement extends AbstractEntity {
 	protected boolean critic;
 
 	@URL
-	@NotBlank
 	protected String link;
 
 }
