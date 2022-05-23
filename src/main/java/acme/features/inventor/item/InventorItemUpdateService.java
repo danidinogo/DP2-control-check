@@ -25,7 +25,10 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 	public boolean authorise(final Request<Item> request) {
 		assert request != null;
 		
-		return true;
+		final int itemId = request.getModel().getInteger("id");
+		final int inventorId = request.getPrincipal().getActiveRoleId();
+		final Item item = this.repository.findOneItemById(itemId);	
+		return item.getInventor().getId() == inventorId;
 	}
 
 	@Override
@@ -34,7 +37,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity, errors,  "name", "code", "technology", "description", "retailPrice", "info", "type");
+		request.bind(entity, errors,  "name", "code", "technology", "description", "retailPrice", "link", "type");
 		
 	}
 
@@ -44,7 +47,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "info", "status", "type");
+		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "link", "status", "type");
 		
 	}
 
@@ -72,8 +75,8 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		errors.state(request, !config.isSpamWeak(entity.getTechnology()), "technology","inventor.item.weakspam");
 		errors.state(request, !config.isSpamStrong(entity.getDescription()), "description","inventor.item.strongspam");
 		errors.state(request, !config.isSpamWeak(entity.getDescription()), "description","inventor.item.weakspam");
-		errors.state(request, !config.isSpamStrong(entity.getInfo()), "info","inventor.item.strongspam");
-		errors.state(request, !config.isSpamWeak(entity.getInfo()), "info","inventor.item.weakspam");
+		errors.state(request, !config.isSpamStrong(entity.getLink()), "link","inventor.item.strongspam");
+		errors.state(request, !config.isSpamWeak(entity.getLink()), "link","inventor.item.weakspam");
 		
 		final Item item = this.repository.findItemByCode(entity.getCode());
 		

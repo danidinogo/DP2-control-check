@@ -25,7 +25,6 @@
 			<acme:input-textbox readonly="true" code="authenticated.patron.patronage.form.label.startsAt" path="startsAt"/>
 			<acme:input-textbox readonly="true" code="authenticated.patron.patronage.form.label.finishesAt" path="finishesAt"/>
 			<acme:input-url readonly="true" code="authenticated.patron.patronage.form.label.link" path="link"/>	
-			<acme:input-textbox readonly="true" code="authenticated.patron.patronage.form.label.publishedStatus" path="publishedStatus"/>
 			<acme:input-textarea readonly="true" code="authenticated.patron.patronage.form.label.inventor.company" path="inventor.company"/>
 			<acme:input-textarea readonly="true" code="authenticated.patron.patronage.form.label.inventor.statement" path="inventor.statement"/>
 			<acme:input-url readonly="true" code="authenticated.patron.patronage.form.label.inventor.link" path="inventor.link"/>
@@ -41,11 +40,6 @@
 		</jstl:when>
 		<jstl:when test="${command == 'create'}">
 		
-			<acme:input-select code="authenticated.patron.patronage.form.label.status" path="status">
-				<acme:input-option code="authenticated.patron.patronage.form.label.proposed" value="proposed" selected="${ status == 'proposed' }"/>
-				<acme:input-option code="authenticated.patron.patronage.form.label.accepted" value="accepted" selected="${ status == 'accepted' }"/>
-				<acme:input-option code="authenticated.patron.patronage.form.label.denied" value="denied" selected="${ status == 'denied' }"/>
-			</acme:input-select>
 			<acme:input-textbox code="authenticated.patron.patronage.form.label.code" path="code"/>	
 			<acme:input-textbox  code="authenticated.patron.patronage.form.label.legalStuff" path="legalStuff"/>	
 			<acme:input-money  code="authenticated.patron.patronage.form.label.budget" path="budget"/>	
@@ -64,12 +58,7 @@
 		
 		<jstl:when test="${command == 'update'}">
 		
-			<acme:input-select code="authenticated.patron.patronage.form.label.status" path="status">
-				<acme:input-option code="authenticated.patron.patronage.form.label.proposed" value="proposed" selected="${ status == 'proposed' }"/>
-				<acme:input-option code="authenticated.patron.patronage.form.label.accepted" value="accepted" selected="${ status == 'accepted' }"/>
-				<acme:input-option code="authenticated.patron.patronage.form.label.denied" value="denied" selected="${ status == 'denied' }"/>
-			</acme:input-select>
-			<acme:input-textbox  code="authenticated.patron.patronage.form.label.status" path="status"/>
+		
 			<acme:input-textbox code="authenticated.patron.patronage.form.label.code" path="code"/>	
 			<acme:input-textbox code="authenticated.patron.patronage.form.label.legalStuff" path="legalStuff"/>	
 			<acme:input-money code="authenticated.patron.patronage.form.label.budget" path="budget"/>	

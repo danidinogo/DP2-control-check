@@ -10,7 +10,7 @@ inventor.quantity.form.label.code = Code
 inventor.quantity.form.label.technology = Technology
 inventor.quantity.form.label.description = Description
 inventor.quantity.form.label.retailPrice = Retail Price
-inventor.quantity.form.label.info = Info
+inventor.quantity.form.label.link = Link
 inventor.quantity.form.label.status = Status
 inventor.quantity.form.label.type = Type
 
@@ -26,13 +26,13 @@ inventor.quantity.item.status = You cant update a published item
 
 inventor.quantity.item.code.strongSpam = Contains strong spam
 inventor.quantity.item.description.strongSpam = Contains strong spam
-inventor.quantity.item.info.strongSpam = Contains strong spam
+inventor.quantity.item.link.strongSpam = Contains strong spam
 inventor.quantity.item.name.strongSpam = Contains strong spam
 inventor.quantity.item.technology.strongSpam = Contains strong spam
 
 inventor.quantity.item.code.weakSpam = Contains weak spam
 inventor.quantity.item.description.weakSpam = Contains weak spam
-inventor.quantity.item.info.weakSpam = Contains weak spam
+inventor.quantity.item.link.weakSpam = Contains weak spam
 inventor.quantity.item.name.weakSpam = Contains weak spam
 inventor.quantity.item.technology.weakSpam = Contains weak spam
 

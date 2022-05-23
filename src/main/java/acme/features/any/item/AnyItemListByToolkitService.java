@@ -38,7 +38,7 @@ public class AnyItemListByToolkitService implements AbstractListService<Any, Ite
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "name", "description" , "info", "technology", "type");
+		request.unbind(entity, model, "name", "description" , "link", "technology", "type");
 	}
 
 }

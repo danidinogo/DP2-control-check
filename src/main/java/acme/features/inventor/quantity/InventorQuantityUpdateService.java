@@ -40,7 +40,7 @@ public class InventorQuantityUpdateService implements AbstractUpdateService<Inve
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity, errors, "number", "item.name", "item.code", "item.technology", "item.description", "item.retailPrice", "item.info", "item.type");
+		request.bind(entity, errors, "number", "item.name", "item.code", "item.technology", "item.description", "item.retailPrice", "item.link", "item.type");
 		
 	}
 
@@ -50,7 +50,7 @@ public class InventorQuantityUpdateService implements AbstractUpdateService<Inve
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "number", "item.name", "item.code", "item.technology", "item.description", "item.retailPrice", "item.info", "item.status", "item.type");
+		request.unbind(entity, model, "number", "item.name", "item.code", "item.technology", "item.description", "item.retailPrice", "item.link", "item.status", "item.type");
 		
 		model.setAttribute("item", entity.getItem());
 		model.setAttribute("toolkit", entity.getToolkit());
@@ -77,13 +77,13 @@ public class InventorQuantityUpdateService implements AbstractUpdateService<Inve
 		for(final Configuration c : conf) {
 			errors.state(request, !c.isSpamStrong(i.getCode()), "item.code", "inventor.quantity.item.code.strongSpam");
 			errors.state(request, !c.isSpamStrong(i.getDescription()), "item.description", "inventor.quantity.item.description.strongSpam");
-			errors.state(request, !c.isSpamStrong(i.getInfo()), "item.info", "inventor.quantity.item.info.strongSpam");
+			errors.state(request, !c.isSpamStrong(i.getLink()), "item.link", "inventor.quantity.item.link.strongSpam");
 			errors.state(request, !c.isSpamStrong(i.getName()), "item.name", "inventor.quantity.item.name.strongSpam");
 			errors.state(request, !c.isSpamStrong(i.getTechnology()), "item.technology", "inventor.quantity.item.technology.strongSpam");
 			
 			errors.state(request, !c.isSpamWeak(i.getCode()), "item.code", "inventor.quantity.item.code.weakSpam");
 			errors.state(request, !c.isSpamWeak(i.getDescription()), "item.description", "inventor.quantity.item.description.weakSpam");
-			errors.state(request, !c.isSpamWeak(i.getInfo()), "item.info", "inventor.quantity.item.info.weakSpam");
+			errors.state(request, !c.isSpamWeak(i.getLink()), "item.link", "inventor.quantity.item.link.weakSpam");
 			errors.state(request, !c.isSpamWeak(i.getName()), "item.name", "inventor.quantity.item.name.weakSpam");
 			errors.state(request, !c.isSpamWeak(i.getTechnology()), "item.technology", "inventor.quantity.item.technology.weakSpam");
 			
@@ -105,8 +105,15 @@ public class InventorQuantityUpdateService implements AbstractUpdateService<Inve
 		assert entity != null;
 		
 		final Item i = entity.getItem();
+		
+		if(entity.getItem().getType().equals(acme.entities.item.ItemType.TOOL) && entity.getNumber() > 1) {
+			entity.setNumber(1);
+		}
+		
 		this.repository.save(i);
 		this.repository.save(entity);
+		
+		
 		
 		
 	}

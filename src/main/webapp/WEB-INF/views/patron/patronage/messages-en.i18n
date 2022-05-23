@@ -17,6 +17,13 @@ authenticated.patron.patronage.form.label.publishedStatus = Published Status
 
 
 
+patron.patronage.error.minimumStartAt = The date must be at least one month after the creation date
+patron.patronage.error.minimumFinishesAt = The date must be at least one month after the start date
+
+administrator.announcement.strongspam = Strong Spam
+administrator.announcement.weakspam = Weak Spam
+
+
 authenticated.patron.patronage.form.label.proposed = Proposed
 authenticated.patron.patronage.form.label.accepted = Accepted
 authenticated.patron.patronage.form.label.denied = Denied

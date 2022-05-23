@@ -1,5 +1,8 @@
 package acme.features.patron.patronage;
 
+import java.util.Date;
+
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +37,7 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		
 		
 		entity.setInventor(this.repository.findInventorByUsername(request.getModel().getString("inventorUN")));
-		request.bind(entity, errors,"status", "code", "legalStuff", "budget", "startsAt", "finishesAt","link");
+		request.bind(entity, errors, "code", "legalStuff", "budget", "startsAt", "finishesAt","link");
 	}
 
 	@Override
@@ -63,6 +66,13 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		}
 		
 		errors.state(request, entity.getBudget().getAmount() >= 0.00, "budget", "inventor.item.title.minPrice");
+		
+
+		final Date minimumStartAt= DateUtils.addMonths(entity.getCreationTime(),1);
+		errors.state(request,entity.getStartsAt().after(minimumStartAt), "startsAt", "patron.patronage.error.minimumStartAt");
+		
+		final Date minimumFinishesAt=DateUtils.addMonths(entity.getStartsAt(), 1);
+		errors.state(request,entity.getFinishesAt().after(minimumFinishesAt), "finishesAt", "patron.patronage.error.minimumFinishesAt");
 	}
 
 	
