@@ -21,6 +21,7 @@ import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractCreateService;
 import acme.roles.Inventor;
 import acme.roles.Patron;
+import lib.SpamLib;
 
 @Service
 public class PatronPatronageCreateService implements AbstractCreateService<Patron, Patronage> {
@@ -125,10 +126,12 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 
 		final Configuration config = this.configurationRepository.findConfiguration();
 		
-		errors.state(request, !config.isSpamStrong(entity.getLegalStuff()), "legalStuff","administrator.announcement.strongspam");
-		errors.state(request, !config.isSpamWeak(entity.getLegalStuff()), "legalStuff","administrator.announcement.weakspam");
-		errors.state(request, !config.isSpamStrong(entity.getLink()), "link","administrator.announcement.strongspam");
-		errors.state(request, !config.isSpamWeak(entity.getLink()), "link","administrator.announcement.weakspam");
+		final SpamLib spam = new SpamLib(config.getWeakSpamWords(), config.getStrongSpamWords(), config.getWeakSpamThreshold(), config.getStrongSpamThreshold());
+		
+		errors.state(request, !spam.isSpamStrong(entity.getLegalStuff()), "legalStuff","administrator.announcement.strongspam");
+		errors.state(request, !spam.isSpamWeak(entity.getLegalStuff()), "legalStuff","administrator.announcement.weakspam");
+		errors.state(request, !spam.isSpamStrong(entity.getLink()), "link","administrator.announcement.strongspam");
+		errors.state(request, !spam.isSpamWeak(entity.getLink()), "link","administrator.announcement.weakspam");
 		
     	final Patronage patronage = this.repository.findPatronageByCode(entity.getCode());
 		
