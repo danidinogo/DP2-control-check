@@ -16,8 +16,13 @@ authenticated.patron.patronage.form.label.publishedStatus = Estatus de la Public
 
 authenticated.patron.patronage.form.label.inventor = Nombre de Usuario del Inventor
 
+
 patron.patronage.error.minimumStartAt = La fecha debe de ser como minimo un mes despues de la fecha de creacion
 patron.patronage.error.minimumFinishesAt = La fecha debe de ser como minimo un mes despues de la fecha de cuando empieza
+
+
+administrator.announcement.strongspam = Spam Fuerte
+administrator.announcement.weakspam = Spam Debil
 
 
 authenticated.patron.patronage.form.label.proposed = Propuesta

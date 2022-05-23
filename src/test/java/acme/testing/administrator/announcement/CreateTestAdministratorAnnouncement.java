@@ -1,6 +1,7 @@
 package acme.testing.administrator.announcement;
 
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -52,6 +53,24 @@ public class CreateTestAdministratorAnnouncement extends TestHarness{
 		
 		super.checkErrorsExist();
 		
+	}
+	
+	@Test
+	@Order(10)
+	public void hackingTest() {
+		
+		super.navigate("/administrator/announcement/create");
+		super.checkPanicExists();
+		
+		super.signIn("tester", "asdasdasd123");
+		super.navigate("/administrator/announcement/create");
+		super.checkPanicExists();
+		super.signOut();
+
+		super.signIn("tesla", "asdasdasd123");
+		super.navigate("/administrator/announcement/create");
+		super.checkPanicExists();
+		super.signOut();
 	}
 
 }

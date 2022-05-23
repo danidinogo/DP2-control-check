@@ -57,7 +57,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "totalsData", "patronagesBudgets", "componentsData", "itemsRetailPrice", "componentsRetailPrice");
+		request.unbind(entity, model, "totalsData", "patronagesBudgets", "itemsRetailPrice", "componentsRetailPrice");
 	}
 	
 	private Map<String, Integer> getTotals(final List<String> totalsKeys) {

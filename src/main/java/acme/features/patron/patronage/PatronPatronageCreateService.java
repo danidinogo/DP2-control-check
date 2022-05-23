@@ -9,9 +9,11 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.configuration.Configuration;
 import acme.entities.patronage.Patronage;
 import acme.enums.PublishedStatus;
 import acme.enums.Status;
+import acme.features.administrator.configurations.AdministratorConfigurationRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -25,7 +27,8 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 
 	@Autowired
 	protected PatronPatronageRepository repository;
-	
+	@Autowired
+	protected AdministratorConfigurationRepository configurationRepository;
 	
 	@Override
 	public boolean authorise(final Request<Patronage> request) {
@@ -119,8 +122,20 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert entity != null;
 		assert errors != null;
 		
+
+		final Configuration config = this.configurationRepository.findConfiguration();
+		
+		errors.state(request, !config.isSpamStrong(entity.getLegalStuff()), "legalStuff","administrator.announcement.strongspam");
+		errors.state(request, !config.isSpamWeak(entity.getLegalStuff()), "legalStuff","administrator.announcement.weakspam");
+		errors.state(request, !config.isSpamStrong(entity.getLink()), "link","administrator.announcement.strongspam");
+		errors.state(request, !config.isSpamWeak(entity.getLink()), "link","administrator.announcement.weakspam");
+		
+		errors.state(request, this.repository.findToolkitByCode(entity.getCode()) == null, "code", "inventor.toolkit.title.codeNotUnique");
+		
+
 		errors.state(request, this.repository.findPatronageByCode(entity.getCode()) == null, "code", "inventor.toolkit.title.codeNotUnique");
 		errors.state(request, entity.getBudget().getAmount() >= 0.00, "budget", "inventor.item.title.minPrice");
+
 		
 		
 			final Date minimumStartAt= DateUtils.addMonths(entity.getCreationTime(),1);

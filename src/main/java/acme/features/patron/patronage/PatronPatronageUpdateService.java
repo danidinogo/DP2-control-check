@@ -37,7 +37,7 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		
 		
 		entity.setInventor(this.repository.findInventorByUsername(request.getModel().getString("inventorUN")));
-		request.bind(entity, errors,"status", "code", "legalStuff", "budget", "startsAt", "finishesAt","link");
+		request.bind(entity, errors, "code", "legalStuff", "budget", "startsAt", "finishesAt","link");
 	}
 
 	@Override
