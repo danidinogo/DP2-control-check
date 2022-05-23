@@ -34,7 +34,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity, errors,  "name", "code", "technology", "description", "retailPrice", "info", "status", "type");
+		request.bind(entity, errors,  "name", "code", "technology", "description", "retailPrice", "info", "type");
 		
 	}
 
@@ -75,7 +75,13 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		errors.state(request, !config.isSpamStrong(entity.getInfo()), "info","inventor.item.strongspam");
 		errors.state(request, !config.isSpamWeak(entity.getInfo()), "info","inventor.item.weakspam");
 		
-		errors.state(request, this.repository.findItemByCode(entity.getCode()) == null, "code", "inventor.item.title.codeNotUnique");
+		final Item item = this.repository.findItemByCode(entity.getCode());
+		
+		if(item != null) {
+			errors.state(request, item.getId() == entity.getId(), "code", "inventor.item.title.codeNotUnique");
+		}
+		
+		errors.state(request, entity.getRetailPrice().getAmount() >= 0.00, "retailPrice", "inventor.item.title.minPrice");
 	}
 
 	@Override

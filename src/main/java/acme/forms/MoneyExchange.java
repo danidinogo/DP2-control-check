@@ -21,7 +21,7 @@ public class MoneyExchange {
 	@NotBlank
 	public String targetCurrency;
 	
-	private final String apiUrl = "https://v6.exchangerate-api.com/v6/9a03b319bdec3db5ab97a9bb/pair/";
+	private final String apiUrl = "https://v6.exchangerate-api.com/v6/1d828f0fac6dc5a88e3bb647/pair/";
 
 	public MoneyExchange(final Money source, final String target) {
 		this.source = source;
@@ -36,39 +36,43 @@ public class MoneyExchange {
 		final String url_str = this.currencyPairUrl();
 		
 		final Money conversion = new Money();
-
-		try {
-			// Making Request
-			final URL url = new URL(url_str);
-			final HttpURLConnection request = (HttpURLConnection) url.openConnection();
-			request.setRequestMethod("GET");
-			
-			request.connect();
-			
-			final BufferedReader in = new BufferedReader(new InputStreamReader(request.getInputStream()));
-			String inputLine;
-			final StringBuffer content = new StringBuffer();
-			while ((inputLine = in.readLine()) != null) {
-				content.append(inputLine);
+		
+		if(this.source.getAmount() > 0) {
+			try {
+				// Making Request
+				final URL url = new URL(url_str);
+				final HttpURLConnection request = (HttpURLConnection) url.openConnection();
+				request.setRequestMethod("GET");
+				
+				request.connect();
+				
+				final BufferedReader in = new BufferedReader(new InputStreamReader(request.getInputStream()));
+				String inputLine;
+				final StringBuffer content = new StringBuffer();
+				while ((inputLine = in.readLine()) != null) {
+					content.append(inputLine);
+				}
+				in.close();
+				
+				request.disconnect();
+				
+				String jsonRes = content.toString();
+				
+				jsonRes = jsonRes.replace("{", "");
+				jsonRes = jsonRes.replace("}", "");
+				final String[] values = jsonRes.split(",");
+				
+				final String[] conv = values[values.length - 1].split(":");
+				
+				conversion.setAmount(Double.parseDouble(conv[conv.length - 1]));
+				conversion.setCurrency(this.targetCurrency);
+				
+			} catch (final IOException e) {
+				e.printStackTrace();
 			}
-			in.close();
-			
-			request.disconnect();
-			
-			String jsonRes = content.toString();
-			
-			jsonRes = jsonRes.replace("{", "");
-			jsonRes = jsonRes.replace("}", "");
-			final String[] values = jsonRes.split(",");
-			
-			final String[] conv = values[values.length - 1].split(":");
-			
-			conversion.setAmount(Double.parseDouble(conv[conv.length - 1]));
+		} else {
 			conversion.setCurrency(this.targetCurrency);
-			
-		} catch (final IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			conversion.setAmount(this.source.getAmount());
 		}
 		
 		return conversion;

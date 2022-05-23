@@ -29,4 +29,6 @@ inventor.item.weakspam =  Spam Débil
 inventor.label.moneyExchange = Divisa del sistema
 inventor.item.title.codeNotUnique = Este código ya está en uso
 
+inventor.item.title.minPrice = El precio mínimo debe ser 0 o superior
+
 
