@@ -25,6 +25,7 @@
 			<jstl:if test="${status == 'NON_PUBLISHED' }">
 				<acme:submit code="inventor.item.form.button.delete" action="/inventor/item/delete"/>
 				<acme:button code="inventor.item.form.button.update" action="/inventor/item/update?id=${id}"/>	
+				<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish"/>	
 			</jstl:if>
 		</jstl:when>
 	
@@ -58,7 +59,6 @@
 			</acme:input-select>
 			
 			<acme:submit code="inventor.item.form.button.update" action="/inventor/item/update"/>
-			<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish"/>	
 		</jstl:when>
 		
 	</jstl:choose>
