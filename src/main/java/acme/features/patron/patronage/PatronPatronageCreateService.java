@@ -77,8 +77,6 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		finishedTime= DateUtils.addMonths( startTime,1);
 		finishedTime= DateUtils.addMinutes(startTime, 1);
 		
-		
-		
 		final Money money = new Money();
 		money.setAmount(0.0);
 		money.setCurrency("EUR");
@@ -147,6 +145,7 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		final Date minimumFinishesAt=DateUtils.addMonths(entity.getStartsAt(), 1);
 		errors.state(request,entity.getFinishesAt().after(minimumFinishesAt), "finishesAt", "patron.patronage.error.minimumFinishesAt");
 		
+		errors.state(request, this.configurationRepository.findConfiguration().getAcceptedCurr().contains(entity.getBudget().getCurrency()), "budget", "administrator.configuration.currency.notExist");
 	}
 
 	@Override
