@@ -70,6 +70,8 @@ public class AdministratorConfigurationUpdateService implements AbstractUpdateSe
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
+		errors.state(request, request.getModel().getAttribute("acceptedCurr").toString().contains(request.getModel().getAttribute("defaultCurr").toString()), "defaultCurr", "administrator.configuration.currency.notExist");
 	}
 
 	@Override
