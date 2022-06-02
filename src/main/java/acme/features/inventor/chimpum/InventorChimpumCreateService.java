@@ -85,6 +85,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		
 		
 		
+		
 
 		return result;
 	}
@@ -114,7 +115,8 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-	
+		final Boolean isConfirmed = request.getModel().getBoolean("confirm");
+		errors.state(request, isConfirmed, "confirm", "inventor.chimpum.form.accept.error");
 	}
 	
 	@Override
@@ -126,7 +128,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	
 		
 		request.unbind(entity, model,"code", "title", "description", "startsAt", "finishesAt", "budget", "link");
-	
+		model.setAttribute("confirm", "false");
 	}
 	
 	@Override
