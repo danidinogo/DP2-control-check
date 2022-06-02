@@ -37,10 +37,10 @@ public class InventorItemListOwnComponentService implements AbstractListService<
 	public boolean authorise(final Request<Item> request) {
 		assert request != null;
 		
-		final int id = request.getPrincipal().getActiveRoleId();
-		final List<Item> components = this.componentRepository.findComponentsByInventorId(id);
+		final int id = request.getPrincipal().getAccountId();
+		final Inventor inventor = this.componentRepository.findInventorByUserAccountId(id);
 		
-		return components.get(0).getInventor().getId()==id;
+		return inventor!=null;
 	}
 
 

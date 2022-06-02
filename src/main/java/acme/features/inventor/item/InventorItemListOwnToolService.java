@@ -37,10 +37,10 @@ public class InventorItemListOwnToolService implements AbstractListService<Inven
 	public boolean authorise(final Request<Item> request) {
 		assert request != null;
 		
-		final int id = request.getPrincipal().getActiveRoleId();
-		final List<Item> tools = this.toolRepository.findToolsByInventorId(id);
+		final int id = request.getPrincipal().getAccountId();
+		final Inventor inventor = this.toolRepository.findInventorByUserAccountId(id);
 		
-		return tools.get(0).getInventor().getId()==id;
+		return inventor!=null;
 	}
 
 
