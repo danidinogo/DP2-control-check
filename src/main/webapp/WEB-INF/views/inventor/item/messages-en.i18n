@@ -13,6 +13,7 @@ inventor.item.form.label.status = Status
 inventor.item.form.label.type = Type
 inventor.item.form.label.component = Component
 inventor.item.form.label.tool = Tool
+inventor.item.form.buttom.chimpum=Chimpum
 
 
 inventor.item.list.button.create = Create

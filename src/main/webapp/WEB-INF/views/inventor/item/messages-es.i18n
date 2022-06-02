@@ -11,6 +11,7 @@ inventor.item.form.label.price = Precio
 inventor.item.form.label.link = Enlace
 inventor.item.form.label.status = Status
 inventor.item.form.label.type = Tipo
+inventor.item.form.buttom.chimpum=Chimpum
 
 inventor.item.form.label.component = Componente
 inventor.item.form.label.tool = Herramienta
