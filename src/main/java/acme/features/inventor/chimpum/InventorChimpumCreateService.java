@@ -148,7 +148,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
  
 		errors.state(request, entity.getBudget().getAmount() > 0.00, "budget", "authenticated.patron.patronage.list.label.priceGreatherZero");
 
-		final Date minimumStartAt= DateUtils.addWeeks(entity.getCreation(),1);
+		final Date minimumStartAt= DateUtils.addMonths(entity.getCreation(),1);
 		errors.state(request,entity.getStartsAt().after(minimumStartAt), "startsAt", "patron.patronage.error.minimumStartAt");
 		
 		final long dateInDays= ((((entity.getFinishesAt().getTime() - entity.getStartsAt().getTime())/1000)/60)/60)/24 ;

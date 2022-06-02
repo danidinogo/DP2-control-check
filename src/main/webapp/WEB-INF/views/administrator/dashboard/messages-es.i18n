@@ -35,6 +35,10 @@ administrator.dashboard.form.label.minPrice = Precio mín
 administrator.dashboard.form.label.avgPrice = Precio medio
 administrator.dashboard.form.label.devPrice = Desviación típica
 
+
+administrator.dashboard.chimpum.budged = Presupuesto de Chimpum
+administrator.dashboard.chimpum.ratio = Ratio de Chimpum y Artefact 
+
 administrator.dashboard.form.label.currency = Divisa
 administrator.dashboard.form.label.technology = Tecnología
 

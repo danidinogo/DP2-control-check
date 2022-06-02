@@ -48,6 +48,10 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		
 		//result.setComponentsData(this.getComponentsData(result.getDataKeys()));
 		
+		result.setChimpumBudgets(this.getChimpumBudgets(result.getDataKeys()));
+		
+		result.setRatio(Double.valueOf(this.repository.getAllChimpum())/Double.valueOf(this.repository.getAllArtefacts()));
+		
 		return result;
 	}
 
@@ -57,7 +61,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "totalsData", "patronagesBudgets", "itemsRetailPrice", "componentsRetailPrice");
+		request.unbind(entity, model, "totalsData", "patronagesBudgets", "itemsRetailPrice", "componentsRetailPrice","chimpumBudgets","ratio");
 	}
 	
 	private Map<String, Integer> getTotals(final List<String> totalsKeys) {
@@ -145,5 +149,29 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		}
 		
 		return componentsData;
+	}
+	
+	private Map<String, Map<String, Double>> getChimpumBudgets(final List<String> dataKeys ) {
+		final Map<String, Map<String, Double>> chimpumBudgets = new HashMap<String, Map<String, Double>>();
+		
+		
+			
+			final List<String> budgepatron = this.repository.getChimpumBudget();
+			for(final String i : budgepatron) {
+				final String[] item = i.split(",");
+				
+				final Map<String, Double> im = new HashMap<String, Double>();
+				im.put(dataKeys.get(0), Double.valueOf(item[1]));
+				im.put(dataKeys.get(1), Double.valueOf(item[2]));
+				im.put(dataKeys.get(2), Double.valueOf(item[3]));
+				im.put(dataKeys.get(3), Double.valueOf(item[4]));
+				
+				chimpumBudgets.put(item[0], im);
+				
+			}
+			
+		
+		
+		return chimpumBudgets;
 	}
 }
