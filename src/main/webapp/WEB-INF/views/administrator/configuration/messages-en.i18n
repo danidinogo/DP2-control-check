@@ -16,3 +16,5 @@ administrator.configuration.form.label.weakSpamThreshold = Weak SPAM Weighting
 administrator.configuration.form.label.weakSpamWords = Weak SPAM word list
 
 administrator.configuration.form.button.update = Update configuration
+
+administrator.configuration.currency.notExist = Currency not listed in accepted currencies list

@@ -16,3 +16,5 @@ administrator.configuration.form.label.weakSpamThreshold = Ponderación SPAM Dé
 administrator.configuration.form.label.weakSpamWords = Lista de palabras SPAM débil
 
 administrator.configuration.form.button.update = Actualizar configuración
+
+administrator.configuration.currency.notExist = La divisa no existe en la lista de divisas aceptadas
