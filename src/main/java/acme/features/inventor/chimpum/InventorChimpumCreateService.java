@@ -74,7 +74,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "code","creation", "title", "description", "startsAt", "finishesAt", "budget", "link");
+		request.bind(entity, errors, "code", "title", "description", "startsAt", "finishesAt", "budget", "link");
 		
 	}
 	
@@ -94,7 +94,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model,"code","creation", "title", "description", "startsAt", "finishesAt", "budget", "link");
+		request.unbind(entity, model,"code", "title", "description", "startsAt", "finishesAt", "budget", "link");
 		model.setAttribute("id", request.getModel().getAttribute("id"));
 		model.setAttribute("confirm", "false");
 	}
