@@ -21,6 +21,8 @@
 			<acme:input-textbox code="inventor.item.form.label.link" path="link" readonly="true"/>
 			<acme:input-textbox code="inventor.item.form.label.status" path="status" readonly= "true"/>
 			<acme:input-textbox code="inventor.item.form.label.type" path="type" readonly= "true"/>
+			<acme:button code="inventor.item.form.buttom.chimpum" action="/inventor/chimpum/list-by-item?id=${id}"/>
+			<acme:button code="inventor.item.form.button.create.chimpum" action="/inventor/chimpum/create?id=${id}"/>
 		
 			<jstl:if test="${status == 'NON_PUBLISHED' }">
 				<acme:submit code="inventor.item.form.button.delete" action="/inventor/item/delete"/>
