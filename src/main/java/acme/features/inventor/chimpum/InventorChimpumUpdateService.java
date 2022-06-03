@@ -40,8 +40,17 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 	@Override
 	public boolean authorise(final Request<Chimpum> request) {
 		assert request != null;
+		
+		
+		boolean res;
+		int chimpumId;
+		Chimpum chimpum;
 
-		return true;
+		chimpumId = request.getModel().getInteger("id");
+		chimpum = this.repository.findOneChimpumById(chimpumId);
+		res = chimpum != null && chimpum.getArtefact().getInventor().getId() == request.getPrincipal().getActiveRoleId();
+
+		return res;
 	}
 
 	@Override
