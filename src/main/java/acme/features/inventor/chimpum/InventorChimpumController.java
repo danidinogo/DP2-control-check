@@ -5,12 +5,12 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import acme.entities.chimpum.Chimpum;
+import acme.entities.xomemi.Xomemi;
 import acme.framework.controllers.AbstractController;
 import acme.roles.Inventor;
 
 @Controller
-public class InventorChimpumController extends AbstractController<Inventor, Chimpum>{
+public class InventorChimpumController extends AbstractController<Inventor, Xomemi>{
 	
 	@Autowired
 	protected InventorChimpumListService listService;

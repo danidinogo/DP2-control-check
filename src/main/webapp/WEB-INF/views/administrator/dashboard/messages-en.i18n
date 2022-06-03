@@ -42,9 +42,9 @@ administrator.dashboard.form.label.in = in
 
 administrator.dashboard.form.label.patronagesByStatus = Total Patronages By Status
 
-administrator.dashboard.form.label.chimpumTotals = Chimpum & Artefacts totals
-administrator.dashboard.form.label.totalChimpum = Total chimpum
+administrator.dashboard.form.label.chimpumTotals = Xomemi & Artefacts totals
+administrator.dashboard.form.label.totalChimpum = Total xomemi
 administrator.dashboard.form.label.totalArtefacts = Total artefacts
-administrator.dashboard.form.label.chimpumRatio = Chimpum/Artefacts Ratio
+administrator.dashboard.form.label.chimpumRatio = Xomemi/Artefacts Ratio
 
-administrator.dashboard.form.label.chimpumData = Chimpum Stats
+administrator.dashboard.form.label.chimpumData = Xomemi Stats

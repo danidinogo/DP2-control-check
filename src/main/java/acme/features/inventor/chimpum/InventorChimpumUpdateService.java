@@ -5,9 +5,10 @@ import java.util.Calendar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.chimpum.Chimpum;
 import acme.entities.configuration.Configuration;
+import acme.entities.item.ItemType;
 import acme.entities.item.Status;
+import acme.entities.xomemi.Xomemi;
 import acme.features.administrator.configurations.AdministratorConfigurationRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -16,7 +17,7 @@ import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorChimpumUpdateService implements AbstractUpdateService<Inventor, Chimpum>{
+public class InventorChimpumUpdateService implements AbstractUpdateService<Inventor, Xomemi>{
 
 	@Autowired
 	protected InventorChimpumRepository repository;
@@ -25,47 +26,47 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 	protected AdministratorConfigurationRepository adminRepository;
 	
 	@Override
-	public boolean authorise(final Request<Chimpum> request) {
+	public boolean authorise(final Request<Xomemi> request) {
 		assert request != null;
 		
 		final int id = request.getModel().getInteger("id");
-		final Chimpum c = this.repository.findChimpumById(id);
+		final Xomemi c = this.repository.findChimpumById(id);
 		final Inventor inv = this.repository.findInventorByUserAccountId(request.getPrincipal().getAccountId());
-		return c.getArtefact().getInventor().getId()==inv.getId() && c.getArtefact().getStatus().equals(Status.NON_PUBLISHED); //&& c.getArtefact().getStatus().equals(ItemType.TOOL); 
+		return c.getArtefact().getInventor().getId()==inv.getId() && c.getArtefact().getStatus().equals(Status.NON_PUBLISHED) && c.getArtefact().getType().equals(ItemType.TOOL); 
 	}
 
 	@Override
-	public void bind(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void bind(final Request<Xomemi> request, final Xomemi entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity, errors, "code", "title", "description", "startDate", "finishDate", "budget", "link");
+		request.bind(entity, errors, "code", "name", "statement", "startDate", "finishDate", "ration", "furtherInfo");
 		
 	}
 
 	@Override
-	public void unbind(final Request<Chimpum> request, final Chimpum entity, final Model model) {
+	public void unbind(final Request<Xomemi> request, final Xomemi entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "code", "title", "description", "startDate", "finishDate", "budget", "link", "creationMoment");
+		request.unbind(entity, model, "code", "name", "statement", "startDate", "finishDate", "ration", "furtherInfo", "creationMoment");
 		
 	}
 
 	@Override
-	public Chimpum findOne(final Request<Chimpum> request) {
+	public Xomemi findOne(final Request<Xomemi> request) {
 		assert request != null;
 		
 		final int id = request.getModel().getInteger("id");
-		final Chimpum res = this.repository.findChimpumById(id);
+		final Xomemi res = this.repository.findChimpumById(id);
 		
 		return res;
 	}
 
 	@Override
-	public void validate(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void validate(final Request<Xomemi> request, final Xomemi entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -98,18 +99,18 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 		
 		final Configuration c = this.adminRepository.findConfiguration();
 		
-		if(entity.getBudget().getAmount()<=0) {
-			errors.state(request, false, "budget", "inventor.messages.form.error.budget.ammount");
+		if(entity.getRation().getAmount()<=0) {
+			errors.state(request, false, "ration", "inventor.messages.form.error.budget.ammount");
 		}
 		
-		if(!c.getAcceptedCurr().contains(entity.getBudget().getCurrency())) {
-			errors.state(request, false, "budget", "inventor.messages.form.error.budget.currency");
+		if(!c.getAcceptedCurr().contains(entity.getRation().getCurrency())) {
+			errors.state(request, false, "ration", "inventor.messages.form.error.budget.currency");
 		}
 		
 	}
 
 	@Override
-	public void update(final Request<Chimpum> request, final Chimpum entity) {
+	public void update(final Request<Xomemi> request, final Xomemi entity) {
 		assert request != null;
 		assert entity != null;
 		

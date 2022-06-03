@@ -3,9 +3,9 @@ package acme.features.inventor.chimpum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.chimpum.Chimpum;
 import acme.entities.item.Item;
 import acme.entities.item.Status;
+import acme.entities.xomemi.Xomemi;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -13,24 +13,24 @@ import acme.framework.services.AbstractDeleteService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorChimpumDeleteService implements AbstractDeleteService<Inventor, Chimpum>{
+public class InventorChimpumDeleteService implements AbstractDeleteService<Inventor, Xomemi>{
 
 	@Autowired
 	protected InventorChimpumRepository repository;;
 	
 	@Override
-	public boolean authorise(final Request<Chimpum> request) {
+	public boolean authorise(final Request<Xomemi> request) {
 		assert request != null;
 		
 		final int id = request.getModel().getInteger("id");
-		final Chimpum c = this.repository.findChimpumById(id);
+		final Xomemi c = this.repository.findChimpumById(id);
 		final Inventor inv = this.repository.findInventorByUserAccountId(request.getPrincipal().getAccountId());
 		final Item i = c.getArtefact();
 		return i.getInventor().getId()==inv.getId() && i.getStatus().equals(Status.NON_PUBLISHED); //&& c.getArtefact().getStatus().equals(ItemType.TOOL); 
 	}
 
 	@Override
-	public void bind(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void bind(final Request<Xomemi> request, final Xomemi entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -40,7 +40,7 @@ public class InventorChimpumDeleteService implements AbstractDeleteService<Inven
 	}
 
 	@Override
-	public void unbind(final Request<Chimpum> request, final Chimpum entity, final Model model) {
+	public void unbind(final Request<Xomemi> request, final Xomemi entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
@@ -50,7 +50,7 @@ public class InventorChimpumDeleteService implements AbstractDeleteService<Inven
 	}
 
 	@Override
-	public Chimpum findOne(final Request<Chimpum> request) {
+	public Xomemi findOne(final Request<Xomemi> request) {
 		assert request != null;
 		
 		final int id = request.getModel().getInteger("id");
@@ -59,7 +59,7 @@ public class InventorChimpumDeleteService implements AbstractDeleteService<Inven
 	}
 
 	@Override
-	public void validate(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void validate(final Request<Xomemi> request, final Xomemi entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -67,7 +67,7 @@ public class InventorChimpumDeleteService implements AbstractDeleteService<Inven
 	}
 
 	@Override
-	public void delete(final Request<Chimpum> request, final Chimpum entity) {
+	public void delete(final Request<Xomemi> request, final Xomemi entity) {
 		assert request != null;
 		assert entity != null;
 		

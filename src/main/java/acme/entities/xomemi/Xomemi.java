@@ -1,4 +1,4 @@
-package acme.entities.chimpum;
+package acme.entities.xomemi;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -26,7 +26,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Chimpum extends AbstractEntity{
+public class Xomemi extends AbstractEntity{
 	
 	// Serialisation identifier -----------------------------------------------
 
@@ -34,7 +34,7 @@ public class Chimpum extends AbstractEntity{
 
     // Attributes -------------------------------------------------------------
     
-    @Pattern(regexp = "^[0-9]{3}-[0-9]{3}")
+    @Pattern(regexp = "^[0-9]{2}[0-9]{2}[0-9]{2}#\\w{3}$")
     @NotBlank
     protected String code;
     
@@ -45,11 +45,11 @@ public class Chimpum extends AbstractEntity{
     
     @NotBlank
     @Length(max = 100)
-    protected String title;
+    protected String name;
     
     @NotBlank
     @Length(max = 255)
-    protected String description;
+    protected String statement;
     
     @Temporal(TemporalType.TIMESTAMP)
     @Future
@@ -62,10 +62,10 @@ public class Chimpum extends AbstractEntity{
     protected Date finishDate;
     
     @NotNull
-    protected Money budget;
+    protected Money ration;
     
     @URL
-    protected String link;
+    protected String furtherInfo;
     
     @Valid
     @OneToOne

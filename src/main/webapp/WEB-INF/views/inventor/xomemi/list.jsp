@@ -5,8 +5,8 @@
 
 <acme:list>
 	<acme:list-column code="inventor.item.list.label.code" path="code" width="10%"/>
-	<acme:list-column code="inventor.item.list.label.title" path="title"/>
-	<acme:list-column code="inventor.item.list.label.budget" path="budget"/>
+	<acme:list-column code="inventor.item.list.label.title" path="name"/>
+	<acme:list-column code="inventor.item.list.label.budget" path="ration"/>
 	<acme:list-column code="inventor.item.list.label.creationMoment" path="creationMoment"/>
 </acme:list>
 
