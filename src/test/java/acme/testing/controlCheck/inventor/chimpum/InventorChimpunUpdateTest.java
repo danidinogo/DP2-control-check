@@ -1,4 +1,4 @@
-package acme.testing.inventor.chimpum;
+package acme.testing.controlCheck.inventor.chimpum;
 
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.params.ParameterizedTest;
