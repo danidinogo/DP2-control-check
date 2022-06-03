@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.item.Item;
 import acme.entities.patronage.Patronage;
 import acme.entities.patronagereport.PatronageReport;
 import acme.framework.repositories.AbstractRepository;
@@ -35,4 +36,5 @@ public interface PatronPatronageRepository extends AbstractRepository {
 	
 	@Query("select p from Patronage p WHERE p.code = :code")
 	Patronage findPatronageByCode(String code);
+
 }
