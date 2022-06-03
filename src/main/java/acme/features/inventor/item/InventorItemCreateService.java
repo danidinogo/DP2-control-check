@@ -127,8 +127,6 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 			errors.state(request, entity.getRetailPrice().getAmount() >= 0.00, "retailPrice", "inventor.item.title.minPrice");
 		}
 		
-		errors.state(request, this.configurationRepository.findConfiguration().getAcceptedCurr().contains(entity.getRetailPrice().getCurrency().toString()), "retailPrice", "administrator.configuration.currency.notExist");
-		
 	}
 
 	@Override

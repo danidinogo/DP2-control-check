@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.chimpum.Chimpum;
 import acme.entities.item.Item;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.repositories.AbstractRepository;
@@ -47,4 +48,7 @@ public interface InventorItemRepository extends AbstractRepository{
 	
 	@Query("select i.id from Inventor i WHERE i.userAccount.id = :id")
 	Integer findUsersInventorId(Integer id);
+	
+	@Query("select c from Chimpum c where c.artefact.id = :id")
+	Chimpum findChimpumByItemId(int id);
 }

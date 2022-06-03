@@ -26,8 +26,19 @@
 				<acme:submit code="inventor.item.form.button.delete" action="/inventor/item/delete"/>
 				<acme:button code="inventor.item.form.button.update" action="/inventor/item/update?id=${id}"/>	
 				<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish"/>	
+				<acme:button code="inventor.item.form.button.list-chimpum" action="/inventor/chimpum/list-by-item?id=${id}"/>
+				<acme:button code="inventor.item.form.button.create-chimpum" action="/inventor/chimpum/create?id=${id}"/>
 			</jstl:if>
+			<!--   
+			<jstl:if test="${status == 'NON_PUBLISHED' && type == 'TOOL' }">
+				<acme:button code="inventor.item.form.button.list-chimpum" action="/inventor/chimpum/list-by-item?id=${id}"/>
+				<acme:button code="inventor.item.form.button.create-chimpum" action="/inventor/chimpum/create?id=${id}"/>	
+			</jstl:if>
+			
+			-->
+		
 		</jstl:when>
+		
 	
 		<jstl:when test="${command == 'create'}">
 			<acme:input-textbox code="inventor.item.form.label.name" path="name"/>

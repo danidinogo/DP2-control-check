@@ -3,6 +3,7 @@ package acme.features.inventor.item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.chimpum.Chimpum;
 import acme.entities.item.Item;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -65,6 +66,11 @@ public class InventorItemDeleteService implements AbstractDeleteService<Inventor
 	public void delete(final Request<Item> request, final Item entity) {
 		assert request != null;
 		assert entity != null;
+		
+		final Chimpum c = this.repository.findChimpumByItemId(entity.getId());
+		if(c != null) {
+			this.repository.delete(c);
+		}
 		
 		this.repository.delete(entity);
 		

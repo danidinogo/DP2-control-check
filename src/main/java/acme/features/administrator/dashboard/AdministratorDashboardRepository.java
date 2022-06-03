@@ -27,4 +27,9 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("SELECT item.retailPrice.currency, item.technology, MIN(item.retailPrice.amount), MAX(item.retailPrice.amount), AVG(item.retailPrice.amount), STDDEV(item.retailPrice.amount) from Item item WHERE item.type = acme.entities.item.ItemType.COMPONENT GROUP BY item.retailPrice.currency, item.technology")
 	List<String> getComponentsInCurrencies();
 	
+	@Query("SELECT COUNT(c), COUNT(i) from Item i LEFT JOIN Chimpum c ON c.artefact.id = i.id")
+	String getArtefactsWithChimpumRatio();
+	
+	@Query("SELECT c.budget.currency, MIN(c.budget.amount), MAX(c.budget.amount), AVG(c.budget.amount), STDDEV(c.budget.amount) from Chimpum c GROUP BY c.budget.currency")
+	List<String> getChimpumByCurrency();
 }
