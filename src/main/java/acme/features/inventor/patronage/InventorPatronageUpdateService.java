@@ -58,7 +58,7 @@ public class InventorPatronageUpdateService implements AbstractUpdateService<Inv
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-	
+		
 		
 	}
 
@@ -67,6 +67,7 @@ public class InventorPatronageUpdateService implements AbstractUpdateService<Inv
 		assert request != null;
 		
 		this.repository.save(entity);
+		
 	}
 	
 	

@@ -39,3 +39,12 @@ administrator.dashboard.form.label.currency = Currency
 administrator.dashboard.form.label.technology = Technology
 
 administrator.dashboard.form.label.in = in
+
+administrator.dashboard.form.label.patronagesByStatus = Total Patronages By Status
+
+administrator.dashboard.form.label.chimpumTotals = Xomemi & Artefacts totals
+administrator.dashboard.form.label.totalChimpum = Total xomemi
+administrator.dashboard.form.label.totalArtefacts = Total artefacts
+administrator.dashboard.form.label.chimpumRatio = Xomemi/Artefacts Ratio
+
+administrator.dashboard.form.label.chimpumData = Xomemi Stats

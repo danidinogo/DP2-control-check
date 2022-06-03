@@ -26,8 +26,15 @@
 				<acme:submit code="inventor.item.form.button.delete" action="/inventor/item/delete"/>
 				<acme:button code="inventor.item.form.button.update" action="/inventor/item/update?id=${id}"/>	
 				<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish"/>	
+					
+				<jstl:if test="${type == 'TOOL' }">
+					<acme:button code="inventor.item.form.button.list-xomemi" action="/inventor/xomemi/list-by-item?id=${id}"/>
+					<acme:button code="inventor.item.form.button.create-xomemi" action="/inventor/xomemi/create?id=${id}"/>	
+				</jstl:if>
 			</jstl:if>
+		
 		</jstl:when>
+		
 	
 		<jstl:when test="${command == 'create'}">
 			<acme:input-textbox code="inventor.item.form.label.name" path="name"/>
