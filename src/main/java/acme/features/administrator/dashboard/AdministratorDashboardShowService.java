@@ -44,21 +44,56 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setItemsRetailPrice(this.getItemsData(result.getDataKeys()));
 		result.setComponentsRetailPrice(this.getComponentsData(result.getDataKeys()));
 		
-		//System.out.println(this.getItemsData(result.getDataKeys()).toString());
+		result.setTotalsChimpumData(this.getChimpumRatioData());
 		
-		//result.setComponentsData(this.getComponentsData(result.getDataKeys()));
+		result.setChimpumData(this.getChimpumByCurrency(result.getDataKeys()));
 		
 		return result;
 	}
-
+	
 	@Override
 	public void unbind(final Request<Dashboard> request, final Dashboard entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "totalsData", "patronagesBudgets", "itemsRetailPrice", "componentsRetailPrice");
+		request.unbind(entity, model, "totalsData", "patronagesBudgets", "itemsRetailPrice", "componentsRetailPrice", "totalsChimpumData", "chimpumData");
 	}
+	
+	private Map<String, Map<String, Double>> getChimpumByCurrency(final List<String> dataKeys) {
+		
+		final Map<String, Map<String, Double>> it = new HashMap<String, Map<String, Double>>();
+		
+		final List<String> itemsData = this.repository.getChimpumByCurrency();
+		for(final String i : itemsData) {
+			final String[] item = i.split(",");
+			
+			final Map<String, Double> im = new HashMap<String, Double>();
+			im.put(dataKeys.get(0), Double.valueOf(item[1]));
+			im.put(dataKeys.get(1), Double.valueOf(item[2]));
+			im.put(dataKeys.get(2), Double.valueOf(item[3]));
+			im.put(dataKeys.get(3), Double.valueOf(item[4]));
+			
+			it.put(item[0], im);
+			
+		}
+		
+		return it;
+	}
+	
+	private Map<String, Double> getChimpumRatioData() {
+		final Map<String, Double> data = new HashMap<String, Double>();
+		
+		final String artefactsData = this.repository.getArtefactsWithChimpumRatio();
+		final String[] splittedData = artefactsData.split(",");
+		
+		data.put("totalChimpum", Double.valueOf(splittedData[0]));
+		data.put("totalArtefacts", Double.valueOf(splittedData[1]));
+		data.put("ratio", Double.valueOf(splittedData[0])/Double.valueOf(splittedData[1]));
+		
+		return data;
+	}
+
 	
 	private Map<String, Integer> getTotals(final List<String> totalsKeys) {
 		final Map<String, Integer> totals = new HashMap<String, Integer>();
@@ -83,7 +118,6 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 	private Map<Status, Map<String, Double>> getPatronagesBudgets(final List<String> budgetKeys) {
 		final Map<Status, Map<String, Double>> patronageBudgets = new HashMap<Status, Map<String, Double>>();
 		for(final Status status : Status.values()) {
-			// TODO it's been tried to have a List<Double> but it only returns 1 index instead of 4 indexes-list. Maybe there is a better way
 			final String budgetData = this.repository.getPatronageBudgetByStatus(status);
 			final String[] budget = budgetData.split(",");
 			

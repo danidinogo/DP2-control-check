@@ -54,6 +54,7 @@ public class AdministratorConfigurationUpdateService implements AbstractUpdateSe
 		assert entity != null;
 		assert model != null;
 		
+		
 		request.unbind(entity, model, "weakSpamWords", "weakSpamThreshold", "strongSpamWords", "strongSpamThreshold", "acceptedCurr", "defaultCurr");
 	}
 
