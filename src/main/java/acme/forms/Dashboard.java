@@ -49,6 +49,10 @@ public class Dashboard implements Serializable {
 	Map<ItemType, Map<String, Map<String, Double>>> itemsRetailPrice;
 	
 	Map<Status, Map<String, Double>> patronagesBudgets;
+	
+	Map<String, Double> totalsChimpumData;
+	
+	Map<String, Map<String, Double>> chimpumData;
 
 	// Derived attributes -----------------------------------------------------
 

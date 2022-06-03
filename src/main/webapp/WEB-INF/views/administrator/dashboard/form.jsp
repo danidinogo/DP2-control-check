@@ -51,7 +51,7 @@
 				</div>
 			</div>
 			
-			<h2>Patronages totales por Status</h2>
+			<h2><acme:message code="administrator.dashboard.form.label.patronagesByStatus"/></h2>
 			<div class="row">
 				<div class="col">
 					<div class="card">
@@ -246,6 +246,95 @@
 				</c:forEach>
 			</c:forEach>
 		</div>
+		
+		<div class="dp2-base" id="chimpumTotals">
+			<h2><acme:message code="administrator.dashboard.form.label.chimpumTotals"/></h2>
+			<div class="row">
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<label><acme:message code="administrator.dashboard.form.label.totalChimpum"/>
+							<input type="text" value="${totalsChimpumData.totalChimpum}" readonly />
+							</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<label><acme:message code="administrator.dashboard.form.label.totalArtefacts"/>
+							<input type="text" value="${totalsChimpumData.totalArtefacts}" readonly />
+						</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<label><acme:message code="administrator.dashboard.form.label.chimpumRatio"/>
+							<input type="text" value="${totalsChimpumData.ratio}" readonly />
+						</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="dp2-base" id="chimpums">
+			<h2><acme:message code="administrator.dashboard.form.label.chimpumData"/></h2>
+			
+			<c:forEach items="${chimpumData}" var="data">
+				<h4><acme:message code="administrator.dashboard.form.label.currency" />: ${data.key}</h4>
+				<div class="row">
+					<div class="col">
+						<div class="card">
+							<div class="card-body">
+								<label>
+									<acme:message code="administrator.dashboard.form.label.maxPrice" />
+									<input type="text" value="${data.value.Max}" readonly />
+								</label>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col">
+						<div class="card">
+							<div class="card-body">
+								<label>
+									<acme:message code="administrator.dashboard.form.label.minPrice"/>
+									<input type="text" value="${data.value.Min}" readonly />
+								</label>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col">
+						<div class="card">
+							<div class="card-body">					
+								<label>
+									<acme:message code="administrator.dashboard.form.label.avgPrice"/>
+									<input type="text" value="${data.value.Avg}" readonly />
+								</label>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col">
+						<div class="card">
+							<div class="card-body">
+								<label>
+									<acme:message code="administrator.dashboard.form.label.devPrice"/>
+									<input type="text" value="${data.value.Dev}" readonly />
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
 	</div>
 	<div class="col-4">
 		<h2><acme:message code="administrator.dashboard.form.label.index"/></h2>
@@ -254,6 +343,8 @@
 			<li><a href="${requestScope['javax.servlet.forward.request_uri']}#budgets"><acme:message code="administrator.dashboard.form.label.budgets"/></a></li>
 			<li><a href="${requestScope['javax.servlet.forward.request_uri']}#components"><acme:message code="administrator.dashboard.form.label.components"/></a></li>
 			<li><a href="${requestScope['javax.servlet.forward.request_uri']}#items"><acme:message code="administrator.dashboard.form.label.items"/></a></li>
+			<li><a href="${requestScope['javax.servlet.forward.request_uri']}#chimpumTotals"><acme:message code="administrator.dashboard.form.label.chimpumTotals"/></a></li>
+			<li><a href="${requestScope['javax.servlet.forward.request_uri']}#chimpums"><acme:message code="administrator.dashboard.form.label.chimpumData"/></a></li>
 		</ul>
 	</div>
 </div>
